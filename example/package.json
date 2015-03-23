@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "example menubar atom-shell app",
   "dependencies": {
-    "menubar": "1.0.0",
+    "menubar": "*",
     "atom-shell": "0.22.1"
   },
   "devDependencies": {

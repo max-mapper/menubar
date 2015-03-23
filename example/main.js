@@ -1,11 +1,7 @@
 var menubar = require('menubar')
 
-// doesnt use CLI args until https://github.com/atom/atom-shell/issues/1248 is resolved
+var mb = menubar()
 
-var args = {
-  dir: __dirname
-}
-
-menubar(args, function ready (app) {
-  console.log('ready', app)
+mb.on('ready', function ready () {
+  console.log('app is ready')
 })
