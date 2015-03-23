@@ -10,6 +10,8 @@ this module provides boilerplate for setting up a menubar application using atom
 
 [![js-standard-style](https://raw.githubusercontent.com/feross/standard/master/badge.png)](https://github.com/feross/standard)
 
+Watch the 1HR screen recording of me coding this module: https://www.youtube.com/watch?v=PAJAvsyaHs0
+
 ## installation
 
 ```
