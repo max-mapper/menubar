@@ -1,8 +1,10 @@
 # menubar
 
-high level way to create menubar desktop applications with atom-shell
+High level way to create menubar desktop applications with atom-shell
 
-this module provides boilerplate for setting up a menubar application using atom-shell. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+This module provides boilerplate for setting up a menubar application using atom-shell. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+
+**Currently Mac OS only** but patches welcome to add Windows/Linux support.
 
 ![screenshot](screenshot.png)
 
@@ -11,6 +13,8 @@ this module provides boilerplate for setting up a menubar application using atom
 [![js-standard-style](https://raw.githubusercontent.com/feross/standard/master/badge.png)](https://github.com/feross/standard)
 
 Watch the 1HR screen recording of me coding this module: https://www.youtube.com/watch?v=PAJAvsyaHs0
+
+This module was written for + is used by [Monu](https://github.com/maxogden/monu)
 
 ## installation
 
