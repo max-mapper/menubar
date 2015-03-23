@@ -23,13 +23,6 @@ module.exports = function create (opts, ready) {
     var atomScreen = require('screen')
     var size = atomScreen.getPrimaryDisplay()
 
-    var canQuit = false
-    app.on('will-quit', function tryQuit (e) {
-      if (canQuit) return true
-      win = undefined
-      e.preventDefault()
-    })
-
     var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
     icon = new Tray(iconPath)
 
