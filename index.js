@@ -1,5 +1,6 @@
 var path = require('path')
 var events = require('events')
+var fs = require('fs')
 
 var app = require('app')
 var Tray = require('tray')
@@ -26,6 +27,8 @@ module.exports = function create (opts) {
     var size = atomScreen.getPrimaryDisplay()
 
     var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
+    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'Icon.png') // default cat icon
+    
     menubar.tray = opts.tray || new Tray(iconPath)
 
     menubar.tray.on('clicked', function clicked (e) {
