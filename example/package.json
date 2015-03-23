@@ -1,0 +1,17 @@
+{
+  "name": "example-menubar-app",
+  "version": "1.0.0",
+  "description": "example menubar atom-shell app",
+  "dependencies": {
+    "menubar": "1.0.0",
+    "atom-shell": "0.22.1"
+  },
+  "devDependencies": {
+    "atom-shell-packager": "^1.1.0"
+  },
+  "main": "main.js",
+  "scripts": {
+    "build": "atom-shell-packager . Example --ignore=node_modules/atom-shell --icon=Icon.icns",
+    "start": "atom-shell ."
+  }
+}

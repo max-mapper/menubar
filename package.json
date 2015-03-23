@@ -1,0 +1,28 @@
+{
+  "name": "menubar",
+  "version": "1.0.0",
+  "description": "high level way to create menubar desktop applications with atom-shell",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/menubar.git"
+  },
+  "keywords": [
+    "atom",
+    "atom",
+    "shell",
+    "menubar",
+    "menu",
+    "mac",
+    "app"
+  ],
+  "author": "max ogden",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/maxogden/menubar/issues"
+  },
+  "homepage": "https://github.com/maxogden/menubar",
+  "dependencies": {
+    "extend": "^2.0.0"
+  }
+}
