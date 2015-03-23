@@ -3,8 +3,6 @@ var path = require('path')
 var app = require('app')
 var Tray = require('tray')
 var BrowserWindow = require('browser-window')
-var ipc = require('ipc')
-var shell = require('shell')
 
 var extend = require('extend')
 
@@ -17,9 +15,9 @@ module.exports = function create (opts, ready) {
   if (!opts.index) opts.index = path.join(opts.dir, 'index.html')
 
   app.on('ready', appReady)
-  
+
   return app
-  
+
   function appReady () {
     app.dock.hide()
     var atomScreen = require('screen')
@@ -31,7 +29,7 @@ module.exports = function create (opts, ready) {
       win = undefined
       e.preventDefault()
     })
-    
+
     var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
     icon = new Tray(iconPath)
 
@@ -39,7 +37,7 @@ module.exports = function create (opts, ready) {
       if (win && win.isVisible()) return hideWindow()
       showWindow()
     })
-    
+
     ready(null, app)
 
     function showWindow () {
@@ -66,4 +64,3 @@ module.exports = function create (opts, ready) {
     }
   }
 }
-

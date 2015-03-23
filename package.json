@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/maxogden/menubar.git"
   },
+  "scripts": {
+    "test": "standard"
+  },
   "keywords": [
     "atom",
     "atom",
@@ -24,5 +27,8 @@
   "homepage": "https://github.com/maxogden/menubar",
   "dependencies": {
     "extend": "^2.0.0"
+  },
+  "devDependencies": {
+    "standard": "^3.2.1"
   }
 }

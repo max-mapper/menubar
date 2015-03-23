@@ -6,6 +6,10 @@ this module provides boilerplate for setting up a menubar application using atom
 
 ![screenshot](screenshot.png)
 
+[![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
+
+[![js-standard-style](https://raw.githubusercontent.com/feross/standard/master/badge.png)](https://github.com/feross/standard)
+
 ## installation
 
 ```
