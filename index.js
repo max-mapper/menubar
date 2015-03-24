@@ -22,7 +22,7 @@ module.exports = function create (opts) {
   return menubar
 
   function appReady () {
-    app.dock.hide()
+    if (app.dock) app.dock.hide()
     var atomScreen = require('screen')
     var size = atomScreen.getPrimaryDisplay()
 
