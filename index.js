@@ -11,6 +11,7 @@ var extend = require('extend')
 module.exports = function create (opts) {
   if (typeof opts === 'undefined') opts = {dir: process.cwd()}
   if (typeof opts === 'string') opts = {dir: opts}
+  if (!opts.dir) opts.dir = __dirname
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
 
@@ -52,8 +53,8 @@ module.exports = function create (opts) {
         show: true,
         frame: false
       }
-      var winOpts = extend(defaults, winOpts)
-      menubar.window = new BrowserWindow(defaults)
+      var winOpts = extend(defaults, {width: opts.width, height: opts.height})
+      menubar.window = new BrowserWindow(winOpts)
       var x = opts.x || size.workArea.width - defaults.width - 200
       var y = opts.y || size.workArea.y
       menubar.window.setPosition(x, y)
