@@ -40,7 +40,7 @@ module.exports = function create (opts) {
 
     function showWindow () {
       var size = atomScreen.getPrimaryDisplay()
-      var x = opts.x || size.workArea.width - defaults.width - 200
+      var x = opts.x || size.workArea.width - (opts.width || 400) - 200
       var y = opts.y || size.workArea.y
       if (menubar.window) {
         menubar.emit('show')
