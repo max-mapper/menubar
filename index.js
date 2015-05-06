@@ -24,7 +24,6 @@ module.exports = function create (opts) {
 
   function appReady () {
     if (app.dock) app.dock.hide()
-    var atomScreen = require('screen')
 
     var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'Icon.png') // default cat icon
