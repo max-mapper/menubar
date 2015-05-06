@@ -31,17 +31,16 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    menubar.tray.on('clicked', function clicked (e) {
+    menubar.tray.on('clicked', function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
-      showWindow()
+      showWindow(bounds)
     })
 
     menubar.emit('ready')
 
-    function showWindow () {
-      var size = atomScreen.getPrimaryDisplay()
-      var x = opts.x || size.workArea.width - (opts.width || 400) - 200
-      var y = opts.y || size.workArea.y
+    function showWindow (bounds) {
+      var x = opts.x || bounds.x - ((opts.width / 2) || 200) + (bounds.width / 2)
+      var y = opts.y || bounds.y
       if (menubar.window) {
         menubar.emit('show')
         menubar.window.show()
