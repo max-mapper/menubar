@@ -24,22 +24,34 @@ module.exports = function create (opts) {
 
   function appReady () {
     if (app.dock) app.dock.hide()
+    var atomScreen = require('screen')
 
     var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'Icon.png') // default cat icon
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    menubar.tray.on('clicked', function clicked (e, bounds) {
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
-      showWindow(bounds)
-    })
+    showWindow()
 
     menubar.emit('ready')
 
-    function showWindow (bounds) {
-      var x = opts.x || bounds.x - ((opts.width / 2) || 200) + (bounds.width / 2)
-      var y = opts.y || bounds.y
+    menubar.tray.on('clicked', function clicked (e) {
+      if (menubar.window && menubar.window.isVisible()) {
+        menubar.window.hide()
+      }
+      else {
+        var atomScreen = require('screen')
+        var pointer = atomScreen.getCursorScreenPoint()
+        var position = menubar.window.getPosition()
+        menubar.window.setPosition(pointer.x - global.opts.width/2 - 50, position[1])
+        menubar.window.show()
+      }
+    })
+
+    function showWindow () {
+      var size = atomScreen.getPrimaryDisplay()
+      var x = opts.x || size.workArea.width - (opts.width || 400) - 200
+      var y = opts.y || size.workArea.y
       if (menubar.window) {
         menubar.emit('show')
         menubar.window.show()
@@ -51,7 +63,7 @@ module.exports = function create (opts) {
       var defaults = {
         width: 400,
         height: 400,
-        show: true,
+        show: false,
         frame: false
       }
       var winOpts = extend(defaults, {width: opts.width, height: opts.height})
