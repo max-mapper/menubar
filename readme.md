@@ -1,8 +1,8 @@
 # menubar
 
-High level way to create menubar desktop applications with atom-shell
+High level way to create menubar desktop applications with electron
 
-This module provides boilerplate for setting up a menubar application using atom-shell. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+This module provides boilerplate for setting up a menubar application using electron. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
 
 **Currently Mac OS only** but patches welcome to add Windows/Linux support.
 
@@ -40,7 +40,12 @@ mb.on('ready', function ready () {
 
 make sure there is also a `index.html` file in `dir`
 
-then use [`atom-shell`](https://npmjs.org/atom-shell) or [`atom-shell-packager`](https://npmjs.org/atom-shell-packager) to build/run the app
+then use [`electron`](https://npmjs.org/electron-prebuilt) or [`electron-packager`](https://npmjs.org/electron-packager) to build/run the app:
+
+```
+$ npm install electron-prebuilt -g
+$ electron your-app.js
+```
 
 see `example/` for a working example
 
@@ -48,9 +53,9 @@ the return value of `mb` is an event emitter with these properties:
 
 ```
 {
-  app: the atom shell require('app') instance,
-  window: the atom shell require('browser-window') instance,
-  tray: the atom shell require('tray') instance
+  app: the electron require('app') instance,
+  window: the electron require('browser-window') instance,
+  tray: the electron require('tray') instance
 }
 ```
 
@@ -61,7 +66,7 @@ you can pass an optional options object into the menubar constructor
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
 - `icon` (default opts.dir + 'Icon.png') - the png icon to use for the menubar
-- `tray` (default created on-the-fly) - an atom shell `Tray` instance. if provided `opts.icon` will be ignored
+- `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
 - `width` (default 400) - window width
 - `height` (default 400) - window height
 - `x` (default screen.workArea.width - opts.width - 200) - the x position of the window
