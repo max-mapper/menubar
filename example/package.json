@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "example menubar electron app",
   "dependencies": {
-    "menubar": "*",
-    "electron-prebuilt": "0.26.0"
+    "menubar": "*"
   },
   "devDependencies": {
-    "electron-packager": "^4.0.2"
+    "electron-packager": "^4.0.2",
+    "electron-prebuilt": "0.26.0"
   },
   "main": "main.js",
   "scripts": {
