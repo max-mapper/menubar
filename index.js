@@ -9,9 +9,9 @@ var BrowserWindow = require('browser-window')
 var extend = require('extend')
 
 module.exports = function create (opts) {
-  if (typeof opts === 'undefined') opts = {dir: process.cwd()}
+  if (typeof opts === 'undefined') opts = {dir: process.resourcesPath}
   if (typeof opts === 'string') opts = {dir: opts}
-  if (!opts.dir) opts.dir = process.cwd()
+  if (!opts.dir) opts.dir = process.resourcesPath
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
 
