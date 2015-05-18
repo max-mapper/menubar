@@ -37,9 +37,38 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
+    if (opts.preCreateWindow) {
+      createWindow(false)
+    }
+
+    function createWindow (show, x, y) {
+      menubar.emit('create-window')
+      var defaults = {
+        width: 400,
+        height: 400,
+        show: show,
+        frame: false
+      }
+
+      var winOpts = extend(defaults, {width: opts.width, height: opts.height})
+      menubar.window = new BrowserWindow(winOpts)
+
+      if (show) {
+        menubar.window.setPosition(x, y)
+      }
+
+      menubar.window.on('blur', hideWindow)
+      menubar.window.loadUrl(opts.index)
+      menubar.emit('after-create-window')
+    }
+
     function showWindow (bounds) {
       var x = opts.x || bounds.x - ((opts.width / 2) || 200) + (bounds.width / 2)
       var y = opts.y || bounds.y
+      if (!menubar.window) {
+        createWindow(true, x, y)
+      }
+
       if (menubar.window) {
         menubar.emit('show')
         menubar.window.show()
@@ -47,19 +76,6 @@ module.exports = function create (opts) {
         menubar.emit('after-show')
         return
       }
-      menubar.emit('create-window')
-      var defaults = {
-        width: 400,
-        height: 400,
-        show: true,
-        frame: false
-      }
-      var winOpts = extend(defaults, {width: opts.width, height: opts.height})
-      menubar.window = new BrowserWindow(winOpts)
-      menubar.window.setPosition(x, y)
-      menubar.window.on('blur', hideWindow)
-      menubar.window.loadUrl(opts.index)
-      menubar.emit('after-create-window')
     }
 
     function hideWindow () {
