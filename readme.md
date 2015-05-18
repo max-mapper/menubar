@@ -67,7 +67,7 @@ you can pass an optional options object into the menubar constructor
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
 - `icon` (default opts.dir + 'Icon.png') - the png icon to use for the menubar
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
-- `preCreateWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
+- `preloadWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
 - `width` (default 400) - window width
 - `height` (default 400) - window height
 - `x` (default screen.workArea.width - opts.width - 200) - the x position of the window

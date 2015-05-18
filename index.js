@@ -37,7 +37,7 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
-    if (opts.preCreateWindow) {
+    if (opts.preloadWindow) {
       createWindow(false)
     }
 
