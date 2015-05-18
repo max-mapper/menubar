@@ -4,4 +4,5 @@ menubar is only possible due to the excellent work of the following collaborator
 
 <table><tbody><tr><th align="left">maxogden</th><td><a href="https://github.com/maxogden">GitHub/maxogden</a></td></tr>
 <tr><th align="left">fritzy</th><td><a href="https://github.com/fritzy">GitHub/fritzy</a></td></tr>
+<tr><th align="left">pquerna</th><td><a href="https://github.com/pquerna">GitHub/pquerna</a></td></tr>
 </tbody></table>
