@@ -50,7 +50,7 @@ module.exports = function create (opts) {
         frame: false
       }
 
-      var winOpts = extend(defaults, {width: opts.width, height: opts.height})
+      var winOpts = extend(defaults, opts)
       menubar.window = new BrowserWindow(winOpts)
 
       if (show) {
