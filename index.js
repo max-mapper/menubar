@@ -25,8 +25,8 @@ module.exports = function create (opts) {
   function appReady () {
     if (app.dock) app.dock.hide()
 
-    var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
-    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'Icon.png') // default cat icon
+    var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
+    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
@@ -50,7 +50,7 @@ module.exports = function create (opts) {
         frame: false
       }
 
-      var winOpts = extend(defaults, {width: opts.width, height: opts.height})
+      var winOpts = extend(defaults, opts)
       menubar.window = new BrowserWindow(winOpts)
 
       if (show) {
