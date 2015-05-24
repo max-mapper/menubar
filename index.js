@@ -28,10 +28,17 @@ module.exports = function create (opts) {
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
+    var electronScreen = require('screen')
+
     menubar.tray = opts.tray || new Tray(iconPath)
 
     menubar.tray.on('clicked', function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
+      // bounds is only populated on os x
+      if (bounds.x === 0 && bounds.y === 0) {
+        var size = electronScreen.getPrimaryDisplay().workAreaSize
+        bounds.x = size.width // default to top right
+      }
       showWindow(bounds)
     })
 
@@ -62,9 +69,9 @@ module.exports = function create (opts) {
       menubar.emit('after-create-window')
     }
 
-    function showWindow (bounds) {
-      var x = opts.x || bounds.x - ((opts.width / 2) || 200) + (bounds.width / 2)
-      var y = opts.y || bounds.y
+    function showWindow (trayPos) {
+      var x = opts.x || trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2)
+      var y = opts.y || trayPos.y
       if (!menubar.window) {
         createWindow(true, x, y)
       }

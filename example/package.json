@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "electron-packager": "^4.0.2",
-    "electron-prebuilt": "0.26.0"
+    "electron-prebuilt": "0.26.1"
   },
   "main": "main.js",
   "scripts": {
