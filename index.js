@@ -38,6 +38,11 @@ module.exports = function create (opts) {
       if (bounds.x === 0 && bounds.y === 0) {
         var size = electronScreen.getPrimaryDisplay().workAreaSize
         bounds.x = size.width // default to top right
+      } else {
+        var requestedWorkArea = electronScreen.getDisplayNearestPoint(bounds).workArea
+        var actualWorkArea = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
+        var xOffset = (requestedWorkArea.x + requestedWorkArea.width) - bounds.x
+        bounds.x = actualWorkArea.x + actualWorkArea.width - xOffset
       }
       showWindow(bounds)
     })
