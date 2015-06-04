@@ -32,15 +32,21 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    menubar.tray.on('clicked', function clicked (e, bounds) {
+    var cachedBounds; // cachedBounds are needed for double-clicked event
+    function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
       // bounds is only populated on os x
-      if (bounds.x === 0 && bounds.y === 0) {
+      if (bounds && bounds.x === 0 && bounds.y === 0) {
         var size = electronScreen.getPrimaryDisplay().workAreaSize
         bounds.x = size.width // default to top right
       }
-      showWindow(bounds)
-    })
+      if (bounds) cachedBounds = bounds
+      showWindow(cachedBounds)
+    }
+
+    menubar.tray
+      .on('clicked', clicked)
+      .on('double-clicked', clicked)
 
     menubar.emit('ready')
 
