@@ -32,7 +32,7 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    var cachedBounds; // cachedBounds are needed for double-clicked event
+    var cachedBounds // cachedBounds are needed for double-clicked event
     function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
       // bounds is only populated on os x
