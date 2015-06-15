@@ -33,31 +33,40 @@ module.exports = function create (opts) {
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var electronScreen = require('screen')
+    var cachedBounds // cachedBounds are needed for double-clicked event
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    menubar.tray.on('clicked', function clicked (e, bounds) {
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
-
-      // workarea takes the taskbar/menubar height in consideration
-      var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
-
-      // ensure bounds is an object
-      bounds = bounds || {}
-
-      // bounds is only populated on os x
-      if (bounds.x === 0 && bounds.y === 0) {
-        // default to bottom on windows
-        if (process.platform === 'win32') bounds.y = size.height - opts.height
-        bounds.x = size.width + size.x - (opts.width / 2) // default to right
-      }
-      showWindow(bounds)
-    })
+    menubar.tray
+      .on('clicked', clicked)
+      .on('double-clicked', clicked)
 
     menubar.emit('ready')
 
     if (opts.preloadWindow) {
       createWindow(false)
+    }
+
+    function clicked (e, bounds) {
+      if (menubar.window && menubar.window.isVisible()) return hideWindow()
+
+      // workarea takes the taskbar/menubar height in consideration
+      var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
+
+      if (bounds) cachedBounds = bounds
+
+      // ensure bounds is an object
+      bounds = bounds || {}
+
+      // bounds may not be populated on all OSes
+      if (bounds.x === 0 && bounds.y === 0) {
+        // default to bottom on windows
+        if (process.platform === 'win32') bounds.y = size.height - opts.height
+        bounds.x = size.width + size.x - (opts.width / 2) // default to right
+        cachedBounds = bounds
+      }
+      
+      showWindow(cachedBounds)
     }
 
     function createWindow (show, x, y) {
