@@ -15,6 +15,10 @@ module.exports = function create (opts) {
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
 
+  // set width/height on opts to be usable before the window is created
+  opts.width = opts.width || 400
+  opts.height = opts.height || 400
+
   app.on('ready', appReady)
 
   var menubar = new events.EventEmitter()
@@ -34,10 +38,18 @@ module.exports = function create (opts) {
 
     menubar.tray.on('clicked', function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
+
+      // workarea takes the taskbar/menubar height in consideration
+      var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
+
+      // ensure bounds is an object
+      bounds = bounds || {}
+
       // bounds is only populated on os x
       if (bounds.x === 0 && bounds.y === 0) {
-        var size = electronScreen.getPrimaryDisplay().workAreaSize
-        bounds.x = size.width // default to top right
+        // default to bottom on windows
+        if (process.platform === 'win32') bounds.y = size.height - opts.height
+        bounds.x = size.width + size.x - (opts.width / 2) // default to right
       }
       showWindow(bounds)
     })
@@ -51,8 +63,6 @@ module.exports = function create (opts) {
     function createWindow (show, x, y) {
       menubar.emit('create-window')
       var defaults = {
-        width: 400,
-        height: 400,
         show: show,
         frame: false
       }

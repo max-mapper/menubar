@@ -4,9 +4,15 @@ High level way to create menubar desktop applications with electron
 
 This module provides boilerplate for setting up a menubar application using electron. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
 
-**Currently Mac OS only** but patches welcome to add Windows/Linux support.
+**Currently Mac OS and Windows only** but patches welcome to add Linux support.
+
+**Mac OS**
 
 ![screenshot](screenshot.png)
+
+**Windows**
+
+![screenshot](screenshot-windows.png)
 
 [![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
 
