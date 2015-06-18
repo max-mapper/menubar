@@ -65,7 +65,7 @@ module.exports = function create (opts) {
         bounds.x = size.width + size.x - (opts.width / 2) // default to right
         cachedBounds = bounds
       }
-      
+
       showWindow(cachedBounds)
     }
 
