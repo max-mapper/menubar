@@ -65,7 +65,7 @@ module.exports = function create (opts) {
         bounds.x = size.width + size.x - (opts.width / 2) // default to right
         cachedBounds = bounds
       }
-      
+
       showWindow(cachedBounds)
     }
 
@@ -83,7 +83,8 @@ module.exports = function create (opts) {
         menubar.window.setPosition(x, y)
       }
 
-      menubar.window.on('blur', hideWindow)
+      if (!opts['always-on-top']) menubar.window.on('blur', hideWindow)
+
       menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
