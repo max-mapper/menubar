@@ -15,6 +15,10 @@ module.exports = function create (opts) {
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
 
+  // set width/height on opts to be usable before the window is created
+  opts.width = opts.width || 400
+  opts.height = opts.height || 400
+
   app.on('ready', appReady)
 
   var menubar = new events.EventEmitter()
@@ -29,20 +33,9 @@ module.exports = function create (opts) {
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var electronScreen = require('screen')
+    var cachedBounds // cachedBounds are needed for double-clicked event
 
     menubar.tray = opts.tray || new Tray(iconPath)
-
-    var cachedBounds // cachedBounds are needed for double-clicked event
-    function clicked (e, bounds) {
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
-      // bounds is only populated on os x
-      if (bounds && bounds.x === 0 && bounds.y === 0) {
-        var size = electronScreen.getPrimaryDisplay().workAreaSize
-        bounds.x = size.width // default to top right
-      }
-      if (bounds) cachedBounds = bounds
-      showWindow(cachedBounds)
-    }
 
     menubar.tray
       .on('clicked', clicked)
@@ -54,11 +47,31 @@ module.exports = function create (opts) {
       createWindow(false)
     }
 
+    function clicked (e, bounds) {
+      if (menubar.window && menubar.window.isVisible()) return hideWindow()
+
+      // workarea takes the taskbar/menubar height in consideration
+      var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
+
+      if (bounds) cachedBounds = bounds
+
+      // ensure bounds is an object
+      bounds = bounds || {}
+
+      // bounds may not be populated on all OSes
+      if (bounds.x === 0 && bounds.y === 0) {
+        // default to bottom on windows
+        if (process.platform === 'win32') bounds.y = size.height - opts.height
+        bounds.x = size.width + size.x - (opts.width / 2) // default to right
+        cachedBounds = bounds
+      }
+
+      showWindow(cachedBounds)
+    }
+
     function createWindow (show, x, y) {
       menubar.emit('create-window')
       var defaults = {
-        width: 400,
-        height: 400,
         show: show,
         frame: false
       }
@@ -70,7 +83,8 @@ module.exports = function create (opts) {
         menubar.window.setPosition(x, y)
       }
 
-      menubar.window.on('blur', hideWindow)
+      if (!opts['always-on-top']) menubar.window.on('blur', hideWindow)
+
       menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
