@@ -47,25 +47,56 @@ module.exports = function create (opts) {
       createWindow(false)
     }
 
+    /**
+     * Temporary workaround to retrieve the coordinates of the clicked display.
+     *
+     * @see https://github.com/atom/electron/issues/1847
+     *
+     * @param  {Object} bounds         Bounds object from click event
+     * @param  {Object} activeWorkArea Coords for clicked display
+     * @return {Object}
+     */
+    function getActiveDisplayCoords (bounds, activeWorkArea) {
+      var boundsWorkArea = electronScreen.getDisplayNearestPoint(bounds).workArea
+      var coords = {
+        x: bounds.x,
+        y: bounds.y
+      }
+
+      // make sure it's a different screen before modifying the bounds object
+      if (boundsWorkArea.x !== activeWorkArea.x) {
+        var offsetX = boundsWorkArea.x + boundsWorkArea.width - bounds.x
+        coords.x = activeWorkArea.width + activeWorkArea.x - offsetX
+        // ensure proper `y` value on vertically stacked displays
+        coords.y = activeWorkArea.y
+      }
+
+      return coords
+    }
+
     function clicked (e, bounds) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
 
       // workarea takes the taskbar/menubar height in consideration
       var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
 
-      if (bounds) cachedBounds = bounds
+      // double click sometimes returns `undefined`
+      bounds = bounds || cachedBounds
 
-      // ensure bounds is an object
-      bounds = bounds || {}
+      // default to bottom on windows if `bounds.y` is not set
+      // leave it open to use prepopulated `bounds` if/when windows sets it
+      if (process.platform === 'win32' && bounds.y === 0) bounds.y = size.height - opts.height
 
-      // bounds may not be populated on all OSes
-      if (bounds.x === 0 && bounds.y === 0) {
-        // default to bottom on windows
-        if (process.platform === 'win32') bounds.y = size.height - opts.height
-        bounds.x = size.width + size.x - (opts.width / 2) // default to right
-        cachedBounds = bounds
+      if (bounds.x === 0) {
+        // default to right
+        bounds.x = size.width + size.x - (opts.width / 2)
+      } else {
+        var coords = getActiveDisplayCoords(bounds, size)
+        bounds.x = coords.x
+        bounds.y = coords.y
       }
 
+      cachedBounds = bounds
       showWindow(cachedBounds)
     }
 
