@@ -90,7 +90,7 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos) {
-      var x = opts.x || trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2)
+      var x = opts.x || Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
       var y = opts.y || trayPos.y
       if (!menubar.window) {
         createWindow(true, x, y)
