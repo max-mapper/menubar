@@ -83,9 +83,9 @@ module.exports = function create (opts) {
       // double click sometimes returns `undefined`
       bounds = bounds || cachedBounds
 
-      // default to bottom on windows if `bounds.y` is not set
-      // leave it open to use prepopulated `bounds` if/when windows sets it
-      if (process.platform === 'win32' && bounds.y === 0) bounds.y = size.height - opts.height
+      // default to bottom on windows
+      // even when `bounds` is set, it doesn't take the app height in consideration
+      if (process.platform === 'win32') bounds.y = size.height - opts.height
 
       if (bounds.x === 0) {
         // default to right
