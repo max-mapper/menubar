@@ -41,6 +41,10 @@ module.exports = function create (opts) {
       .on('clicked', clicked)
       .on('double-clicked', clicked)
 
+    if (process.platform === 'linux') {
+      menubar.tray.setToolTip('Show Menu Window')
+    }
+
     menubar.emit('ready')
 
     if (opts.preloadWindow) {
