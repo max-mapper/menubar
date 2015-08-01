@@ -116,6 +116,8 @@ module.exports = function create (opts) {
 
       if (!opts['always-on-top']) menubar.window.on('blur', hideWindow)
 
+      menubar.window.setVisibleOnAllWorkspaces(true)
+
       menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
