@@ -29,7 +29,7 @@ module.exports = function create (opts) {
   function appReady () {
     if (app.dock) app.dock.hide()
 
-    var iconPath = opts.icon || path.join(opts.dir, 'Icon.png')
+    var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var electronScreen = require('screen')
