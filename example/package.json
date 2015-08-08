@@ -6,12 +6,12 @@
     "menubar": "*"
   },
   "devDependencies": {
-    "electron-packager": "^4.0.2",
-    "electron-prebuilt": "0.30.0"
+    "electron-packager": "^5.0.1",
+    "electron-prebuilt": "0.30.3"
   },
   "main": "main.js",
   "scripts": {
-    "build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.26.0 --ignore=node_modules/electron --icon=Icon.icns",
+    "build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.30.3 --ignore=node_modules/electron --icon=Icon.icns",
     "start": "electron ."
   }
 }
