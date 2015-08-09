@@ -24,6 +24,15 @@ module.exports = function create (opts) {
   var menubar = new events.EventEmitter()
   menubar.app = app
 
+  // Set / get options
+  menubar.setOption = function (opt, val) {
+    opts[opt] = val
+  }
+
+  menubar.getOption = function (opt) {
+    return opts[opt]
+  }
+
   return menubar
 
   function appReady () {
