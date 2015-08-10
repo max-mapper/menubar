@@ -60,7 +60,9 @@ the return value of `mb` is an event emitter with these properties:
 {
   app: the electron require('app') instance,
   window: the electron require('browser-window') instance,
-  tray: the electron require('tray') instance
+  tray: the electron require('tray') instance,
+  setOption(option, value): change an option after menubar is created,
+  getOption(option): get an menubar option
 }
 ```
 
