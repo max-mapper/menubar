@@ -84,7 +84,7 @@ module.exports = function create (opts) {
     }
 
     function clicked (e, bounds) {
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
+      if (menubar.window && menubar.window.isVisible()) return hideWindow(true)
 
       // workarea takes the taskbar/menubar height in consideration
       var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
@@ -123,7 +123,7 @@ module.exports = function create (opts) {
         menubar.window.setPosition(x, y)
       }
 
-      if (!opts['always-on-top']) menubar.window.on('blur', hideWindow)
+      menubar.window.on('blur', hideWindow)
 
       menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
@@ -145,8 +145,10 @@ module.exports = function create (opts) {
       }
     }
 
-    function hideWindow () {
-      if (!menubar.window) return
+    function hideWindow (forced) {
+      // `forced` can be an `Event` if called from blur, check against `true` to
+      // ensure proper functionality
+      if (!menubar.window || (menubar.window.isAlwaysOnTop() && forced !== true)) return
       menubar.emit('hide')
       menubar.window.hide()
       menubar.emit('after-hide')
