@@ -84,6 +84,8 @@ module.exports = function create (opts) {
     }
 
     function clicked (e, bounds) {
+      if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
+
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
 
       // workarea takes the taskbar/menubar height in consideration
