@@ -80,6 +80,7 @@ you can pass an optional options object into the menubar constructor
 - `x` (default OS X: centered under the tray icon. Windows: screen width (right)) - the x position of the window
 - `y` (default OS X: 0. Windows: screen height (bottom)) - the y position of the window
 - `always-on-top` (default false) - if true, the window will not hide on blur
+- `show-on-all-workspaces` (default true) - Makes the window available on all OS X workspaces.
 
 ## events
 
