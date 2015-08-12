@@ -50,11 +50,14 @@ module.exports = function create (opts) {
       .on('clicked', clicked)
       .on('double-clicked', clicked)
 
-    menubar.emit('ready')
-
     if (opts.preloadWindow) {
       createWindow(false)
     }
+
+    menubar.showWindow = showWindow
+    menubar.hideWindow = hideWindow
+
+    menubar.emit('ready')
 
     /**
      * Temporary workaround to retrieve the coordinates of the clicked display.
@@ -138,8 +141,8 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos) {
-      var x = opts.x || Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
-      var y = opts.y || trayPos.y
+      var x = (opts.x !== undefined) ? opts.x : Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
+      var y = (opts.y !== undefined) ? opts.y : trayPos.y
       if (!menubar.window) {
         createWindow(true, x, y)
       }
