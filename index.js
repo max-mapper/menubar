@@ -141,7 +141,7 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos, screenSize) {
-      var x = opts.x;
+      var x = opts.x
 
       if (x === undefined) {
         if (opts.pin === 'left') {
@@ -154,7 +154,7 @@ module.exports = function create (opts) {
       }
 
       if (x < 0) {
-        x = 0;
+        x = 0
       } else if (x + (opts.width || 200) > screenSize.width + screenSize.x) {
         x = screenSize.width + screenSize.x - (opts.width || 200)
       }
