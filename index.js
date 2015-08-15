@@ -111,7 +111,7 @@ module.exports = function create (opts) {
       }
 
       cachedBounds = bounds
-      showWindow(cachedBounds)
+      showWindow(cachedBounds, size)
     }
 
     function createWindow (show, x, y) {
@@ -140,8 +140,25 @@ module.exports = function create (opts) {
       menubar.emit('after-create-window')
     }
 
-    function showWindow (trayPos) {
-      var x = (opts.x !== undefined) ? opts.x : Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
+    function showWindow (trayPos, screenSize) {
+      var x = opts.x;
+
+      if (x === undefined) {
+        if (opts.pin === 'left') {
+          x = Math.floor(trayPos.x)
+        } else if (opts.pin === 'right') {
+          x = Math.floor(trayPos.x - (opts.width || 200) + trayPos.width)
+        } else {
+          x = Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
+        }
+      }
+
+      if (x < 0) {
+        x = 0;
+      } else if (x + (opts.width || 200) > screenSize.width + screenSize.x) {
+        x = screenSize.width + screenSize.x - (opts.width || 200)
+      }
+
       var y = (opts.y !== undefined) ? opts.y : trayPos.y
       if (!menubar.window) {
         createWindow(true, x, y)
