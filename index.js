@@ -7,6 +7,7 @@ var Tray = require('tray')
 var BrowserWindow = require('browser-window')
 
 var extend = require('extend')
+var Positioner = require('electron-positioner')
 
 module.exports = function create (opts) {
   if (typeof opts === 'undefined') opts = {dir: app.getAppPath()}
@@ -14,6 +15,7 @@ module.exports = function create (opts) {
   if (!opts.dir) opts.dir = app.getAppPath()
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
+  if (!opts['window-position']) opts['window-position'] = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
 
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
@@ -51,11 +53,13 @@ module.exports = function create (opts) {
       .on('double-clicked', clicked)
 
     if (opts.preloadWindow) {
-      createWindow(false)
+      createWindow()
     }
 
     menubar.showWindow = showWindow
     menubar.hideWindow = hideWindow
+
+    menubar.positioner
 
     menubar.emit('ready')
 
@@ -97,13 +101,9 @@ module.exports = function create (opts) {
       // double click sometimes returns `undefined`
       bounds = bounds || cachedBounds
 
-      // default to bottom on windows
-      // even when `bounds` is set, it doesn't take the app height in consideration
-      if (process.platform === 'win32') bounds.y = size.height - opts.height
-
-      if (bounds.x === 0) {
-        // default to right
-        bounds.x = size.width + size.x - (opts.width / 2)
+      if (bounds.x === 0 && opts['window-position'].substr(0, 4) === 'tray') {
+        // default to right if x is null and if we are trying to position the window at the tray.
+        opts['window-position'] = (process.platform === 'win32') ? 'bottomRight' : 'topRight'
       } else {
         var coords = getActiveDisplayCoords(bounds, size)
         bounds.x = coords.x
@@ -114,19 +114,17 @@ module.exports = function create (opts) {
       showWindow(cachedBounds)
     }
 
-    function createWindow (show, x, y) {
+    function createWindow () {
       menubar.emit('create-window')
       var defaults = {
-        show: show,
+        show: false,
         frame: false
       }
 
       var winOpts = extend(defaults, opts)
       menubar.window = new BrowserWindow(winOpts)
 
-      if (show) {
-        menubar.window.setPosition(x, y)
-      }
+      menubar.positioner = new Positioner(menubar.window)
 
       if (!opts['always-on-top']) {
         menubar.window.on('blur', hideWindow)
@@ -141,19 +139,20 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos) {
-      var x = (opts.x !== undefined) ? opts.x : Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
-      var y = (opts.y !== undefined) ? opts.y : trayPos.y
       if (!menubar.window) {
-        createWindow(true, x, y)
+        createWindow()
       }
 
-      if (menubar.window) {
-        menubar.emit('show')
-        menubar.window.show()
-        menubar.window.setPosition(x, y)
-        menubar.emit('after-show')
-        return
-      }
+      menubar.emit('show')
+      var position = menubar.positioner.calculate(opts['window-position'], trayPos)
+
+      var x = (opts.x !== undefined) ? opts.x : position.x
+      var y = (opts.y !== undefined) ? opts.y : position.y
+
+      menubar.window.setPosition(x, y)
+      menubar.window.show()
+      menubar.emit('after-show')
+      return
     }
 
     function hideWindow () {

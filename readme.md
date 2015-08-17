@@ -79,10 +79,11 @@ you can pass an optional options object into the menubar constructor
 - `preloadWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
 - `width` (default 400) - window width
 - `height` (default 400) - window height
-- `x` (default OS X: centered under the tray icon. Windows: screen width (right)) - the x position of the window
-- `y` (default OS X: 0. Windows: screen height (bottom)) - the y position of the window
+- `x` (default null) - the x position of the window
+- `y` (default null) - the y position of the window
 - `always-on-top` (default false) - if true, the window will not hide on blur
 - `show-on-all-workspaces` (default true) - Makes the window available on all OS X workspaces.
+- `window-position` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
 
 ## events
 
