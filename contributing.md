@@ -1,5 +1,11 @@
 ## Before opening issues
 
+**If you are asking a question**:
+
+Remember that `menubar` is just a lightweight wrapper around Electron. Most of the time you can probably find the answer to your question already answered in the [Electron Issue Tracker](https://github.com/atom/electron/issues)
+
+**For bug reports/technical issues**:
+
 Please provide the following information when opening issues:
 
 - Which version of menubar are you using?
