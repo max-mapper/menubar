@@ -86,16 +86,12 @@ module.exports = function create (opts) {
       return coords
     }
 
-    function clicked (e, bounds) {
-      if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
-
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
-
+    function calcBounds (bounds) {
       // workarea takes the taskbar/menubar height in consideration
       var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
 
       // double click sometimes returns `undefined`
-      bounds = bounds || cachedBounds
+      bounds = bounds || cachedBounds || {x: 0, y: 0, width: 0, height: 0}
 
       // default to bottom on windows
       // even when `bounds` is set, it doesn't take the app height in consideration
@@ -111,7 +107,15 @@ module.exports = function create (opts) {
       }
 
       cachedBounds = bounds
-      showWindow(cachedBounds)
+      return bounds
+    }
+
+    function clicked (e, bounds) {
+      if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
+
+      if (menubar.window && menubar.window.isVisible()) return hideWindow()
+
+      showWindow(calcBounds(bounds))
     }
 
     function createWindow (show, x, y) {
@@ -141,6 +145,8 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos) {
+      trayPos = trayPos || calcBounds()
+
       var x = (opts.x !== undefined) ? opts.x : Math.floor(trayPos.x - ((opts.width / 2) || 200) + (trayPos.width / 2))
       var y = (opts.y !== undefined) ? opts.y : trayPos.y
       if (!menubar.window) {
@@ -149,8 +155,8 @@ module.exports = function create (opts) {
 
       if (menubar.window) {
         menubar.emit('show')
-        menubar.window.show()
         menubar.window.setPosition(x, y)
+        menubar.window.show()
         menubar.emit('after-show')
         return
       }
