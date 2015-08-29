@@ -1,6 +1,6 @@
 {
   "name": "menubar",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "high level way to create menubar desktop applications with atom-shell",
   "main": "index.js",
   "repository": {
