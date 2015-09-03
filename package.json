@@ -30,6 +30,6 @@
     "extend": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "^3.2.1"
+    "standard": "^5.2.1"
   }
 }
