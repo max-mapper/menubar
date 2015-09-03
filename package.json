@@ -27,7 +27,7 @@
   "homepage": "https://github.com/maxogden/menubar",
   "dependencies": {
     "electron-positioner": "^2.0.0",
-    "extend": "^2.0.0"
+    "extend": "^3.0.0"
   },
   "devDependencies": {
     "standard": "^3.2.1"
