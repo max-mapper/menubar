@@ -134,7 +134,9 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
-      menubar.window.loadUrl(opts.index)
+      menubar.window.loadUrl(opts.index, {
+        userAgent: opts.userAgent
+      })
       menubar.emit('after-create-window')
     }
 
