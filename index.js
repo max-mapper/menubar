@@ -43,7 +43,6 @@ module.exports = function create (opts) {
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
-    var electronScreen = require('screen')
     var cachedBounds // cachedBounds are needed for double-clicked event
 
     menubar.tray = opts.tray || new Tray(iconPath)
@@ -63,52 +62,13 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
-    /**
-     * Temporary workaround to retrieve the coordinates of the clicked display.
-     *
-     * @see https://github.com/atom/electron/issues/1847
-     *
-     * @param  {Object} bounds         Bounds object from click event
-     * @param  {Object} activeWorkArea Coords for clicked display
-     * @return {Object}
-     */
-    function getActiveDisplayCoords (bounds, activeWorkArea) {
-      var boundsWorkArea = electronScreen.getDisplayNearestPoint(bounds).workArea
-      var coords = {
-        x: bounds.x,
-        y: bounds.y
-      }
-
-      // make sure it's a different screen before modifying the bounds object
-      if (boundsWorkArea.x !== activeWorkArea.x) {
-        var offsetX = boundsWorkArea.x + boundsWorkArea.width - bounds.x
-        coords.x = activeWorkArea.width + activeWorkArea.x - offsetX
-        // ensure proper `y` value on vertically stacked displays
-        coords.y = activeWorkArea.y
-      }
-
-      return coords
-    }
-
     function clicked (e, bounds) {
       if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
 
-      // workarea takes the taskbar/menubar height in consideration
-      var size = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint()).workArea
-
       // double click sometimes returns `undefined`
       bounds = bounds || cachedBounds
-
-      if (bounds.x === 0 && opts['window-position'].substr(0, 4) === 'tray') {
-        // default to right if x is null and if we are trying to position the window at the tray.
-        opts['window-position'] = (process.platform === 'win32') ? 'bottomRight' : 'topRight'
-      } else {
-        var coords = getActiveDisplayCoords(bounds, size)
-        bounds.x = coords.x
-        bounds.y = coords.y
-      }
 
       cachedBounds = bounds
       showWindow(cachedBounds)
@@ -144,7 +104,14 @@ module.exports = function create (opts) {
       }
 
       menubar.emit('show')
-      var position = menubar.positioner.calculate(opts['window-position'], trayPos)
+
+      // Default the window to the right if `trayPos` bounds are undefined or null.
+      var noBoundsPosition = null
+      if ((trayPos === undefined || trayPos.x === 0) && opts['window-position'].substr(0, 4) === 'tray') {
+        noBoundsPosition = (process.platform === 'win32') ? 'bottomRight' : 'topRight'
+      }
+
+      var position = menubar.positioner.calculate(noBoundsPosition || opts['window-position'], trayPos)
 
       var x = (opts.x !== undefined) ? opts.x : position.x
       var y = (opts.y !== undefined) ? opts.y : position.y
