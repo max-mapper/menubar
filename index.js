@@ -7,7 +7,6 @@ var Tray = require('tray')
 var BrowserWindow = require('browser-window')
 
 var extend = require('extend')
-var electronScreen = require('screen')
 var Positioner = require('electron-positioner')
 
 module.exports = function create (opts) {
@@ -36,9 +35,12 @@ module.exports = function create (opts) {
     return opts[opt]
   }
 
+  var electronScreen = null
+
   return menubar
 
   function appReady () {
+    electronScreen = require('screen')
     if (app.dock) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
