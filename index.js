@@ -7,6 +7,7 @@ var Tray = require('tray')
 var BrowserWindow = require('browser-window')
 
 var extend = require('extend')
+var electronScreen = require('screen')
 var Positioner = require('electron-positioner')
 
 module.exports = function create (opts) {
@@ -114,7 +115,7 @@ module.exports = function create (opts) {
       var position = menubar.positioner.calculate(noBoundsPosition || opts['window-position'], trayPos)
       var cursorScreen = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint())
 
-      if(cursorScreen.bounds.y !== 0) {
+      if (cursorScreen.bounds.y !== 0) {
         position.y = position.y + cursorScreen.workArea.y
       }
 
