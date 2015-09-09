@@ -35,12 +35,9 @@ module.exports = function create (opts) {
     return opts[opt]
   }
 
-  var electronScreen = null
-
   return menubar
 
   function appReady () {
-    electronScreen = require('screen')
     if (app.dock) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
@@ -115,11 +112,6 @@ module.exports = function create (opts) {
       }
 
       var position = menubar.positioner.calculate(noBoundsPosition || opts['window-position'], trayPos)
-      var cursorScreen = electronScreen.getDisplayNearestPoint(electronScreen.getCursorScreenPoint())
-
-      if (cursorScreen.bounds.y !== 0) {
-        position.y = position.y + cursorScreen.workArea.y
-      }
 
       var x = (opts.x !== undefined) ? opts.x : position.x
       var y = (opts.y !== undefined) ? opts.y : position.y
