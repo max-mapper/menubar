@@ -21,7 +21,7 @@ module.exports = function create (opts) {
   opts.width = opts.width || 400
   opts.height = opts.height || 400
 
-  app.on('ready', appReady)
+  app.on('ready', startMenubar)
 
   var menubar = new events.EventEmitter()
   menubar.app = app
@@ -35,9 +35,12 @@ module.exports = function create (opts) {
     return opts[opt]
   }
 
+  menubar.startMenubar = startMenubar
+
   return menubar
 
-  function appReady () {
+  function startMenubar () {
+    if (menubar.tray) return // Already started in 'ready' event
     if (app.dock) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
