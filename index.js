@@ -55,23 +55,23 @@ module.exports = function create (opts) {
       createWindow()
     }
 
-    menubar.showWindow = showWindow
-    menubar.hideWindow = hideWindow
+    menubar.showWindow = opts.showWindow || showWindow
+    menubar.hideWindow = opts.hideWindow || hideWindow
 
     menubar.positioner
 
     menubar.emit('ready')
 
     function clicked (e, bounds) {
-      if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
+      if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return menubar.hideWindow()
 
-      if (menubar.window && menubar.window.isVisible()) return hideWindow()
+      if (menubar.window && menubar.window.isVisible()) return menubar.hideWindow()
 
       // double click sometimes returns `undefined`
       bounds = bounds || cachedBounds
 
       cachedBounds = bounds
-      showWindow(cachedBounds)
+      menubar.showWindow(cachedBounds)
     }
 
     function createWindow () {
@@ -87,7 +87,7 @@ module.exports = function create (opts) {
       menubar.positioner = new Positioner(menubar.window)
 
       if (!opts['always-on-top']) {
-        menubar.window.on('blur', hideWindow)
+        menubar.window.on('blur', menubar.hideWindow)
       }
 
       if (opts['show-on-all-workspaces'] !== false) {
