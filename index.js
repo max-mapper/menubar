@@ -16,6 +16,7 @@ module.exports = function create (opts) {
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
   if (!opts['window-position']) opts['window-position'] = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
+  if (typeof opts.showDockIcon === 'undefined') opts.showDockIcon = false
 
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
@@ -38,7 +39,7 @@ module.exports = function create (opts) {
   return menubar
 
   function appReady () {
-    if (app.dock) app.dock.hide()
+    if (app.dock && !opts.showDockIcon) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
