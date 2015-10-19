@@ -39,7 +39,7 @@ module.exports = function create (opts) {
   return menubar
 
   function appReady () {
-    if (app.dock && opts.showDockIcon) app.dock.hide()
+    if (app.dock && !opts.showDockIcon) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
