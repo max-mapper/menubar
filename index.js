@@ -95,7 +95,13 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
-      menubar.window.loadUrl(opts.index)
+      // for webpack dev server
+      if (opts['devMode']) {
+        menubar.window.loadUrl(typeof opts['devMode'] === 'string' ? opts['devMode'] : 'http://localhost:8080/')
+      } else {
+        menubar.window.loadUrl(opts.index)
+      }
+
       menubar.emit('after-create-window')
     }
 
