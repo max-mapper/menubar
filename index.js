@@ -95,6 +95,10 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
+      if (opts['openDevTools']) {
+        menubar.window.openDevTools()
+      }
+
       menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
