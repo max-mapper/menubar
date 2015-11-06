@@ -101,5 +101,4 @@ the return value of the menubar constructor is an event emitter
 
 ## tips
 
-- Use `mb.on('after-create-window', () => mb.window.openDevTools())` to open devtools.
-- Use `mb.on('after-create-window', () => mb.window.loadUrl())` to load specific url. It helpful for developing with webpack-dev-server.
+- Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
