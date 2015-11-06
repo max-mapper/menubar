@@ -98,3 +98,8 @@ the return value of the menubar constructor is an event emitter
 - `after-show` - the line after window.show is called
 - `hide` - the line before window.hide is called (on window blur)
 - `after-hide` - the line after window.hide is called
+
+## tips
+
+- Use `mb.on('after-create-window', () => mb.window.openDevTools())` to open devtools.
+- Use `mb.on('after-create-window', () => mb.window.loadUrl())` to load specific url. It helpful for developing with webpack-dev-server.
