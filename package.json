@@ -11,7 +11,7 @@
     "test": "standard"
   },
   "keywords": [
-    "atom",
+    "electron",
     "atom",
     "shell",
     "menubar",
