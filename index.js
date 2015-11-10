@@ -102,7 +102,7 @@ module.exports = function create (opts) {
 
       menubar.emit('show')
       
-      if (trayPos && trayPos.x != 0) {
+      if (trayPos && trayPos.x !== 0) {
         // Cache the bounds
         cachedBounds = trayPos
       } else if (cachedBounds) {
