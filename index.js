@@ -68,10 +68,6 @@ module.exports = function create (opts) {
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
 
-      // double click sometimes returns `undefined`
-      bounds = bounds || cachedBounds
-
-      cachedBounds = bounds
       showWindow(cachedBounds)
     }
 
@@ -105,6 +101,14 @@ module.exports = function create (opts) {
       }
 
       menubar.emit('show')
+      
+      if (trayPos && trayPos.x != 0) {
+        // Cache the bounds
+        cachedBounds = trayPos
+      } else if (cachedBounds) {
+        // Cached value will be used if showWindow is called without bounds data
+        trayPos = cachedBounds
+      }
 
       // Default the window to the right if `trayPos` bounds are undefined or null.
       var noBoundsPosition = null
