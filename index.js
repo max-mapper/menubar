@@ -49,8 +49,8 @@ module.exports = function create (opts) {
     menubar.tray = opts.tray || new Tray(iconPath)
 
     menubar.tray
-      .on('clicked', clicked)
-      .on('double-clicked', clicked)
+      .on('click', click)
+      .on('double-click', click)
 
     if (opts.preloadWindow) {
       createWindow()
@@ -63,7 +63,7 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
-    function clicked (e, bounds) {
+    function click (e, bounds) {
       if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
@@ -95,7 +95,7 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
-      menubar.window.loadUrl(opts.index)
+      menubar.window.loadURL(opts.index)
       menubar.emit('after-create-window')
     }
 
