@@ -22,6 +22,8 @@ module.exports = function create (opts) {
   opts.width = opts.width || 400
   opts.height = opts.height || 400
 
+  opts.tooltip = opts.tooltip || ''
+
   app.on('ready', appReady)
 
   var menubar = new events.EventEmitter()
@@ -48,9 +50,11 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
+    menubar.tray.setToolTip(opts.tooltip)
+
     menubar.tray
-      .on('click', click)
-      .on('double-click', click)
+      .on('clicked', clicked)
+      .on('double-clicked', clicked)
 
     if (opts.preloadWindow) {
       createWindow()
@@ -63,7 +67,7 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
-    function click (e, bounds) {
+    function clicked (e, bounds) {
       if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
@@ -95,7 +99,7 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
-      menubar.window.loadURL(opts.index)
+      menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
 
