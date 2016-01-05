@@ -98,6 +98,7 @@ the return value of the menubar constructor is an event emitter
 - `after-show` - the line after window.show is called
 - `hide` - the line before window.hide is called (on window blur)
 - `after-hide` - the line after window.hide is called
+- `after-close` - after the .window (BrowserWindow) property has been deleted
 
 ## tips
 

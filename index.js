@@ -95,6 +95,8 @@ module.exports = function create (opts) {
         menubar.window.setVisibleOnAllWorkspaces(true)
       }
 
+      menubar.window.on('close', windowClear)
+
       menubar.window.loadURL(opts.index)
       menubar.emit('after-create-window')
     }
@@ -128,6 +130,11 @@ module.exports = function create (opts) {
       menubar.emit('hide')
       menubar.window.hide()
       menubar.emit('after-hide')
+    }
+
+    function windowClear () {
+      delete menubar.window
+      menubar.emit('after-close')
     }
   }
 }
