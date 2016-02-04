@@ -2,9 +2,10 @@ var path = require('path')
 var events = require('events')
 var fs = require('fs')
 
-var app = require('app')
-var Tray = require('tray')
-var BrowserWindow = require('browser-window')
+var electron = require('electron')
+var app = electron.app
+var Tray = electron.Tray
+var BrowserWindow = electron.BrowserWindow
 
 var extend = require('extend')
 var Positioner = require('electron-positioner')
