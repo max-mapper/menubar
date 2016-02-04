@@ -49,8 +49,9 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
+    var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'click'
     menubar.tray
-      .on('click', click)
+      .on(defaultClickEvent, click)
       .on('double-click', click)
 
     if (opts.preloadWindow) {
