@@ -23,6 +23,8 @@ module.exports = function create (opts) {
   opts.width = opts.width || 400
   opts.height = opts.height || 400
 
+  opts.tooltip = opts.tooltip || ''
+
   app.on('ready', appReady)
 
   var menubar = new events.EventEmitter()
@@ -49,10 +51,11 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'click'
-    menubar.tray
-      .on(defaultClickEvent, click)
-      .on('double-click', click)
+    var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'clicked'
+    defaultClickEvent.on(defaultClickEvent, clicked)
+    defaultClickEvent.on('double-clicked', clicked)
+
+    menubar.tray.setToolTip(opts.tooltip)
 
     if (opts.preloadWindow) {
       createWindow()
@@ -65,7 +68,7 @@ module.exports = function create (opts) {
 
     menubar.emit('ready')
 
-    function click (e, bounds) {
+    function clicked (e, bounds) {
       if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
@@ -98,8 +101,7 @@ module.exports = function create (opts) {
       }
 
       menubar.window.on('close', windowClear)
-
-      menubar.window.loadURL(opts.index)
+      menubar.window.loadUrl(opts.index)
       menubar.emit('after-create-window')
     }
 
