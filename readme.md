@@ -78,7 +78,7 @@ you can pass an optional options object into the menubar constructor
 - `icon` (default `opts.dir + IconTemplate.png`) - the png icon to use for the menubar
 - `tooltip` (default empty) - menubar tray icon tooltip text
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
-- `preloadWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
+- `preload-window` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
 - `width` (default 400) - window width
 - `height` (default 400) - window height
 - `x` (default null) - the x position of the window
@@ -86,8 +86,8 @@ you can pass an optional options object into the menubar constructor
 - `always-on-top` (default false) - if true, the window will not hide on blur
 - `show-on-all-workspaces` (default true) - Makes the window available on all OS X workspaces.
 - `window-position` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
-- `showDockIcon` (default false) - Configure the visibility of the application dock icon.
-- `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
+- `show-dock-icon` (default false) - Configure the visibility of the application dock icon.
+- `show-on-right-click` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
 ## events
 
