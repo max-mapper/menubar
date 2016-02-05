@@ -17,7 +17,7 @@ module.exports = function create (opts) {
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
   if (!opts['window-position']) opts['window-position'] = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
-  if (typeof opts.showDockIcon === 'undefined') opts.showDockIcon = false
+  if (typeof opts['show-dock-icon'] === 'undefined') opts['show-dock-icon'] = false
 
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
@@ -42,7 +42,7 @@ module.exports = function create (opts) {
   return menubar
 
   function appReady () {
-    if (app.dock && !opts.showDockIcon) app.dock.hide()
+    if (app.dock && !opts['show-dock-icon']) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
@@ -51,13 +51,13 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
 
-    var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'clicked'
+    var defaultClickEvent = opts['show-on-right-click'] ? 'right-click' : 'clicked'
     defaultClickEvent.on(defaultClickEvent, clicked)
     defaultClickEvent.on('double-clicked', clicked)
 
     menubar.tray.setToolTip(opts.tooltip)
 
-    if (opts.preloadWindow) {
+    if (opts.preloadWindow || opts['preload-window']) {
       createWindow()
     }
 
