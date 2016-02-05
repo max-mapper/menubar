@@ -73,6 +73,8 @@ module.exports = function create (opts) {
 
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
 
+      cachedBounds = bounds || cachedBounds
+
       showWindow(cachedBounds)
     }
 
