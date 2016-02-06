@@ -22,7 +22,6 @@ module.exports = function create (opts) {
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
   opts.height = opts.height || 400
-
   opts.tooltip = opts.tooltip || ''
 
   app.on('ready', appReady)
@@ -48,13 +47,11 @@ module.exports = function create (opts) {
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var cachedBounds // cachedBounds are needed for double-clicked event
+    var defaultClickEvent = opts['show-on-right-click'] ? 'right-click' : 'click'
 
     menubar.tray = opts.tray || new Tray(iconPath)
-
-    var defaultClickEvent = opts['show-on-right-click'] ? 'right-click' : 'clicked'
-    defaultClickEvent.on(defaultClickEvent, clicked)
-    defaultClickEvent.on('double-clicked', clicked)
-
+    menubar.tray.on(defaultClickEvent, clicked)
+    menubar.tray.on('double-click', clicked)
     menubar.tray.setToolTip(opts.tooltip)
 
     if (opts.preloadWindow || opts['preload-window']) {
@@ -63,18 +60,12 @@ module.exports = function create (opts) {
 
     menubar.showWindow = showWindow
     menubar.hideWindow = hideWindow
-
-    menubar.positioner
-
     menubar.emit('ready')
 
     function clicked (e, bounds) {
       if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return hideWindow()
-
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
-
       cachedBounds = bounds || cachedBounds
-
       showWindow(cachedBounds)
     }
 
@@ -99,7 +90,7 @@ module.exports = function create (opts) {
       }
 
       menubar.window.on('close', windowClear)
-      menubar.window.loadUrl(opts.index)
+      menubar.window.loadURL(opts.index)
       menubar.emit('after-create-window')
     }
 
