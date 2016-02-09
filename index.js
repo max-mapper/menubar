@@ -84,6 +84,10 @@ module.exports = function create (opts) {
       if (!opts['always-on-top']) {
         menubar.window.on('blur', hideWindow)
       }
+      
+      else {
+        menubar.window.on('blur', emitBlur)
+      }
 
       if (opts['show-on-all-workspaces'] !== false) {
         menubar.window.setVisibleOnAllWorkspaces(true)
@@ -136,6 +140,10 @@ module.exports = function create (opts) {
     function windowClear () {
       delete menubar.window
       menubar.emit('after-close')
+    }
+
+    function emitBlur() {
+      menubar.emit('focus-lost');
     }
   }
 }
