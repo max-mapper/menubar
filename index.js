@@ -83,9 +83,7 @@ module.exports = function create (opts) {
 
       if (!opts['always-on-top']) {
         menubar.window.on('blur', hideWindow)
-      }
-      
-      else {
+      } else {
         menubar.window.on('blur', emitBlur)
       }
 
@@ -142,8 +140,8 @@ module.exports = function create (opts) {
       menubar.emit('after-close')
     }
 
-    function emitBlur() {
-      menubar.emit('focus-lost');
+    function emitBlur () {
+      menubar.emit('focus-lost')
     }
   }
 }

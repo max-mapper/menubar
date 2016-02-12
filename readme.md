@@ -107,4 +107,4 @@ the return value of the menubar constructor is an event emitter
 
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
 
-- Use `mb.on('focus-lost')` if you would like to perform some operation when using `always-on-top:true`. 
+- Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `always-on-top:true`
