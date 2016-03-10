@@ -75,7 +75,7 @@ you can pass an optional options object into the menubar constructor
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
-- `icon` (default `opts.dir + IconTemplate.png`) - the png icon to use for the menubar
+- `icon` (default `opts.dir + IconTemplate.png`) - the png icon to use for the menubar. A good size to start with is 20x20. To support retina, supply a 2x sized image (e.g. 40x40) with `@2x` added to the end of the name, so `icon.png` and `icon@2x.png` and Electron will automatically use your `@2x` version on retina screens.
 - `tooltip` (default empty) - menubar tray icon tooltip text
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
 - `preload-window` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
