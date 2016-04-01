@@ -101,7 +101,10 @@ the return value of the menubar constructor is an event emitter
 - `hide` - the line before window.hide is called (on window blur)
 - `after-hide` - the line after window.hide is called
 - `after-close` - after the .window (BrowserWindow) property has been deleted
+- `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
 ## tips
 
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
+
+- Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `always-on-top:true`
