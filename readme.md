@@ -85,8 +85,8 @@ you can pass an optional options object into the menubar constructor
 - `y` (default null) - the y position of the window
 - `always-on-top` (default false) - if true, the window will not hide on blur
 - `show-on-all-workspaces` (default true) - Makes the window available on all OS X workspaces.
-- `window-position` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
-- `show-dock-icon` (default false) - Configure the visibility of the application dock icon.
+- `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
+- `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `show-on-right-click` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
 ## events

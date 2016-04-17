@@ -7,4 +7,5 @@ menubar is only possible due to the excellent work of the following collaborator
 <tr><th align="left">pquerna</th><td><a href="https://github.com/pquerna">GitHub/pquerna</a></td></tr>
 <tr><th align="left">fabien-d</th><td><a href="https://github.com/fabien-d">GitHub/fabien-d</a></td></tr>
 <tr><th align="left">jenslind</th><td><a href="https://github.com/jenslind">GitHub/jenslind</a></td></tr>
+<tr><th align="left">mamal72</th><td><a href="https://github.com/mamal72">GitHub/mamal72</a></td></tr>
 </tbody></table>
