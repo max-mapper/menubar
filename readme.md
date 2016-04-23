@@ -78,16 +78,16 @@ you can pass an optional options object into the menubar constructor
 - `icon` (default `opts.dir + IconTemplate.png`) - the png icon to use for the menubar. A good size to start with is 20x20. To support retina, supply a 2x sized image (e.g. 40x40) with `@2x` added to the end of the name, so `icon.png` and `icon@2x.png` and Electron will automatically use your `@2x` version on retina screens.
 - `tooltip` (default empty) - menubar tray icon tooltip text
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
-- `preload-window` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
+- `preloadWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
 - `width` (default 400) - window width
 - `height` (default 400) - window height
 - `x` (default null) - the x position of the window
 - `y` (default null) - the y position of the window
-- `always-on-top` (default false) - if true, the window will not hide on blur
-- `show-on-all-workspaces` (default true) - Makes the window available on all OS X workspaces.
-- `window-position` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
-- `show-dock-icon` (default false) - Configure the visibility of the application dock icon.
-- `show-on-right-click` (default false) - Show the window on 'right-click' event instead of regular 'click'
+- `alwaysOnTop` (default false) - if true, the window will not hide on blur
+- `showOnAllWorkspaces` (default true) - Makes the window available on all OS X workspaces.
+- `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
+- `showDockIcon` (default false) - Configure the visibility of the application dock icon.
+- `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
 ## events
 

@@ -16,8 +16,8 @@ module.exports = function create (opts) {
   if (!opts.dir) opts.dir = app.getAppPath()
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
-  if (!opts['window-position']) opts['window-position'] = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
-  if (typeof opts['show-dock-icon'] === 'undefined') opts['show-dock-icon'] = false
+  if (!opts['windowPosition']) opts['windowPosition'] = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
+  if (typeof opts['showDockIcon'] === 'undefined') opts['showDockIcon'] = false
 
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
@@ -41,7 +41,7 @@ module.exports = function create (opts) {
   return menubar
 
   function appReady () {
-    if (app.dock && !opts['show-dock-icon']) app.dock.hide()
+    if (app.dock && !opts['showDockIcon']) app.dock.hide()
 
     var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
     if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
@@ -113,11 +113,11 @@ module.exports = function create (opts) {
 
       // Default the window to the right if `trayPos` bounds are undefined or null.
       var noBoundsPosition = null
-      if ((trayPos === undefined || trayPos.x === 0) && opts['window-position'].substr(0, 4) === 'tray') {
+      if ((trayPos === undefined || trayPos.x === 0) && opts['windowPosition'].substr(0, 4) === 'tray') {
         noBoundsPosition = (process.platform === 'win32') ? 'bottomRight' : 'topRight'
       }
 
-      var position = menubar.positioner.calculate(noBoundsPosition || opts['window-position'], trayPos)
+      var position = menubar.positioner.calculate(noBoundsPosition || opts['windowPosition'], trayPos)
 
       var x = (opts.x !== undefined) ? opts.x : position.x
       var y = (opts.y !== undefined) ? opts.y : position.y
