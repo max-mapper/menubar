@@ -52,7 +52,7 @@ module.exports = function create (opts) {
     menubar.tray = opts.tray || new Tray(iconPath)
     menubar.tray.on(defaultClickEvent, clicked)
     menubar.tray.on('double-click', clicked)
-    menubar.tray.on('drop-files', dropped);
+    menubar.tray.on('drop-files', dropped)
     menubar.tray.setToolTip(opts.tooltip)
 
     if (opts.preloadWindow || opts['preload-window']) {
