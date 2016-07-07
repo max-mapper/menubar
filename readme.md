@@ -102,6 +102,7 @@ the return value of the menubar constructor is an event emitter
 - `after-hide` - the line after window.hide is called
 - `after-close` - after the .window (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
+- `drop-files` - emitted if user drags files on tray icon, contains array of paths to these files
 
 ## tips
 
