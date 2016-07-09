@@ -81,11 +81,9 @@ module.exports = function create (opts) {
 
       menubar.positioner = new Positioner(menubar.window)
 
-      if (!opts.alwaysOnTop) {
-        menubar.window.on('blur', hideWindow)
-      } else {
-        menubar.window.on('blur', emitBlur)
-      }
+      menubar.window.on('blur', function () {
+        opts['always-on-top'] ? emitBlur() : hideWindow()
+      })
 
       if (opts.showOnAllWorkspaces !== false) {
         menubar.window.setVisibleOnAllWorkspaces(true)
@@ -109,6 +107,9 @@ module.exports = function create (opts) {
       } else if (cachedBounds) {
         // Cached value will be used if showWindow is called without bounds data
         trayPos = cachedBounds
+      } else if (menubar.tray.getBounds) {
+        // Get the current tray bounds
+        trayPos = menubar.tray.getBounds()
       }
 
       // Default the window to the right if `trayPos` bounds are undefined or null.
