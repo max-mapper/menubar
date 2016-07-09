@@ -82,7 +82,7 @@ module.exports = function create (opts) {
       menubar.positioner = new Positioner(menubar.window)
 
       menubar.window.on('blur', function () {
-        opts['always-on-top'] ? emitBlur() : hideWindow()
+        opts.alwaysOnTop ? emitBlur() : hideWindow()
       })
 
       if (opts.showOnAllWorkspaces !== false) {
