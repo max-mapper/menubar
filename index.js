@@ -53,6 +53,12 @@ module.exports = function create (opts) {
     menubar.tray.on(defaultClickEvent, clicked)
     menubar.tray.on('double-click', clicked)
     menubar.tray.setToolTip(opts.tooltip)
+    
+    var supportsTrayHighlightState = false
+    try {
+      menubar.tray.setHighlightMode('never')
+      supportsTrayHighlightState = true
+    } catch (e) {}
 
     if (opts.preloadWindow) {
       createWindow()
@@ -95,6 +101,7 @@ module.exports = function create (opts) {
     }
 
     function showWindow (trayPos) {
+      if (supportsTrayHighlightState) menubar.tray.setHighlightMode('always')
       if (!menubar.window) {
         createWindow()
       }
@@ -130,6 +137,7 @@ module.exports = function create (opts) {
     }
 
     function hideWindow () {
+      if (supportsTrayHighlightState) menubar.tray.setHighlightMode('never')
       if (!menubar.window) return
       menubar.emit('hide')
       menubar.window.hide()
