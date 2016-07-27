@@ -53,7 +53,7 @@ module.exports = function create (opts) {
     menubar.tray.on(defaultClickEvent, clicked)
     menubar.tray.on('double-click', clicked)
     menubar.tray.setToolTip(opts.tooltip)
-    
+
     var supportsTrayHighlightState = false
     try {
       menubar.tray.setHighlightMode('never')
