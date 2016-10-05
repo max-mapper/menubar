@@ -52,6 +52,7 @@ module.exports = function create (opts) {
     menubar.tray = opts.tray || new Tray(iconPath)
     menubar.tray.on(defaultClickEvent, clicked)
     menubar.tray.on('double-click', clicked)
+    menubar.tray.on('right-click', rightclicked);
     menubar.tray.setToolTip(opts.tooltip)
 
     var supportsTrayHighlightState = false
@@ -73,6 +74,10 @@ module.exports = function create (opts) {
       if (menubar.window && menubar.window.isVisible()) return hideWindow()
       cachedBounds = bounds || cachedBounds
       showWindow(cachedBounds)
+    }
+
+    function rightclicked () {
+      menubar.emit('right-click')
     }
 
     function createWindow () {
