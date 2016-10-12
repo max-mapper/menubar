@@ -24,7 +24,8 @@ module.exports = function create (opts) {
   opts.height = opts.height || 400
   opts.tooltip = opts.tooltip || ''
 
-  app.on('ready', appReady)
+  if(app.isReady()) appReady()
+  else app.on('ready', appReady)
 
   var menubar = new events.EventEmitter()
   menubar.app = app
