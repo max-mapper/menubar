@@ -32,6 +32,10 @@ module.exports = function create (opts) {
   // Set / get options
   menubar.setOption = function (opt, val) {
     opts[opt] = val
+    if (opt === 'icon') {
+      var iconPath = getIconPath(val)
+      menubar.tray.setImage(iconPath)
+    }
   }
 
   menubar.getOption = function (opt) {
@@ -40,14 +44,18 @@ module.exports = function create (opts) {
 
   return menubar
 
+  function getIconPath (icon) {
+    var iconPath = icon || path.join(opts.dir, 'IconTemplate.png')
+    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
+    return iconPath
+  }
+
   function appReady () {
     if (app.dock && !opts.showDockIcon) app.dock.hide()
 
-    var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
-    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
-
     var cachedBounds // cachedBounds are needed for double-clicked event
     var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'click'
+    var iconPath = getIconPath(opts.icon)
 
     menubar.tray = opts.tray || new Tray(iconPath)
     menubar.tray.on(defaultClickEvent, clicked)
