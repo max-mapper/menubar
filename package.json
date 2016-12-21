@@ -1,6 +1,6 @@
 {
   "name": "menubar",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "high level way to create menubar desktop applications with electron",
   "main": "index.js",
   "repository": {
