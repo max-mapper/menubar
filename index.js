@@ -24,11 +24,11 @@ module.exports = function create (opts) {
   opts.height = opts.height || 400
   opts.tooltip = opts.tooltip || ''
 
-  if (app.isReady()) appReady()
-  else app.on('ready', appReady)
-
   var menubar = new events.EventEmitter()
   menubar.app = app
+
+  if (app.isReady()) appReady()
+  else app.on('ready', appReady)
 
   // Set / get options
   menubar.setOption = function (opt, val) {
