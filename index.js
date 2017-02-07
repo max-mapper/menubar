@@ -142,7 +142,7 @@ module.exports = function create (opts) {
       if (!menubar.window) return
       menubar.emit('hide')
       if (process.platform === 'darwin') {
-        mb.window.hide()
+        menubar.window.hide()
         menubar.app.hide()
       } else {
         menubar.window.hide()
