@@ -141,11 +141,7 @@ module.exports = function create (opts) {
       if (supportsTrayHighlightState) menubar.tray.setHighlightMode('never')
       if (!menubar.window) return
       menubar.emit('hide')
-      if (process.platform === 'darwin') {
-        menubar.app.hide()
-      } else {
-        menubar.window.hide()
-      }
+      menubar.window.hide()
       menubar.emit('after-hide')
     }
 
