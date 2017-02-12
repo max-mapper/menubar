@@ -11,9 +11,9 @@ var extend = require('extend')
 var Positioner = require('electron-positioner')
 
 module.exports = function create (opts) {
-  if (typeof opts === 'undefined') opts = {dir: app.getAppPath()}
+  if (typeof opts === 'undefined') opts = {dir: app.getPath('appData')}
   if (typeof opts === 'string') opts = {dir: opts}
-  if (!opts.dir) opts.dir = app.getAppPath()
+  if (!opts.dir) opts.dir = app.getPath('appData')
   if (!(path.isAbsolute(opts.dir))) opts.dir = path.resolve(opts.dir)
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
   if (!opts.windowPosition) opts.windowPosition = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
