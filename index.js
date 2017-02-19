@@ -52,7 +52,7 @@ module.exports = function create (opts) {
 
     menubar.tray = opts.tray || new Tray(iconPath)
     menubar.tray.on(defaultClickEvent, clicked)
-    menubar.tray.on('double-click', clicked)
+    if (!opts.showOnRightClick) menubar.tray.on('double-click', clicked)
     menubar.tray.setToolTip(opts.tooltip)
 
     var supportsTrayHighlightState = false
