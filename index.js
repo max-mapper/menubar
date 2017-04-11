@@ -18,6 +18,7 @@ module.exports = function create (opts) {
   if (!opts.index) opts.index = 'file://' + path.join(opts.dir, 'index.html')
   if (!opts.windowPosition) opts.windowPosition = (process.platform === 'win32') ? 'trayBottomCenter' : 'trayCenter'
   if (typeof opts.showDockIcon === 'undefined') opts.showDockIcon = false
+  if (typeof opts.isMovable === 'undefined') opts.isMovable = false
 
   // set width/height on opts to be usable before the window is created
   opts.width = opts.width || 400
@@ -80,7 +81,8 @@ module.exports = function create (opts) {
       menubar.emit('create-window')
       var defaults = {
         show: false,
-        frame: false
+        frame: false,
+        movable: opts.isMovable
       }
 
       var winOpts = extend(defaults, opts)
