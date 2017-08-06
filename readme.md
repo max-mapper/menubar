@@ -45,10 +45,10 @@ mb.on('ready', function ready () {
 
 make sure there is also a `index.html` file in `dir`
 
-then use [`electron`](https://npmjs.org/electron-prebuilt) or [`electron-packager`](https://npmjs.org/electron-packager) to build/run the app:
+then use [`electron`](https://npmjs.org/electron) or [`electron-packager`](https://npmjs.org/electron-packager) to build/run the app:
 
 ```
-$ npm install electron-prebuilt -g
+$ npm install electron -g
 $ electron your-app.js
 ```
 
