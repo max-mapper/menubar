@@ -43,7 +43,7 @@ mb.on('ready', function ready () {
 })
 ```
 
-make sure there is also a `index.html` file in `dir`
+make sure there is also a `index.html` file in the current directory (or the directory specified if you use the `dir` option)
 
 then use [`electron`](https://npmjs.org/electron) or [`electron-packager`](https://npmjs.org/electron-packager) to build/run the app:
 
