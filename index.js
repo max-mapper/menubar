@@ -44,13 +44,13 @@ module.exports = function create (opts) {
   function appReady () {
     if (app.dock && !opts.showDockIcon) app.dock.hide()
 
-    var iconPath = opts.icon || path.join(opts.dir, 'IconTemplate.png')
-    if (!fs.existsSync(iconPath)) iconPath = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
+    var trayImage = opts.icon || path.join(opts.dir, 'IconTemplate.png')
+    if (typeof(trayImage) === 'string' && !fs.existsSync(trayImage)) trayImage = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var cachedBounds // cachedBounds are needed for double-clicked event
     var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'click'
 
-    menubar.tray = opts.tray || new Tray(iconPath)
+    menubar.tray = opts.tray || new Tray(trayImage)
     menubar.tray.on(defaultClickEvent, clicked)
     menubar.tray.on('double-click', clicked)
     menubar.tray.setToolTip(opts.tooltip)
