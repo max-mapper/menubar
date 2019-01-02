@@ -45,7 +45,7 @@ module.exports = function create (opts) {
     if (app.dock && !opts.showDockIcon) app.dock.hide()
 
     var trayImage = opts.icon || path.join(opts.dir, 'IconTemplate.png')
-    if (typeof(trayImage) === 'string' && !fs.existsSync(trayImage)) trayImage = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
+    if (typeof trayImage === 'string' && !fs.existsSync(trayImage)) trayImage = path.join(__dirname, 'example', 'IconTemplate.png') // default cat icon
 
     var cachedBounds // cachedBounds are needed for double-clicked event
     var defaultClickEvent = opts.showOnRightClick ? 'right-click' : 'click'
