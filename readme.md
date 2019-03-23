@@ -14,7 +14,7 @@ Works on Mac OS, Windows and some Linuxes (Tested on Xfce4, your mileage may var
 
 ![screenshot](screenshot-windows.png)
 
-[![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
+[![Build Status](https://travis-ci.org/amaurymartiny/menubar.svg?branch=master)](https://travis-ci.org/amaurymartiny/menubar)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
