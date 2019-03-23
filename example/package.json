@@ -7,9 +7,6 @@
     "build": "electron-builder",
     "start": "electron ."
   },
-  "dependencies": {
-    "@amaurymartiny/menubar": "file:.."
-  },
   "devDependencies": {
     "electron-builder": "^20.39.0",
     "electron-prebuilt": "^1.4.13"

@@ -1,4 +1,4 @@
-const menubar = require('@amaurymartiny/menubar');
+const { menubar } = require('..');
 
 const mb = menubar();
 

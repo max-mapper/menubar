@@ -7,12 +7,6 @@
   resolved "https://registry.yarnpkg.com/7zip-bin/-/7zip-bin-4.1.0.tgz#33eff662a5c39c0c2061170cc003c5120743fff0"
   integrity sha512-AsnBZN3a8/JcNt+KPkGGODaA4c7l3W5+WpeKgGSbstSLxqWtTXqd1ieJGBQ8IFCtRg8DmmKUcSkIkUc0A4p3YA==
 
-"@amaurymartiny/menubar@file:..":
-  version "5.2.3"
-  dependencies:
-    electron-positioner "^3.0.0"
-    extend "^2.0.0"
-
 ajv-keywords@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.4.0.tgz#4b831e7b531415a7cc518cd404e73f6193c6349d"
@@ -544,11 +538,6 @@ electron-osx-sign@0.4.11:
     minimist "^1.2.0"
     plist "^3.0.1"
 
-electron-positioner@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/electron-positioner/-/electron-positioner-3.0.1.tgz#e699400c2d634ad19352cf20202e92b92b96accb"
-  integrity sha512-zQsnNzJB2PY6KEcGFXAoW6iIKtZ+3nbpVozKN7jhdRdRHMFpEpGufwcfrKhnEBBwrfHpyFQgU+p5jkteLIV+Jg==
-
 electron-prebuilt@^1.4.13:
   version "1.4.13"
   resolved "https://registry.yarnpkg.com/electron-prebuilt/-/electron-prebuilt-1.4.13.tgz#0a0e4d7bf895a242061ccfab29394dcda1da33d2"
@@ -629,11 +618,6 @@ execa@^1.0.0:
     p-finally "^1.0.0"
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
-
-extend@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-2.0.2.tgz#1b74985400171b85554894459c978de6ef453ab7"
-  integrity sha512-AgFD4VU+lVLP6vjnlNfF7OeInLTyeyckCNPEsuxz1vi786UuK/nk6ynPuhn/h+Ju9++TQyr5EpLRI14fc1QtTQ==
 
 extend@~3.0.2:
   version "3.0.2"

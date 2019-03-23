@@ -1,15 +1,15 @@
 {
   "name": "@amaurymartiny/menubar",
   "version": "5.2.3",
+  "author": "max ogden",
+  "bugs": {
+    "url": "https://github.com/amaurymartiny/menubar/issues"
+  },
+  "contributors": [
+    "Amaury Martiny <amaury.martiny@protonmail.com>"
+  ],
   "description": "high level way to create menubar desktop applications with electron",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/maxogden/menubar.git"
-  },
-  "scripts": {
-    "test": "standard"
-  },
+  "homepage": "https://github.com/amaurymartiny/menubar",
   "keywords": [
     "electron",
     "atom",
@@ -19,17 +19,28 @@
     "mac",
     "app"
   ],
-  "author": "max ogden",
   "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/maxogden/menubar/issues"
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amaurymartiny/menubar.git"
   },
-  "homepage": "https://github.com/maxogden/menubar",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf lib/",
+    "build": "tsc",
+    "lint": "tslint --project .",
+    "test": "echo skipped for now."
+  },
   "dependencies": {
-    "electron-positioner": "^3.0.0",
-    "extend": "^2.0.0"
+    "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "standard": "^5.4.1"
+    "electron": "^4.1.1",
+    "rimraf": "^2.6.3",
+    "standard": "^5.4.1",
+    "tslint": "^5.14.0",
+    "tslint-config-semistandard": "^7.0.0",
+    "typescript": "^3.3.4000"
   }
 }

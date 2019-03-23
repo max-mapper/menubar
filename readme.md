@@ -33,14 +33,14 @@ npm install menubar --save
 create a JS program like this:
 
 ```js
-var menubar = require('menubar')
+var menubar = require('menubar');
 
-var mb = menubar()
+var mb = menubar();
 
-mb.on('ready', function ready () {
-  console.log('app is ready')
+mb.on('ready', function ready() {
+  console.log('app is ready');
   // your app code here
-})
+});
 ```
 
 make sure there is also a `index.html` file in `dir`
