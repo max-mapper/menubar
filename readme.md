@@ -33,7 +33,7 @@ npm install menubar --save
 create a JS program like this:
 
 ```js
-var menubar = require('menubar');
+var { menubar } = require('menubar');
 
 var mb = menubar();
 
