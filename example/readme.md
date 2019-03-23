@@ -1,7 +1,7 @@
-# example menubar app
+# Example Menubar Electron App
 
-## instructions
+## Instructions
 
-- run `npm install`
-- run `npm run build` to make Example.app
-- run `npm start` to run app from CLI without building Example.app
+- Run `yarn install`
+- Run `yarn build` to make a packaged app
+- Run `yarn start` to run app from CLI in dev mode

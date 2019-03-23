@@ -1,17 +1,17 @@
 {
   "name": "example-menubar-app",
-  "version": "1.0.0",
-  "description": "example menubar electron app",
-  "dependencies": {
-    "menubar": "*"
-  },
-  "devDependencies": {
-    "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.36.0"
-  },
+  "version": "0.1.0",
+  "description": "Example menubar electron app",
   "main": "main.js",
   "scripts": {
-    "build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.36.0 --icon=Icon.icns",
+    "build": "electron-builder",
     "start": "electron ."
+  },
+  "dependencies": {
+    "@amaurymartiny/menubar": "file:.."
+  },
+  "devDependencies": {
+    "electron-builder": "^20.39.0",
+    "electron-prebuilt": "^1.4.13"
   }
 }
