@@ -9,6 +9,9 @@
     "Amaury Martiny <amaury.martiny@protonmail.com>"
   ],
   "description": "high level way to create menubar desktop applications with electron",
+  "files": [
+    "/lib"
+  ],
   "homepage": "https://github.com/amaurymartiny/menubar",
   "keywords": [
     "electron",

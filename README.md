@@ -1,10 +1,16 @@
-# menubar
+[![Build Status](https://travis-ci.org/amaurymartiny/menubar.svg?branch=master)](https://travis-ci.org/amaurymartiny/menubar)
+[![npm (scoped)](https://img.shields.io/npm/v/@amaurymartiny/menubar.svg)](https://www.npmjs.com/package/@amaurymartiny/menubar)
+[![dependencies Status](https://david-dm.org/amaurymartiny/menubar/status.svg)](https://david-dm.org/amaurymartiny/menubar)
 
-High level way to create menubar desktop applications with electron
+# Menubar
 
-This module provides boilerplate for setting up a menubar application using electron. all you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+❗*Note: this is a fork of [maxogden/menubar](https://github.com/maxogden/menubar), which is not maintained anymore. [More info](https://github.com/maxogden/menubar/issues/200#issuecomment-462075264).*
 
-Works on Mac OS, Windows and some Linuxes (Tested on Xfce4, your mileage may vary -- patches welcome!)
+High level way to create menubar desktop applications with Electron.
+
+This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+
+Works on Mac OS, Windows and some Linuxes (Tested on Xfce4, your mileage may vary - patches welcome!).
 
 **Mac OS**
 
@@ -14,49 +20,38 @@ Works on Mac OS, Windows and some Linuxes (Tested on Xfce4, your mileage may var
 
 ![screenshot](screenshot-windows.png)
 
-[![Build Status](https://travis-ci.org/amaurymartiny/menubar.svg?branch=master)](https://travis-ci.org/amaurymartiny/menubar)
+## Installation
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-Watch the 1HR screen recording of me coding this module: https://www.youtube.com/watch?v=PAJAvsyaHs0
-
-This module was written for + is used by [Monu](https://github.com/maxogden/monu)
-
-## installation
-
-```
-npm install menubar --save
+```bash
+yarn add @amaurymartiny/menubar
 ```
 
-## usage
+## Usage
 
-create a JS program like this:
+Create a `myApp.js` like this:
 
-```js
-var { menubar } = require('menubar');
+```javascript
+const { menubar } = require('@amaurymartiny/menubar');
 
-var mb = menubar();
+const mb = menubar();
 
-mb.on('ready', function ready() {
+mb.on('ready', () => {
   console.log('app is ready');
   // your app code here
 });
 ```
 
-make sure there is also a `index.html` file in `dir`
+Make sure there is also a `index.html` file in the same folder as `myApp.js`, then use [`Electron`](https://npmjs.org/electron) to run the app:
 
-then use [`electron`](https://npmjs.org/electron) or [`electron-packager`](https://npmjs.org/electron-packager) to build/run the app:
-
-```
-$ npm install electron -g
-$ electron your-app.js
+```bash
+$ electron myApp.js
 ```
 
-see `example/` for a working example
+See the [`example/`](/example) folder for a working example.
 
-the return value of `mb` is an event emitter with these properties:
+The return value of `mb` is a `Menubar` class instance, which subclasses `EventEmitter` and has these additional properties:
 
-```
+```javascript
 {
   app: the electron require('app') instance,
   window: the electron require('browser-window') instance,
@@ -69,9 +64,9 @@ the return value of `mb` is an event emitter with these properties:
 }
 ```
 
-## options
+## Options
 
-you can pass an optional options object into the menubar constructor
+You can pass an optional options object into the menubar constructor:
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
@@ -89,9 +84,9 @@ you can pass an optional options object into the menubar constructor
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
-## events
+## Events
 
-the return value of the menubar constructor is an event emitter
+The return value of the menubar constructor is an event emitter:
 
 - `ready` - when the app has been created and initialized
 - `create-window` - the line before new BrowserWindow is called
@@ -103,10 +98,8 @@ the return value of the menubar constructor is an event emitter
 - `after-close` - after the .window (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
-## tips
+## Tips
 
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
-
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `alwaysOnTop:true`
-
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
