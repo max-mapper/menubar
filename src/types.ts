@@ -19,7 +19,7 @@ export interface Options {
    * the end of the name, so icon.png and icon@2x.png and Electron will
    * automatically use your @2x version on retina screens.
    */
-  icon?: string;
+  icon?: string | Electron.NativeImage;
   /**
    * The html to load for the pop up window.
    */

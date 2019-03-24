@@ -146,17 +146,17 @@ class Menubar extends EventEmitter {
       app.dock.hide();
     }
 
-    let iconPath =
+    let trayImage =
       this.options.icon || path.join(this.options.dir, 'IconTemplate.png');
-    if (!fs.existsSync(iconPath)) {
-      iconPath = path.join(__dirname, 'example', 'IconTemplate.png'); // Default cat icon
+    if (typeof trayImage === 'string' && !fs.existsSync(trayImage)) {
+      trayImage = path.join(__dirname, 'example', 'IconTemplate.png'); // Default cat icon
     }
 
     const defaultClickEvent = this.options.showOnRightClick
       ? 'right-click'
       : 'click';
 
-    this.tray = this.options.tray || new Tray(iconPath);
+    this.tray = this.options.tray || new Tray(trayImage);
     // Type guards for TS not to complain
     if (!this.tray) {
       throw new Error('Tray has been initialized above');
