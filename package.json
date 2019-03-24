@@ -24,6 +24,9 @@
   ],
   "license": "BSD-2-Clause",
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/amaurymartiny/menubar.git"
