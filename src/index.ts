@@ -41,7 +41,8 @@ class Menubar extends EventEmitter {
     this.options = options;
 
     if (app.isReady()) {
-      this.appReady();
+      // See https://github.com/maxogden/menubar/pull/151
+      process.nextTick(this.appReady.bind(this));
     } else {
       app.on('ready', this.appReady.bind(this));
     }
