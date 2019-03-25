@@ -36,15 +36,18 @@
     "prebuild": "rimraf lib/",
     "build": "tsc",
     "lint": "tslint --project .",
-    "test": "echo skipped for now."
+    "test": "jest"
   },
   "dependencies": {
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "electron": "^4.1.1",
+    "jest": "^24.5.0",
     "rimraf": "^2.6.3",
     "standard": "^5.4.1",
+    "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "tslint-config-semistandard": "^7.0.0",
     "typescript": "^3.3.4000"
