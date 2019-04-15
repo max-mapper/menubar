@@ -25,10 +25,10 @@ All notable changes to this project will be documented in this file. See [standa
 * We're using a named export in Typescript now:
 ```diff
 - var menubar = require('menubar');
-+ var { menubar } = require('menubar');
++ var { menubar } = require('@amaurymartiny/menubar');
 ```
 
 Alternatively, using ES6/TS syntax:
 ```javascript
-import { menubar } from 'menubar';
+import { menubar } from '@amaurymartiny/menubar';
 ```
