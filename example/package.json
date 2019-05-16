@@ -8,6 +8,7 @@
     "start": "electron ."
   },
   "devDependencies": {
+    "electron": "^5.0.1",
     "electron-builder": "^20.39.0",
     "electron-prebuilt": "^1.4.13"
   }

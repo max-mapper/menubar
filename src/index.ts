@@ -42,9 +42,13 @@ class Menubar extends EventEmitter {
 
     if (app.isReady()) {
       // See https://github.com/maxogden/menubar/pull/151
-      process.nextTick(this.appReady.bind(this));
+      process.nextTick(() =>
+        this.appReady().catch(err => console.error('menubar: ', err))
+      );
     } else {
-      app.on('ready', this.appReady.bind(this));
+      app.on('ready', () =>
+        this.appReady().catch(err => console.error('menubar: ', err))
+      );
     }
   }
 
@@ -88,7 +92,7 @@ class Menubar extends EventEmitter {
    *
    * @param trayPos - The bounds to show the window in.
    */
-  private showWindow (trayPos?: Electron.Rectangle) {
+  private async showWindow (trayPos?: Electron.Rectangle) {
     if (!this.tray) {
       throw new Error('Tray should have been instantiated by now');
     }
@@ -97,7 +101,7 @@ class Menubar extends EventEmitter {
       this.tray.setHighlightMode('always');
     }
     if (!this.window) {
-      this.createWindow();
+      await this.createWindow();
     }
 
     this.emit('show');
@@ -142,7 +146,7 @@ class Menubar extends EventEmitter {
     return;
   }
 
-  private appReady () {
+  private async appReady () {
     if (app.dock && !this.options.showDockIcon) {
       app.dock.hide();
     }
@@ -174,7 +178,7 @@ class Menubar extends EventEmitter {
     }
 
     if (this.options.preloadWindow) {
-      this.createWindow();
+      await this.createWindow();
     }
 
     this.emit('ready');
@@ -186,7 +190,7 @@ class Menubar extends EventEmitter {
    * @param e
    * @param bounds
    */
-  private clicked (event: Electron.Event, bounds: Electron.Rectangle) {
+  private async clicked (event: Electron.Event, bounds: Electron.Rectangle) {
     if (event.altKey || event.shiftKey || event.ctrlKey || event.metaKey) {
       return this.hideWindow();
     }
@@ -195,10 +199,10 @@ class Menubar extends EventEmitter {
     }
 
     this.cachedBounds = bounds || this.cachedBounds;
-    this.showWindow(this.cachedBounds);
+    await this.showWindow(this.cachedBounds);
   }
 
-  private createWindow () {
+  private async createWindow () {
     this.emit('create-window');
     const defaults = {
       show: false,
@@ -219,7 +223,7 @@ class Menubar extends EventEmitter {
     }
 
     this.window.on('close', this.windowClear.bind(this));
-    this.window.loadURL(this.options.index);
+    await this.window.loadURL(this.options.index);
     this.emit('after-create-window');
   }
 
