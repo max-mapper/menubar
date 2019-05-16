@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.1](https://github.com/amaurymartiny/menubar/compare/v6.0.0...v6.0.1) (2019-05-16)
+
+
+### Bug Fixes
+
+* Update to Electron 5 ([#15](https://github.com/amaurymartiny/menubar/issues/15)) ([ce86216](https://github.com/amaurymartiny/menubar/commit/ce86216))
+
+
+
 # [6.0.0](https://github.com/amaurymartiny/menubar/compare/v5.2.3...v6.0.0) (2019-03-24)
 
 
