@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [6.1.0](https://github.com/amaurymartiny/menubar/compare/v6.0.1...v6.1.0) (2019-05-19)
+
+
+### Features
+
+* Add `browserWindow` field in options, deprecate `height`, `width`, `x`, `y`, `alwaysOnTop` in favor of `browserWindow` ([#18](https://github.com/amaurymartiny/menubar/issues/18)) ([0b2d897](https://github.com/amaurymartiny/menubar/commit/0b2d897))
+
+
+
 ## [6.0.1](https://github.com/amaurymartiny/menubar/compare/v6.0.0...v6.0.1) (2019-05-16)
 
 
