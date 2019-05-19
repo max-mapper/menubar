@@ -51,7 +51,7 @@ See the [`example/`](/example) folder for a working example.
 
 The return value of `mb` is a `Menubar` class instance, which subclasses `EventEmitter` and has these additional properties:
 
-```javascript
+```
 {
   app: the electron require('app') instance,
   window: the electron require('browser-window') instance,
@@ -70,19 +70,25 @@ You can pass an optional options object into the menubar constructor:
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
+- `browserWindow` - BrowserWindow options to be passed to the BrowserWindow constructor, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions). Some interesting fields to passed down are:
+  - `x` (default `undefined`) - the x position of the window
+  - `y` (default `undefined`) - the y position of the window
+  - `width` (default 400) - window width
+  - `height` (default 400) - window height
+  - `alwaysOnTop` (default false) - if true, the window will not hide on blur
 - `icon` (default `opts.dir + IconTemplate.png`) - the png icon to use for the menubar. A good size to start with is 20x20. To support retina, supply a 2x sized image (e.g. 40x40) with `@2x` added to the end of the name, so `icon.png` and `icon@2x.png` and Electron will automatically use your `@2x` version on retina screens.
 - `tooltip` (default empty) - menubar tray icon tooltip text
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
-- `preloadWindow` (default false) - Create [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
-- `width` (default 400) - window width
-- `height` (default 400) - window height
-- `x` (default null) - the x position of the window
-- `y` (default null) - the y position of the window
-- `alwaysOnTop` (default false) - if true, the window will not hide on blur
+- `preloadWindow` (default false) - Create [BrowserWindow](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
 - `showOnAllWorkspaces` (default true) - Makes the window available on all OS X workspaces.
 - `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
+- `width` _deprecated_ - Please use `options.browserWindow.width`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- `height` _deprecated_ - Please use `options.browserWindow.height`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- `x` _deprecated_ - Please use `options.browserWindow.x`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- `y` _deprecated_ - Please use `options.browserWindow.y`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- `alwaysOnTop` _deprecated_ - Please use `options.browserWindow.alwaysOnTop`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
 
 ## Events
 
@@ -101,5 +107,5 @@ The return value of the menubar constructor is an event emitter:
 ## Tips
 
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
-- Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `alwaysOnTop:true`
+- Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar

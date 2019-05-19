@@ -10,12 +10,17 @@ import { Options } from './types';
 /**
  * The main Menubar class. Menubar is an EventEmitter.
  */
-class Menubar extends EventEmitter {
+export class Menubar extends EventEmitter {
   /**
    * The Electron app instance.
    * @see https://electronjs.org/docs/api/app
    */
   public app: Electron.App;
+  /**
+   * The electron BrowserWindow instance.
+   * @see https://electronjs.org/docs/api/browser-window
+   */
+  public browserWindow?: BrowserWindow;
   private cachedBounds?: Electron.Rectangle; // cachedBounds are needed for double-clicked event
   private options: Options;
   /**
@@ -29,16 +34,11 @@ class Menubar extends EventEmitter {
    * @see https://electronjs.org/docs/api/tray
    */
   public tray?: Tray;
-  /**
-   * The electron BrowserWindow instance.
-   * @see https://electronjs.org/docs/api/browser-window
-   */
-  public window?: BrowserWindow;
 
-  constructor (app: Electron.App, options: Options) {
+  constructor (app: Electron.App, options?: Partial<Options> | string) {
     super();
     this.app = app;
-    this.options = options;
+    this.options = cleanOptions(options);
 
     if (app.isReady()) {
       // See https://github.com/maxogden/menubar/pull/151
@@ -68,12 +68,12 @@ class Menubar extends EventEmitter {
     if (this.supportsTrayHighlightState) {
       this.tray!.setHighlightMode('never');
     }
-    if (!this.window) {
+    if (!this.browserWindow) {
       return;
     }
 
     this.emit('hide');
-    this.window.hide();
+    this.browserWindow.hide();
     this.emit('after-hide');
   }
 
@@ -100,8 +100,13 @@ class Menubar extends EventEmitter {
     if (this.supportsTrayHighlightState) {
       this.tray.setHighlightMode('always');
     }
-    if (!this.window) {
+    if (!this.browserWindow) {
       await this.createWindow();
+    }
+
+    // Use guard for TypeScript, to avoid ! everywhere
+    if (!this.browserWindow) {
+      throw new Error('Window has been initialized just above. qed.');
     }
 
     this.emit('show');
@@ -130,18 +135,20 @@ class Menubar extends EventEmitter {
     const position = this.positioner.calculate(
       noBoundsPosition || this.options.windowPosition,
       trayPos
-    );
+    ) as { x: number; y: number };
 
-    const x = this.options.x !== undefined ? this.options.x : position.x;
-    const y = this.options.y !== undefined ? this.options.y : position.y;
+    // Not using `||` because x and y can be zero.
+    const x =
+      this.options.browserWindow.x !== undefined
+        ? this.options.browserWindow.x
+        : position.x;
+    const y =
+      this.options.browserWindow.y !== undefined
+        ? this.options.browserWindow.y
+        : position.y;
 
-    // Use guard for TypeScript
-    if (!this.window) {
-      throw new Error('Window has been initialized above');
-    }
-
-    this.window.setPosition(x, y);
-    this.window.show();
+    this.browserWindow.setPosition(x, y);
+    this.browserWindow.show();
     this.emit('after-show');
     return;
   }
@@ -194,7 +201,7 @@ class Menubar extends EventEmitter {
     if (event.altKey || event.shiftKey || event.ctrlKey || event.metaKey) {
       return this.hideWindow();
     }
-    if (this.window && this.window.isVisible()) {
+    if (this.browserWindow && this.browserWindow.isVisible()) {
       return this.hideWindow();
     }
 
@@ -204,35 +211,54 @@ class Menubar extends EventEmitter {
 
   private async createWindow () {
     this.emit('create-window');
+
+    // We add some default behavior for menubar's browserWindow
     const defaults = {
-      show: false,
-      frame: false
+      show: false, // Don't show it at first
+      frame: false // Remove window frame
     };
 
-    const winOpts = { ...defaults, ...this.options };
-    this.window = new BrowserWindow(winOpts);
+    this.browserWindow =
+      this.options.browserWindow instanceof BrowserWindow
+        ? this.options.browserWindow
+        : new BrowserWindow({
+          ...defaults,
+          ...this.options.browserWindow,
+            // For backward-compat, we keep allowing user doing e.g.:
+            // `new Menubar({ nodeIntegration: true })`
+            // and Menubar will pass down `nodeIntegration` to the BrowserWindow
+            // constructor. But we should remove this.
+            // https://github.com/amaurymartiny/menubar/issues/17
+          ...this.options
+        });
 
-    this.positioner = new Positioner(this.window);
+    this.positioner = new Positioner(this.browserWindow);
 
-    this.window.on('blur', () => {
-      this.options.alwaysOnTop ? this.emit('focus-lost') : this.hideWindow();
+    this.browserWindow.on('blur', () => {
+      if (!this.browserWindow) {
+        return;
+      }
+
+      this.browserWindow.isAlwaysOnTop()
+        ? this.emit('focus-lost')
+        : this.hideWindow();
     });
 
     if (this.options.showOnAllWorkspaces !== false) {
-      this.window.setVisibleOnAllWorkspaces(true);
+      this.browserWindow.setVisibleOnAllWorkspaces(true);
     }
 
-    this.window.on('close', this.windowClear.bind(this));
-    await this.window.loadURL(this.options.index);
+    this.browserWindow.on('close', this.windowClear.bind(this));
+    await this.browserWindow.loadURL(this.options.index);
     this.emit('after-create-window');
   }
 
   private windowClear () {
-    this.window = undefined;
+    this.browserWindow = undefined;
     this.emit('after-close');
   }
 }
 
-export function menubar (options?: Options | string) {
-  return new Menubar(app, cleanOptions(options));
+export function menubar (options?: Partial<Options> | string) {
+  return new Menubar(app, options);
 }
