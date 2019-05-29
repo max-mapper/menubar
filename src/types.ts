@@ -10,7 +10,7 @@ export interface Options {
    * An Electron BrowserWindow instance, or an options object to be passed into
    * the BrowserWindow constructor.
    * @example
-   * ```javascript
+   * ```typescript
    * const options = { height: 640, width: 480 };
    * const mb = new Menubar({
    *   browserWindow: new BrowserWindow(options)

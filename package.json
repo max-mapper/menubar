@@ -1,18 +1,15 @@
 {
-  "name": "@amaurymartiny/menubar",
-  "version": "6.1.0",
+  "name": "menubar",
+  "version": "5.2.3",
   "author": "max ogden",
   "bugs": {
-    "url": "https://github.com/amaurymartiny/menubar/issues"
+    "url": "https://github.com/maxogden/menubar/issues"
   },
-  "contributors": [
-    "Amaury Martiny <amaury.martiny@protonmail.com>"
-  ],
   "description": "high level way to create menubar desktop applications with electron",
   "files": [
     "/lib"
   ],
-  "homepage": "https://github.com/amaurymartiny/menubar",
+  "homepage": "https://github.com/maxogden/menubar",
   "keywords": [
     "electron",
     "atom",
@@ -29,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/amaurymartiny/menubar.git"
+    "url": "https://github.com/maxogden/menubar.git"
   },
   "types": "lib/index.d.ts",
   "scripts": {

@@ -2,7 +2,7 @@
 
 **If you are asking a question**:
 
-Remember that `menubar` is just a lightweight wrapper around Electron. Most of the time you can probably find the answer to your question already answered in the [Electron Issue Tracker](https://github.com/atom/electron/issues)
+Remember that `menubar` is just a lightweight wrapper around Electron. Most of the time you can probably find the answer to your question already answered in the [Electron Issue Tracker](https://github.com/electron/electron/issues)
 
 **For bug reports/technical issues**:
 

@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.org/amaurymartiny/menubar.svg?branch=master)](https://travis-ci.org/amaurymartiny/menubar)
-[![npm (scoped)](https://img.shields.io/npm/v/@amaurymartiny/menubar.svg)](https://www.npmjs.com/package/@amaurymartiny/menubar)
-[![dependencies Status](https://david-dm.org/amaurymartiny/menubar/status.svg)](https://david-dm.org/amaurymartiny/menubar)
+[![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
+[![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/@maxogden/menubar)
+[![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
 
 # Menubar
-
-❗*Note: this is a fork of [maxogden/menubar](https://github.com/maxogden/menubar), which is not maintained anymore. [More info](https://github.com/maxogden/menubar/issues/200#issuecomment-462075264).*
 
 High level way to create menubar desktop applications with Electron.
 
@@ -23,15 +21,15 @@ Works on Mac OS, Windows and some Linuxes (Tested on Xfce4, your mileage may var
 ## Installation
 
 ```bash
-yarn add @amaurymartiny/menubar
+yarn add menubar
 ```
 
 ## Usage
 
 Create a `myApp.js` like this:
 
-```javascript
-const { menubar } = require('@amaurymartiny/menubar');
+```typescript
+const { menubar } = require('menubar');
 
 const mb = menubar();
 

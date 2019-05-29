@@ -228,7 +228,6 @@ export class Menubar extends EventEmitter {
             // `new Menubar({ nodeIntegration: true })`
             // and Menubar will pass down `nodeIntegration` to the BrowserWindow
             // constructor. But we should remove this.
-            // https://github.com/amaurymartiny/menubar/issues/17
           ...this.options
         });
 
