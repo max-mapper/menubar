@@ -161,7 +161,7 @@ export class Menubar extends EventEmitter {
     let trayImage =
       this.options.icon || path.join(this.options.dir, 'IconTemplate.png');
     if (typeof trayImage === 'string' && !fs.existsSync(trayImage)) {
-      trayImage = path.join(__dirname, 'example', 'IconTemplate.png'); // Default cat icon
+      trayImage = path.join(__dirname, '..', 'example', 'IconTemplate.png'); // Default cat icon
     }
 
     const defaultClickEvent = this.options.showOnRightClick
