@@ -1,12 +1,13 @@
 {
   "name": "menubar",
   "version": "6.0.1",
-  "author": "max ogden",
+  "author": "Max Ogden",
   "bugs": {
     "url": "https://github.com/maxogden/menubar/issues"
   },
   "description": "high level way to create menubar desktop applications with electron",
   "files": [
+    "/example/*.png",
     "/lib"
   ],
   "homepage": "https://github.com/maxogden/menubar",
