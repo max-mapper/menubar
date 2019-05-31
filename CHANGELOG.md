@@ -7,19 +7,19 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* Update to Electron 5 ([#15](https://github.com/maxogden/menubar/issues/15)) ([ce86216](https://github.com/maxogden/menubar/commit/ce86216))
-* Window does not show when already app is ready ([#8](https://github.com/maxogden/menubar/issues/8)) ([251fb21](https://github.com/maxogden/menubar/commit/251fb21))
+* Update to Electron 5 ([#15](https://github.com/amaurymartiny/menubar/issues/15)) ([ce86216](https://github.com/maxogden/menubar/commit/ce86216))
+* Window does not show when already app is ready ([#8](https://github.com/amaurymartiny/menubar/issues/8)) ([251fb21](https://github.com/maxogden/menubar/commit/251fb21))
 
 
 ### Code Refactoring
 
-* Convert all codebase to typescript ([#2](https://github.com/maxogden/menubar/issues/2)) ([820d41a](https://github.com/maxogden/menubar/commit/820d41a))
+* Convert all codebase to typescript ([#2](https://github.com/amaurymartiny/menubar/issues/2)) ([820d41a](https://github.com/maxogden/menubar/commit/820d41a))
 
 
 ### Features
 
-* Add `browserWindow` field in options, deprecate `height`, `width`, `x`, `y`, `alwaysOnTop` in favor of `browserWindow` ([#18](https://github.com/maxogden/menubar/issues/18)) ([0b2d897](https://github.com/maxogden/menubar/commit/0b2d897))
-* Support Electron.NativeImage icon argument ([#7](https://github.com/maxogden/menubar/issues/7)) ([03d67f3](https://github.com/maxogden/menubar/commit/03d67f3))
+* Add `browserWindow` field in options, deprecate `height`, `width`, `x`, `y`, `alwaysOnTop` in favor of `browserWindow` ([#18](https://github.com/amaurymartiny/menubar/issues/18)) ([0b2d897](https://github.com/maxogden/menubar/commit/0b2d897))
+* Support Electron.NativeImage icon argument ([#7](https://github.com/amaurymartiny/menubar/issues/7)) ([03d67f3](https://github.com/maxogden/menubar/commit/03d67f3))
 
 
 ### BREAKING CHANGES
