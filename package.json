@@ -1,15 +1,15 @@
 {
   "name": "menubar",
   "version": "5.2.3",
+  "author": "max ogden",
+  "bugs": {
+    "url": "https://github.com/maxogden/menubar/issues"
+  },
   "description": "high level way to create menubar desktop applications with electron",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/maxogden/menubar.git"
-  },
-  "scripts": {
-    "test": "standard"
-  },
+  "files": [
+    "/lib"
+  ],
+  "homepage": "https://github.com/maxogden/menubar",
   "keywords": [
     "electron",
     "atom",
@@ -19,17 +19,37 @@
     "mac",
     "app"
   ],
-  "author": "max ogden",
   "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/maxogden/menubar/issues"
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
   },
-  "homepage": "https://github.com/maxogden/menubar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/menubar.git"
+  },
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf lib/",
+    "build": "tsc",
+    "lint": "tslint --project .",
+    "test": "jest"
+  },
   "dependencies": {
-    "electron-positioner": "^3.0.0",
-    "extend": "^2.0.0"
+    "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "standard": "^5.4.1"
+    "@types/jest": "^24.0.11",
+    "electron": "^5.0.1",
+    "jest": "^24.5.0",
+    "rimraf": "^2.6.3",
+    "standard": "^5.4.1",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.14.0",
+    "tslint-config-semistandard": "^7.0.0",
+    "typescript": "^3.3.4000"
+  },
+  "peerDependencies": {
+    "electron": "^4.1.1 || ^5.0.1"
   }
 }

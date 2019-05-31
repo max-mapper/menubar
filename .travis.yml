@@ -1,3 +1,16 @@
 language: node_js
 node_js:
-  - '0.12'
+  - '10'
+  - '11'
+cache:
+  yarn: true
+  directories:
+    - node_modules
+git:
+  depth: 5
+install:
+  - yarn install
+script:
+  - yarn lint
+  - yarn build
+  - yarn test
