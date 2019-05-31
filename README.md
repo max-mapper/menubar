@@ -29,7 +29,7 @@ yarn add menubar
 Create a `myApp.js` like this:
 
 ```typescript
-const { menubar } = require('menubar');
+import { menubar } from 'menubar';
 
 const mb = menubar();
 
@@ -45,9 +45,9 @@ Make sure there is also a `index.html` file in the same folder as `myApp.js`, th
 $ electron myApp.js
 ```
 
-See the [`example/`](/example) folder for a working example.
+See [`examples/hello-world`](/examples/hello-world) folder for a simple working example.
 
-The return value of `mb` is a `Menubar` class instance, which subclasses `EventEmitter` and has these additional properties:
+The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
 ```
 {

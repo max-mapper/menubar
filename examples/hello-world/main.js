@@ -1,4 +1,4 @@
-const { menubar } = require('..');
+const { menubar } = require('../../lib');
 
 const mb = menubar();
 

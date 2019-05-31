@@ -7,17 +7,21 @@
   },
   "description": "high level way to create menubar desktop applications with electron",
   "files": [
-    "/example/*.png",
+    "/assets/*.png",
     "/lib"
   ],
   "homepage": "https://github.com/maxogden/menubar",
   "keywords": [
     "electron",
-    "atom",
     "shell",
     "menubar",
     "menu",
+    "taskbar",
+    "tray",
+    "traybar",
     "mac",
+    "linux",
+    "windows",
     "app"
   ],
   "license": "BSD-2-Clause",
