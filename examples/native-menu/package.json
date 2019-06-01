@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "description": "Example menubar electron app",
   "main": "main.js",
+  "private": true,
   "scripts": {
     "start": "electron ."
-  },
-  "devDependencies": {
-    "electron": "^5.0.2"
   }
 }
