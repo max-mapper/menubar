@@ -1,8 +1,10 @@
-# example-menubar-hello-world
+# example-menubar-native-menu
 
 ## Description
 
-This is a simple Hello World menubar app that will just open a window that says "Hello World".
+This will create a menubar app with a native menu.
+
+Courtesy of @tslater in https://github.com/maxogden/menubar/issues/178.
 
 ## Screenshot
 

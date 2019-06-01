@@ -33,13 +33,13 @@
     "type": "git",
     "url": "https://github.com/maxogden/menubar.git"
   },
-  "types": "lib/index.d.ts",
   "scripts": {
     "prebuild": "rimraf lib/",
     "build": "tsc",
     "lint": "tslint --project .",
     "test": "jest"
   },
+  "types": "lib/index.d.ts",
   "dependencies": {
     "electron-positioner": "^4.1.0"
   },

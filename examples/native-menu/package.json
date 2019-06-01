@@ -1,5 +1,5 @@
 {
-  "name": "example-menubar-hello-world",
+  "name": "example-menubar-native-menu",
   "version": "0.1.0",
   "description": "Example menubar electron app",
   "main": "main.js",
