@@ -1,7 +1,10 @@
-# Example Menubar Electron App
+# example-menubar-hello-world
+
+## Description
+
+This is a simple Hello World menubar app that will just open a window that says "Hello World".
 
 ## Instructions
 
-- Run `yarn install`
-- Run `yarn build` to make a packaged app
-- Run `yarn start` to run app from CLI in dev mode
+- Run `yarn install` to install dependencies.
+- Run `yarn start` to run app.
