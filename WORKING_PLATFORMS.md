@@ -4,15 +4,15 @@
 
 | Version           | Working Status | Known Issues |
 | ----------------- | -------------- | ------------ |
-| 10.14 Mojave      | ✅             |              |
-| 10.13 High Sierra | ✅             |              |
+| 10.14 Mojave      | ✅ Good        |              |
+| 10.13 High Sierra | ✅ Good        |              |
 
 ## Windows
 
 | Version    | Working Status | Known Issues |
 | ---------- | -------------- | ------------ |
-| Windows 10 | ✅             |              |
-| Windows 8  | ✅             |              |
+| Windows 10 | ✅ Good        |              |
+| Windows 8  | ✅ Good        |              |
 
 ## Linux
 
