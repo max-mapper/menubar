@@ -1,0 +1,29 @@
+.myarrow {
+  position: relative;
+  padding: 12px 0;
+}
+
+.myarrow:before {
+  content: '';
+  height: 0;
+  width: 0;
+  border-width: 0 8px 12px 8px;
+  border-style: solid;
+  border-color: transparent transparent #eeeeee transparent;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.page {
+  background: #eeeeee;
+  width: 340px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.darwin.page {
+  border-radius: 5px;
+  overflow: hidden;
+}

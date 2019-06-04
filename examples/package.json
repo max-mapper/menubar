@@ -4,6 +4,7 @@
   "description": "Example menubar electron app",
   "private": true,
   "workspaces": [
+    "arrow",
     "hello-world",
     "native-menu"
   ],
