@@ -93,7 +93,7 @@ export class Menubar extends EventEmitter {
    */
   hideWindow () {
     if (this._supportsTrayHighlightState) {
-      this.tray!.setHighlightMode('never');
+      this.tray.setHighlightMode('never');
     }
     if (!this._browserWindow) {
       return;
