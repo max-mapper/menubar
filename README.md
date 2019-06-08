@@ -82,11 +82,11 @@ You can pass an optional options object into the menubar constructor:
 - `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
-- `width` _deprecated_ - Please use `options.browserWindow.width`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- `height` _deprecated_ - Please use `options.browserWindow.height`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- `x` _deprecated_ - Please use `options.browserWindow.x`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- `y` _deprecated_ - Please use `options.browserWindow.y`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- `alwaysOnTop` _deprecated_ - Please use `options.browserWindow.alwaysOnTop`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- ~`width`~ _deprecated_ - Please use `options.browserWindow.width`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- ~`height`~ _deprecated_ - Please use `options.browserWindow.height`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- ~`x`~ _deprecated_ - Please use `options.browserWindow.x`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- ~`y`~ _deprecated_ - Please use `options.browserWindow.y`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
+- ~`alwaysOnTop`~ _deprecated_ - Please use `options.browserWindow.alwaysOnTop`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
 
 ## Events
 
