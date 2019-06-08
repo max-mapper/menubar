@@ -48,10 +48,6 @@ export function cleanOptions (opts?: Partial<Options> | string) {
       slashes: true
     });
   }
-  if (!options.windowPosition) {
-    options.windowPosition =
-      process.platform === 'win32' ? 'trayBottomCenter' : 'trayCenter';
-  }
 
   options.tooltip = options.tooltip || '';
 
