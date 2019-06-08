@@ -232,6 +232,7 @@ export class Menubar extends EventEmitter {
           break;
         // Linux
         // Supports top taskbars
+        // TODO Support bottom taskbars too https://github.com/maxogden/menubar/issues/123
         case 'linux':
           this._options.windowPosition = 'topRight';
           break;
