@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as Positioner from 'electron-positioner';
 
 import { cleanOptions } from './util/cleanOptions';
-import { taskbarLocation } from './util/taskbarLocation';
+import { getWindowPosition } from './util/getWindowPosition';
 import { Options } from './types';
 
 /**
@@ -177,6 +177,7 @@ export class Menubar extends EventEmitter {
         : position.y;
 
     // Multi-Taskbar: optimize vertical position
+    // https://github.com/maxogden/menubar/pull/217
     if (process.platform === 'win32') {
       if (
         trayPos &&
@@ -221,40 +222,8 @@ export class Menubar extends EventEmitter {
     this.tray.setToolTip(this._options.tooltip);
 
     if (!this._options.windowPosition) {
-      // Multi-Taskbar
-      // Fill in this._options.windowPosition when tray item position is
-      // available
-      switch (process.platform) {
-        // macOS
-        // Supports top taskbars
-        case 'darwin':
-          this._options.windowPosition = 'trayCenter';
-          break;
-        // Linux
-        // Supports top taskbars
-        // TODO Support bottom taskbars too https://github.com/maxogden/menubar/issues/123
-        case 'linux':
-          this._options.windowPosition = 'topRight';
-          break;
-        // Windows
-        // Supports top/bottom/left/right taskbar, default bottom
-        case 'win32':
-          const traySide = taskbarLocation(this.tray);
-
-          // Assign position for menubar
-          if (traySide === 'top') {
-            this._options.windowPosition = 'trayCenter';
-          }
-          if (traySide === 'bottom') {
-            this._options.windowPosition = 'trayBottomCenter';
-          }
-          if (traySide === 'left') {
-            this._options.windowPosition = 'bottomLeft';
-          }
-          if (traySide === 'right') {
-            this._options.windowPosition = 'bottomRight';
-          }
-      }
+      // Fill in this._options.windowPosition when taskbar position is available
+      this._options.windowPosition = getWindowPosition(this.tray);
     }
 
     try {
