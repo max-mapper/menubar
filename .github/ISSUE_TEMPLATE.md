@@ -17,7 +17,6 @@
 
 - Menubar version:
 - Platform:
-- Node.js version:
+- Electron version: (Run `electron -v` or `node_modules/.bin/electron -v` to get it)
 
 ### Other information
-
