@@ -37,6 +37,7 @@
     "prebuild": "rimraf lib/",
     "build": "tsc",
     "lint": "tslint --project .",
+    "postinstall": "yarn build",
     "test": "jest"
   },
   "types": "lib/index.d.ts",
