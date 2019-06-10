@@ -26,10 +26,18 @@ yarn add menubar
 
 ## Usage
 
-Create a `myApp.js` like this:
+Starting with your own new project, run these commands:
 
-```typescript
-import { menubar } from 'menubar';
+```bash
+$ yarn add menubar
+$ touch myApp.js
+$ touch index.html
+```
+
+Fill `index.html` with some HTML, and `myApp.js` like this:
+
+```javascript
+const { menubar } = require('menubar');
 
 const mb = menubar();
 
@@ -39,13 +47,13 @@ mb.on('ready', () => {
 });
 ```
 
-Make sure there is also a `index.html` file in the same folder as `myApp.js`, then use [`Electron`](https://npmjs.org/electron) to run the app:
+Then use [`electron`](https://npmjs.org/electron) to run the app:
 
 ```bash
 $ electron myApp.js
 ```
 
-See [`examples/hello-world`](/examples/hello-world) folder for a simple working example.
+Alternatively, see [`examples/hello-world`](/examples/hello-world) folder for a simple working example.
 
 The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
