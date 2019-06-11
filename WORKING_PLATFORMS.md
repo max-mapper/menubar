@@ -1,5 +1,7 @@
 # Platforms where `menubar` is known to work
 
+This document is still a work-in-progress. If you have tested `menubar` with a platform that is not listed under here, I would greatly appreciate a PR!
+
 ## macOS
 
 | Version           | Working Status | Known Issues |
