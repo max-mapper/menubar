@@ -16,10 +16,10 @@
 
 ## Linux
 
-| Distribution | Version | Desktop Environment | Working Status | Known Issues |
-| ------------ | ------- | ------------------- | -------------- | ------------ |
-|              |         |                     |                |              |
-|              |         |                     |                |              |
-|              |         |                     |                |              |
+| Distribution | Desktop Environment | Working Status | Known Issues |
+| ------------ | ------------------- | -------------- | ------------ |
+|              |                     |                |              |
+|              |                     |                |              |
+|              |                     |                |              |
 
 # Platforms where `menubar` has bugs
