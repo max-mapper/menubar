@@ -5,6 +5,7 @@ import * as path from 'path';
 import * as Positioner from 'electron-positioner';
 
 import { cleanOptions } from './util/cleanOptions';
+import { getWindowPosition } from './util/getWindowPosition';
 import { Options } from './types';
 
 /**
@@ -153,7 +154,8 @@ export class Menubar extends EventEmitter {
     let noBoundsPosition = null;
     if (
       (trayPos === undefined || trayPos.x === 0) &&
-      this._options.windowPosition.substr(0, 4) === 'tray'
+      this._options.windowPosition &&
+      this._options.windowPosition.startsWith('tray')
     ) {
       noBoundsPosition =
         process.platform === 'win32' ? 'bottomRight' : 'topRight';
@@ -169,10 +171,25 @@ export class Menubar extends EventEmitter {
       this._options.browserWindow.x !== undefined
         ? this._options.browserWindow.x
         : position.x;
-    const y =
+    let y =
       this._options.browserWindow.y !== undefined
         ? this._options.browserWindow.y
         : position.y;
+
+    // Multi-Taskbar: optimize vertical position
+    // https://github.com/maxogden/menubar/pull/217
+    if (process.platform === 'win32') {
+      if (
+        trayPos &&
+        this._options.windowPosition &&
+        this._options.windowPosition.startsWith('bottom')
+      ) {
+        y =
+          trayPos.y +
+          trayPos.height / 2 -
+          this._browserWindow.getBounds().height / 2;
+      }
+    }
 
     this._browserWindow.setPosition(x, y);
     this._browserWindow.show();
@@ -203,6 +220,11 @@ export class Menubar extends EventEmitter {
     this.tray.on(defaultClickEvent as any, this.clicked.bind(this));
     this.tray.on('double-click', this.clicked.bind(this));
     this.tray.setToolTip(this._options.tooltip);
+
+    if (!this._options.windowPosition) {
+      // Fill in this._options.windowPosition when taskbar position is available
+      this._options.windowPosition = getWindowPosition(this.tray);
+    }
 
     try {
       this.tray.setHighlightMode('never');

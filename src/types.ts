@@ -76,7 +76,7 @@ export interface Options {
    * Sets the window position (x and y will still override this), check
    * electron-positioner docs for valid values.
    */
-  windowPosition:
+  windowPosition?:
     | 'trayLeft'
     | 'trayBottomLeft'
     | 'trayRight'
