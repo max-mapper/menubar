@@ -21,5 +21,3 @@
 |              |                     |                |              |
 |              |                     |                |              |
 |              |                     |                |              |
-
-# Platforms where `menubar` has bugs
