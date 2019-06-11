@@ -40,13 +40,9 @@ export function getWindowPosition (tray: Tray) {
     // Supports top taskbars
     case 'darwin':
       return 'trayCenter';
-    // Linux
-    // Supports top taskbars
-    // TODO Support bottom taskbars too https://github.com/maxogden/menubar/issues/123
-    case 'linux':
-      return 'topRight';
-    // Windows
+    // Windows & Linux
     // Supports top/bottom/left/right taskbar, default bottom
+    case 'linux':
     case 'win32':
       const traySide = taskbarLocation(tray);
 
