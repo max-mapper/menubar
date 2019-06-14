@@ -9,9 +9,9 @@
 2. ...
 3. ...
 
-### Expected Behavior
+### Expected Behaviour
 
-### Actual Behavior
+### Actual Behaviour
 
 ### Specifications
 
