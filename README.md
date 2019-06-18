@@ -100,14 +100,14 @@ You can pass an optional options object into the menubar constructor:
 
 The return value of the menubar constructor is an event emitter:
 
-- `ready` - when the app has been created and initialized
-- `create-window` - the line before new BrowserWindow is called
+- `ready` - when `menubar`'s tray icon has been created and initialized, i.e. when `menubar` is ready to be used. Note: this is different than Electron app's `ready` event, which happens much earlier in the process
+- `create-window` - the line before `new BrowserWindow()` is called
 - `after-create-window` - the line after all window init code is done
-- `show` - the line before window.show is called
-- `after-show` - the line after window.show is called
-- `hide` - the line before window.hide is called (on window blur)
-- `after-hide` - the line after window.hide is called
-- `after-close` - after the .window (BrowserWindow) property has been deleted
+- `show` - the line before `window.show()` is called
+- `after-show` - the line after `window.show()` is called
+- `hide` - the line before `window.hide()` is called (on window blur)
+- `after-hide` - the line after `window.hide()` is called
+- `after-close` - after the `.window` (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
 ## Tips
