@@ -58,7 +58,7 @@ export function getWindowPosition (tray: Tray) {
         return 'trayBottomCenter';
       }
       if (traySide === 'left') {
-        return 'bottomLeft';
+        return 'trayBottomLeft';
       }
       if (traySide === 'right') {
         return 'bottomRight';
