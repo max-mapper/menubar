@@ -26,6 +26,10 @@ export class Tray {
     // Do nothing
   }
 
+  getBounds () {
+    // Do nothing
+  }
+
   setToolTip () {
     // Do nothing
   }
