@@ -1,6 +1,6 @@
 {
   "name": "menubar",
-  "version": "6.0.4",
+  "version": "6.0.6",
   "author": "Max Ogden",
   "bugs": {
     "url": "https://github.com/maxogden/menubar/issues"
@@ -37,7 +37,6 @@
     "prebuild": "rimraf lib/",
     "build": "tsc",
     "lint": "tslint --project .",
-    "postinstall": "yarn build",
     "test": "jest"
   },
   "types": "lib/index.d.ts",

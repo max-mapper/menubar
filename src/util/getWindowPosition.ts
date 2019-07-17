@@ -7,7 +7,7 @@ import { Tray } from 'electron';
  *
  * @param tray - The Electron Tray instance.
  */
-function taskbarLocation (tray: Tray) {
+export function taskbarLocation (tray: Tray) {
   const trayBounds = tray.getBounds();
 
   // Determine taskbar location
@@ -54,7 +54,7 @@ export function getWindowPosition (tray: Tray) {
         return 'trayBottomCenter';
       }
       if (traySide === 'left') {
-        return 'bottomLeft';
+        return 'trayBottomLeft';
       }
       if (traySide === 'right') {
         return 'bottomRight';
