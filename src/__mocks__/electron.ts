@@ -27,7 +27,7 @@ export class Tray {
   }
 
   getBounds () {
-    // Do nothing
+    return { height: 0, width: 0, x: 0, y: 0 };
   }
 
   setToolTip () {
