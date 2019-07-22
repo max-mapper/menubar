@@ -60,6 +60,8 @@ $ electron myApp.js
 
 Alternatively, see [`examples/hello-world`](/examples/hello-world) folder for a simple working example.
 
+## `Menubar` Class
+
 The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
 - `app`: the [Electron App](https://electronjs.org/docs/api/app) instance,
@@ -71,9 +73,9 @@ The return value of `menubar()` is a `Menubar` class instance, which has these p
 - `showWindow()`: show the menubar window,
 - `hideWindow()`: hide the menubar window
 
-## Options
+## `menubar()` Options
 
-You can pass an optional options object into the menubar constructor:
+You can pass an optional options object into the `menubar` function:
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
@@ -94,7 +96,7 @@ You can pass an optional options object into the menubar constructor:
 
 ## Events
 
-The return value of the menubar constructor is an event emitter:
+The `Menubar` class is an event emitter:
 
 - `ready` - when `menubar`'s tray icon has been created and initialized, i.e. when `menubar` is ready to be used. Note: this is different than Electron app's `ready` event, which happens much earlier in the process
 - `create-window` - the line before `new BrowserWindow()` is called
