@@ -4,21 +4,21 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
 
-# Menubar
+# ➖ Menubar
 
-High level way to create menubar desktop applications with Electron.
+#### High level way to create menubar desktop applications with Electron.
 
-This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and `menubar` will handle the rest.
 
-Works on Mac OS, Windows and some Linuxes (patches welcome!) - check out [WORKING_PLATFORMS.md](./WORKING_PLATFORMS.md) to see all the known platforms where menubar works well.
+✅ Only one dependency, and one peer-dependency.
 
-**Mac OS**
+✅ Works on macOS, Windows and most Linuxes. See [details](./WORKING_PLATFORMS.md).
 
-![screenshot](screenshot.png)
+✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-**Windows**
-
-![screenshot](screenshot-windows.png)
+| <img src="assets/screenshot-macos.png" height="400px" /> | <img src="assets/screenshot-windows.png" height="400px" /> | <img src="assets/screenshot-windows.png" height="400px" /> |
+| :------------------------------------------------------: | :--------------------------------------------------------: | :--------------------------------------------------------: |
+|                          macOS                           |                          Windows                           |                           Linux                            |
 
 ## Installation
 
@@ -49,7 +49,7 @@ mb.on('ready', () => {
 });
 ```
 
-Then use [`electron`](https://npmjs.org/electron) to run the app:
+Then use `electron` to run the app:
 
 ```bash
 $ electron myApp.js
@@ -59,18 +59,14 @@ Alternatively, see [`examples/hello-world`](/examples/hello-world) folder for a 
 
 The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
-```
-{
-  app: the electron require('app') instance,
-  window: the electron require('browser-window') instance,
-  tray: the electron require('tray') instance,
-  positioner: the electron-positioner instance,
-  setOption(option, value): change an option after menubar is created,
-  getOption(option): get an menubar option,
-  showWindow(): show the menubar window,
-  hideWindow(): hide the menubar window
-}
-```
+- `app`: the Electron [App](https://electronjs.org/docs/api/app) instance,
+- `window`: the Electron [Browser Window](https://electronjs.org/docs/api/browser-window) instance,
+- `tray`: the Electron [Tray](https://electronjs.org/docs/api/tray) instance,
+- `positioner`: the [Electron Positioner](https://github.com/jenslind/electron-positioner) instance,
+- `setOption(option, value)`: change an option after menubar is created,
+- `getOption(option)`: get an menubar option,
+- `showWindow()`: show the menubar window,
+- `hideWindow()`: hide the menubar window
 
 ## Options
 
@@ -117,3 +113,4 @@ The return value of the menubar constructor is an event emitter:
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
+- To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](./examples/native/menu) for more information.

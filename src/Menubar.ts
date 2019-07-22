@@ -120,7 +120,7 @@ export class Menubar extends EventEmitter {
    *
    * @param trayPos - The bounds to show the window in.
    */
-  private async showWindow (trayPos?: Electron.Rectangle) {
+  async showWindow (trayPos?: Electron.Rectangle) {
     if (!this.tray) {
       throw new Error('Tray should have been instantiated by now');
     }
