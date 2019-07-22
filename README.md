@@ -62,9 +62,9 @@ Alternatively, see [`examples/hello-world`](/examples/hello-world) folder for a 
 
 The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
-- `app`: the Electron [App](https://electronjs.org/docs/api/app) instance,
-- `window`: the Electron [Browser Window](https://electronjs.org/docs/api/browser-window) instance,
-- `tray`: the Electron [Tray](https://electronjs.org/docs/api/tray) instance,
+- `app`: the [Electron App](https://electronjs.org/docs/api/app) instance,
+- `window`: the [Electron Browser Window](https://electronjs.org/docs/api/browser-window) instance,
+- `tray`: the [Electron Tray](https://electronjs.org/docs/api/tray) instance,
 - `positioner`: the [Electron Positioner](https://github.com/jenslind/electron-positioner) instance,
 - `setOption(option, value)`: change an option after menubar is created,
 - `getOption(option)`: get an menubar option,
