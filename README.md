@@ -4,21 +4,24 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
 
-# Menubar
+<br /><br /><br />
 
-High level way to create menubar desktop applications with Electron.
+<h1 align="center">➖ Menubar</h1>
+<h4 align="center">High level way to create menubar desktop applications with Electron.</h4>
 
-This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and menubar icon and this will handle opening/closing a window when you click/blur.
+<br /><br /><br />
 
-Works on Mac OS, Windows and some Linuxes (patches welcome!) - check out [WORKING_PLATFORMS.md](./WORKING_PLATFORMS.md) to see all the known platforms where menubar works well.
+This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and `menubar` will handle the rest.
 
-**Mac OS**
+✅ Only one dependency, and one peer-dependency.
 
-![screenshot](screenshot.png)
+✅ Works on macOS, Windows and most Linuxes. See [details](./WORKING_PLATFORMS.md).
 
-**Windows**
+✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-![screenshot](screenshot-windows.png)
+| <img src="assets/screenshot-macos-dark.png" height="250px" /> | <img src="assets/screenshot-windows.png" height="250px" /> | <img src="assets/screenshot-linux.png" height="250px" /> |
+| :-----------------------------------------------------------: | :--------------------------------------------------------: | :------------------------------------------------------: |
+|                      macOS Mojave 10.14                       |                         Windows 10                         |                       Ubuntu 18.04                       |
 
 ## Installation
 
@@ -49,7 +52,7 @@ mb.on('ready', () => {
 });
 ```
 
-Then use [`electron`](https://npmjs.org/electron) to run the app:
+Then use `electron` to run the app:
 
 ```bash
 $ electron myApp.js
@@ -57,24 +60,22 @@ $ electron myApp.js
 
 Alternatively, see [`examples/hello-world`](/examples/hello-world) folder for a simple working example.
 
+## `Menubar` Class
+
 The return value of `menubar()` is a `Menubar` class instance, which has these properties:
 
-```
-{
-  app: the electron require('app') instance,
-  window: the electron require('browser-window') instance,
-  tray: the electron require('tray') instance,
-  positioner: the electron-positioner instance,
-  setOption(option, value): change an option after menubar is created,
-  getOption(option): get an menubar option,
-  showWindow(): show the menubar window,
-  hideWindow(): hide the menubar window
-}
-```
+- `app`: the [Electron App](https://electronjs.org/docs/api/app) instance,
+- `window`: the [Electron Browser Window](https://electronjs.org/docs/api/browser-window) instance,
+- `tray`: the [Electron Tray](https://electronjs.org/docs/api/tray) instance,
+- `positioner`: the [Electron Positioner](https://github.com/jenslind/electron-positioner) instance,
+- `setOption(option, value)`: change an option after menubar is created,
+- `getOption(option)`: get an menubar option,
+- `showWindow()`: show the menubar window,
+- `hideWindow()`: hide the menubar window
 
-## Options
+## `menubar()` Options
 
-You can pass an optional options object into the menubar constructor:
+You can pass an optional options object into the `menubar` function:
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
@@ -92,15 +93,10 @@ You can pass an optional options object into the menubar constructor:
 - `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
-- ~`width`~ _deprecated_ - Please use `options.browserWindow.width`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- ~`height`~ _deprecated_ - Please use `options.browserWindow.height`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- ~`x`~ _deprecated_ - Please use `options.browserWindow.x`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- ~`y`~ _deprecated_ - Please use `options.browserWindow.y`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
-- ~`alwaysOnTop`~ _deprecated_ - Please use `options.browserWindow.alwaysOnTop`, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) for more info on this field.
 
 ## Events
 
-The return value of the menubar constructor is an event emitter:
+The `Menubar` class is an event emitter:
 
 - `ready` - when `menubar`'s tray icon has been created and initialized, i.e. when `menubar` is ready to be used. Note: this is different than Electron app's `ready` event, which happens much earlier in the process
 - `create-window` - the line before `new BrowserWindow()` is called
@@ -117,3 +113,4 @@ The return value of the menubar constructor is an event emitter:
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
+- To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](./examples/native/menu) for more information.
