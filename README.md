@@ -4,9 +4,13 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
 
+<br /><br /><br />
+
 # ➖ Menubar
 
 #### High level way to create menubar desktop applications with Electron.
+
+<br /><br /><br />
 
 This module provides boilerplate for setting up a menubar application using Electron. All you have to do is point it at your `index.html` and `menubar` will handle the rest.
 
@@ -16,9 +20,9 @@ This module provides boilerplate for setting up a menubar application using Elec
 
 ✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-| <img src="assets/screenshot-macos.png" height="400px" /> | <img src="assets/screenshot-windows.png" height="400px" /> | <img src="assets/screenshot-windows.png" height="400px" /> |
-| :------------------------------------------------------: | :--------------------------------------------------------: | :--------------------------------------------------------: |
-|                          macOS                           |                          Windows                           |                           Linux                            |
+| <img src="assets/screenshot-macos.png" height="400px" width="auto" /> | <img src="assets/screenshot-windows.png" height="400px" width="auto" /> | <img src="assets/screenshot-windows.png" height="400px" width="auto"/> |
+| :-------------------------------------------------------------------: | :---------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+|                                 macOS                                 |                                 Windows                                 |                                 Linux                                  |
 
 ## Installation
 
