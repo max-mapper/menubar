@@ -6,9 +6,8 @@
 
 <br /><br /><br />
 
-# ➖ Menubar
-
-#### High level way to create menubar desktop applications with Electron.
+<h1 align="center">➖ Menubar</h1>
+<h4 align="center">High level way to create menubar desktop applications with Electron.</h4>
 
 <br /><br /><br />
 
