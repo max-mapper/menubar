@@ -19,9 +19,9 @@ This module provides boilerplate for setting up a menubar application using Elec
 
 ✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-| <img src="assets/screenshot-macos.png" max-width="100px"  /> | <img src="assets/screenshot-windows.png" max-width="100px" /> | <img src="assets/screenshot-linux.png" max-width="100px" /> |
-| :----------------------------------------------------------: | :-----------------------------------------------------------: | :---------------------------------------------------------: |
-|                      macOS Mojave 10.14                      |                          Windows 10                           |                        Ubuntu 18.04                         |
+| <img src="assets/screenshot-macos-dark.png" max-width="100px"  /> | <img src="assets/screenshot-windows.png" max-width="100px" /> | <img src="assets/screenshot-linux.png" max-width="100px" /> |
+| :---------------------------------------------------------------: | :-----------------------------------------------------------: | :---------------------------------------------------------: |
+|                        macOS Mojave 10.14                         |                          Windows 10                           |                        Ubuntu 18.04                         |
 
 ## Installation
 
