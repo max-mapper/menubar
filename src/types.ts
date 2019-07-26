@@ -1,5 +1,8 @@
 import { BrowserWindowConstructorOptions, Tray } from 'electron';
 
+/**
+ * Options for creating a menubar application
+ */
 export interface Options {
   /**
    * If true, the window will not hide on blur.
@@ -52,12 +55,12 @@ export interface Options {
   preloadWindow: boolean;
   /**
    * Configure the visibility of the application dock icon, macOS only. Calls
-   * [`app.dock.hide`](https://electronjs.org/docs/api/app#appdockhide-macos)
+   * [`app.dock.hide`](https://electronjs.org/docs/api/app#appdockhide-macos).
    */
   showDockIcon: boolean;
   /**
    * Makes the window available on all OS X workspaces. Calls
-   * [`setVisibleOnAllWorkspaces`](https://electronjs.org/docs/api/browser-window#winsetvisibleonallworkspacesvisible-options)
+   * [`setVisibleOnAllWorkspaces`](https://electronjs.org/docs/api/browser-window#winsetvisibleonallworkspacesvisible-options).
    */
   showOnAllWorkspaces: boolean;
   /**
@@ -65,7 +68,7 @@ export interface Options {
    */
   showOnRightClick: boolean;
   /**
-   * Menubar tray icon tooltip text. Calls [`tray.setTooltip`](https://electronjs.org/docs/api/tray#traysettooltiptooltip)
+   * Menubar tray icon tooltip text. Calls [`tray.setTooltip`](https://electronjs.org/docs/api/tray#traysettooltiptooltip).
    */
   tooltip: string;
   /**

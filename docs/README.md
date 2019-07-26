@@ -1,3 +1,7 @@
+> **[menubar](README.md)**
+
+[Globals](globals.md) /
+
 [![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
 [![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/@maxogden/menubar)
 [![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
