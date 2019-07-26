@@ -10,6 +10,8 @@ import { Options } from './types';
 
 /**
  * The main Menubar class.
+ *
+ * @noInheritDoc
  */
 export class Menubar extends EventEmitter {
   private _app: Electron.App;

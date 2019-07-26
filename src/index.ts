@@ -7,9 +7,10 @@ export * from './util/getWindowPosition';
 export { Menubar };
 
 /**
- * Factory function to create a menubar application instance
+ * Factory function to create a menubar application
  *
- * @param options - Options for creating a menubar application
+ * @param options - Options for creating a menubar application, see
+ * {@link Options}
  */
 export function menubar (options?: Partial<Options> | string) {
   return new Menubar(app, options);

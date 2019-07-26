@@ -16,14 +16,14 @@
 
 ▸ **menubar**(`options?`: `Partial<Options>` | string): *[Menubar](../classes/_menubar_.menubar.md)*
 
-*Defined in [index.ts:14](https://github.com/maxogden/menubar/blob/be37c74/src/index.ts#L14)*
+*Defined in [index.ts:15](https://github.com/maxogden/menubar/blob/177deba/src/index.ts#L15)*
 
-Factory function to create a menubar application instance
+Factory function to create a menubar application
 
 **Parameters:**
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`options?` | `Partial<Options>` \| string | Options for creating a menubar application  |
+`options?` | `Partial<Options>` \| string | Options for creating a menubar application, see {@link Options}  |
 
 **Returns:** *[Menubar](../classes/_menubar_.menubar.md)*
