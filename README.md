@@ -112,11 +112,13 @@ The `Menubar` class is an event emitter:
 - `after-close` - after the `.window` (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
+## API Docs
+
+See the reference [API Docs](./docs/globals.md).
+
 ## Tips
 
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
 - To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](./examples/native/menu) for more information.
-
-## [API Docs](./docs/globals.md)
