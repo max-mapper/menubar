@@ -114,7 +114,7 @@ The `Menubar` class is an event emitter:
 
 ## API Docs
 
-See the reference [API Docs](./docs/globals.md).
+See the reference [API docs](./docs/globals.md).
 
 ## Tips
 
