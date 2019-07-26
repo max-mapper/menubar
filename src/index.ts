@@ -1,3 +1,11 @@
+/**
+ * Entry point of menubar
+ * @example
+ * ```typescript
+ * import { menubar } from 'menubar';
+ * ```
+ */
+
 import { app } from 'electron';
 
 import { Menubar } from './Menubar';

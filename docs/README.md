@@ -77,6 +77,8 @@ The return value of `menubar()` is a `Menubar` class instance, which has these p
 - `showWindow()`: show the menubar window,
 - `hideWindow()`: hide the menubar window
 
+See the reference [API docs](./docs/classes/_menubar_.menubar.md).
+
 ## `menubar()` Options
 
 You can pass an optional options object into the `menubar` function:
@@ -98,6 +100,8 @@ You can pass an optional options object into the `menubar` function:
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
+See the reference [API docs](./docs/interfaces/_types_.options.md).
+
 ## Events
 
 The `Menubar` class is an event emitter:
@@ -118,3 +122,5 @@ The `Menubar` class is an event emitter:
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
 - To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](./examples/native/menu) for more information.
+
+## [API Docs](./docs/globals.md)
