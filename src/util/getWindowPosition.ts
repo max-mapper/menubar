@@ -1,3 +1,9 @@
+/**
+ * Utilities to get taskbar position and consequently menubar's position
+ */
+
+/** */
+
 import { Tray } from 'electron';
 
 /**

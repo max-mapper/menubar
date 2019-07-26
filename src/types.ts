@@ -1,5 +1,14 @@
+/**
+ * @ignore
+ */
+
+/** */
+
 import { BrowserWindowConstructorOptions, Tray } from 'electron';
 
+/**
+ * Options for creating a menubar application
+ */
 export interface Options {
   /**
    * If true, the window will not hide on blur.
