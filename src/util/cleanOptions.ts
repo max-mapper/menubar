@@ -33,6 +33,10 @@ export function cleanOptions (opts?: Partial<Options> | string) {
   if (typeof opts === 'undefined') {
     options = { browserWindow: {}, dir: app.getAppPath() };
   } else if (typeof opts === 'string') {
+    console.warn(
+      'Passing a string into Menubar is deprecated. Please pass an `Options` object instead.'
+    );
+
     options = { browserWindow: {}, dir: opts };
   } else {
     // These 5 fields are deprecated, we don't want them in `options`
