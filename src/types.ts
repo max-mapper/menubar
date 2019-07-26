@@ -1,9 +1,3 @@
-/**
- * @ignore
- */
-
-/** */
-
 import { BrowserWindowConstructorOptions, Tray } from 'electron';
 
 /**
