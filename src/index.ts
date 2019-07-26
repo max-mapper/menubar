@@ -6,6 +6,8 @@
  * ```
  */
 
+/** */
+
 import { app } from 'electron';
 
 import { Menubar } from './Menubar';

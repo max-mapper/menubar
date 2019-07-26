@@ -16,7 +16,7 @@
 
 ▸ **menubar**(`options?`: `Partial<Options>` | string): *[Menubar](../classes/_menubar_.menubar.md)*
 
-*Defined in [index.ts:23](https://github.com/maxogden/menubar/blob/fa4969a/src/index.ts#L23)*
+*Defined in [index.ts:23](https://github.com/maxogden/menubar/blob/d31ecca/src/index.ts#L23)*
 
 Factory function to create a menubar application
 

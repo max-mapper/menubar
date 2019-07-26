@@ -85,7 +85,7 @@ export class Menubar extends EventEmitter {
   /**
    * Retrieve a menubar option.
    *
-   * @param key - The option key to retrieve.
+   * @param key - The option key to retrieve, see {@link Options}.
    */
   getOption (key: keyof Options) {
     return this._options[key];
@@ -110,7 +110,7 @@ export class Menubar extends EventEmitter {
   /**
    * Change an option after menubar is created.
    *
-   * @param key - The option key to modify.
+   * @param key - The option key to modify, see {@link Options}.
    * @param value - The value to set.
    */
   setOption (key: keyof Options, value: any) {

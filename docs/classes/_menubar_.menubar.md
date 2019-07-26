@@ -38,7 +38,7 @@ The main Menubar class.
 
 \+ **new Menubar**(`app`: `App`, `options?`: `Partial<Options>` | string): *[Menubar](_menubar_.menubar.md)*
 
-*Defined in [Menubar.ts:23](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L23)*
+*Defined in [Menubar.ts:23](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L23)*
 
 **Parameters:**
 
@@ -55,7 +55,7 @@ Name | Type |
 
 • **get app**(): *`App`*
 
-*Defined in [Menubar.ts:46](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L46)*
+*Defined in [Menubar.ts:46](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L46)*
 
 The Electron [App](https://electronjs.org/docs/api/app)
 instance.
@@ -68,7 +68,7 @@ ___
 
 • **get positioner**(): *any*
 
-*Defined in [Menubar.ts:54](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L54)*
+*Defined in [Menubar.ts:54](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L54)*
 
 The [electron-positioner](https://github.com/jenslind/electron-positioner)
 instance.
@@ -81,7 +81,7 @@ ___
 
 • **get tray**(): *`Tray`*
 
-*Defined in [Menubar.ts:67](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L67)*
+*Defined in [Menubar.ts:67](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L67)*
 
 The Electron [Tray](https://electronjs.org/docs/api/tray) instance.
 
@@ -93,7 +93,7 @@ ___
 
 • **get window**(): *undefined | `BrowserWindow`*
 
-*Defined in [Menubar.ts:81](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L81)*
+*Defined in [Menubar.ts:81](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L81)*
 
 The Electron [BrowserWindow](https://electronjs.org/docs/api/browser-window)
 instance, if it's present.
@@ -106,7 +106,7 @@ instance, if it's present.
 
 ▸ **getOption**(`key`: keyof Options): *undefined | string | number | false | true | `BrowserWindowConstructorOptions` | `NativeImage` | `Tray`*
 
-*Defined in [Menubar.ts:90](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L90)*
+*Defined in [Menubar.ts:90](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L90)*
 
 Retrieve a menubar option.
 
@@ -114,7 +114,7 @@ Retrieve a menubar option.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`key` | keyof Options | The option key to retrieve.  |
+`key` | keyof Options | The option key to retrieve, see [Options](../interfaces/_types_.options.md).  |
 
 **Returns:** *undefined | string | number | false | true | `BrowserWindowConstructorOptions` | `NativeImage` | `Tray`*
 
@@ -124,7 +124,7 @@ ___
 
 ▸ **hideWindow**(): *void*
 
-*Defined in [Menubar.ts:97](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L97)*
+*Defined in [Menubar.ts:97](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L97)*
 
 Hide the menubar window.
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **setOption**(`key`: keyof Options, `value`: any): *void*
 
-*Defined in [Menubar.ts:116](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L116)*
+*Defined in [Menubar.ts:116](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L116)*
 
 Change an option after menubar is created.
 
@@ -144,7 +144,7 @@ Change an option after menubar is created.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`key` | keyof Options | The option key to modify. |
+`key` | keyof Options | The option key to modify, see [Options](../interfaces/_types_.options.md). |
 `value` | any | The value to set.  |
 
 **Returns:** *void*
@@ -155,7 +155,7 @@ ___
 
 ▸ **showWindow**(`trayPos?`: `Electron.Rectangle`): *`Promise<void>`*
 
-*Defined in [Menubar.ts:125](https://github.com/maxogden/menubar/blob/fa4969a/src/Menubar.ts#L125)*
+*Defined in [Menubar.ts:125](https://github.com/maxogden/menubar/blob/d31ecca/src/Menubar.ts#L125)*
 
 Show the menubar window.
 
