@@ -19,7 +19,7 @@ Utilities to get taskbar position and consequently menubar's position
 
 ▸ **getWindowPosition**(`tray`: `Tray`): *undefined | "trayBottomLeft" | "trayCenter" | "trayBottomCenter" | "topRight" | "bottomRight"*
 
-*Defined in [util/getWindowPosition.ts:43](https://github.com/maxogden/menubar/blob/e2b8e16/src/util/getWindowPosition.ts#L43)*
+*Defined in [util/getWindowPosition.ts:43](https://github.com/maxogden/menubar/blob/5b64c5c/src/util/getWindowPosition.ts#L43)*
 
 Depending on where the taskbar is, determine where the window should be
 positioned.
@@ -38,7 +38,7 @@ ___
 
 ▸ **taskbarLocation**(`tray`: `Tray`): *"top" | "bottom" | "left" | "right"*
 
-*Defined in [util/getWindowPosition.ts:16](https://github.com/maxogden/menubar/blob/e2b8e16/src/util/getWindowPosition.ts#L16)*
+*Defined in [util/getWindowPosition.ts:16](https://github.com/maxogden/menubar/blob/5b64c5c/src/util/getWindowPosition.ts#L16)*
 
 Determine taskbard location: "top", "bottom", "left" or "right".
 
