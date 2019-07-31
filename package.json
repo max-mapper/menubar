@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
-    "electron": "^5.0.1",
+    "electron": "^6.0.0",
     "jest": "^24.5.0",
     "rimraf": "^2.6.3",
     "standard": "^5.4.1",
@@ -59,6 +59,6 @@
     "typescript": "^3.3.4000"
   },
   "peerDependencies": {
-    "electron": "^4.1.1 || ^5.0.1"
+    "electron": "^4.1.1 || ^5.0.1 || ^6.0.0"
   }
 }
