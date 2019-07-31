@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.7](https://github.com/maxogden/menubar/compare/v6.0.6...v6.0.7) (2019-07-31)
+
+
+### Bug Fixes
+
+* Support Electron 6 ([#242](https://github.com/maxogden/menubar/issues/242)) ([1fd9bd7](https://github.com/maxogden/menubar/commit/1fd9bd7))
+
+
+
 ## [6.0.6](https://github.com/maxogden/menubar/compare/v6.0.5...v6.0.6) (2019-07-02)
 
 
