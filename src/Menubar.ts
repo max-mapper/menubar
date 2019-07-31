@@ -251,10 +251,10 @@ export class Menubar extends EventEmitter {
    * @param bounds
    */
   private async clicked (
-    event: Electron.KeyboardEvent,
-    bounds: Electron.Rectangle
+    event?: Electron.KeyboardEvent,
+    bounds?: Electron.Rectangle
   ) {
-    if (event.shiftKey || event.ctrlKey || event.metaKey) {
+    if (event && (event.shiftKey || event.ctrlKey || event.metaKey)) {
       return this.hideWindow();
     }
     if (this._browserWindow && this._browserWindow.isVisible()) {
