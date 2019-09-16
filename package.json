@@ -42,9 +42,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "electron-positioner": "^4.1.0",
-    "typedoc": "^0.15.0-0",
-    "typedoc-plugin-markdown": "^2.0.11"
+    "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
@@ -55,6 +53,8 @@
     "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "tslint-config-semistandard": "^7.0.0",
+    "typedoc": "^0.15.0-0",
+    "typedoc-plugin-markdown": "^2.0.11",
     "typedoc-plugin-no-inherit": "^1.1.9",
     "typescript": "^3.3.4000"
   },
