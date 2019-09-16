@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file. See [standa
 ## [6.0.8](https://github.com/maxogden/menubar/compare/v6.0.7...v6.0.8) (2019-09-16)
 
 
+### Bug Fixes
+
+* Move doc tool to `devDependencies` ([#245](https://github.com/maxogden/menubar/issues/245)) ([2756c7a](https://github.com/maxogden/menubar/commit/2756c7a))
+
+
 
 ## [6.0.7](https://github.com/maxogden/menubar/compare/v6.0.6...v6.0.7) (2019-07-31)
 
