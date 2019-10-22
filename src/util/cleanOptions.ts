@@ -23,12 +23,41 @@ const DEPRECATED = {
 };
 
 /**
+ * Helper function to deal with backwards-compatibility of the following fields:
+ * x, y, height, width, alwaysOnTop
+ */
+function backwardCompat(
+  opts: Partial<Options> | string | undefined,
+  options: Partial<Options>
+) {
+  return function(field: string): void {
+    if (opts === undefined || typeof opts === 'string') {
+      return;
+    }
+
+    const _field = field as keyof typeof DEPRECATED;
+    if (opts[_field]) {
+      console.warn(
+        `Passing 'options.${field}' is deprecated, please use 'options.browserWindow.${field}'`
+      );
+      // eslint-disable-next-line
+      // @ts-ignore
+      // eslint-disable-next-line
+      options.browserWindow![_field] =
+        opts.browserWindow && opts.browserWindow[_field] !== undefined
+          ? opts.browserWindow[_field]
+          : opts[_field];
+    }
+  };
+}
+
+/**
  * Take as input some options, and return a sanitized version of it.
  *
  * @param opts - The options to clean.
  * @ignore
  */
-export function cleanOptions (opts?: Partial<Options> | string) {
+export function cleanOptions(opts?: Partial<Options> | string): Options {
   let options: Partial<Options>;
   if (typeof opts === 'undefined') {
     options = { browserWindow: {}, dir: app.getAppPath() };
@@ -40,7 +69,7 @@ export function cleanOptions (opts?: Partial<Options> | string) {
     options = { browserWindow: {}, dir: opts };
   } else {
     // These 5 fields are deprecated, we don't want them in `options`
-    // tslint:disable-next-line
+    // eslint-disable-next-line
     const { alwaysOnTop, height, width, x, y, ...rest } = opts;
     options = { ...rest };
   }
@@ -83,30 +112,4 @@ export function cleanOptions (opts?: Partial<Options> | string) {
       : DEFAULT_WINDOW_HEIGHT;
 
   return options as Options;
-}
-
-/**
- * Helper function to deal with backwards-compatibility of the following fields:
- * x, y, height, width, alwaysOnTop
- */
-function backwardCompat (
-  opts: Partial<Options> | string | undefined,
-  options: Partial<Options>
-) {
-  return function (field: string) {
-    if (opts === undefined || typeof opts === 'string') {
-      return;
-    }
-
-    const _field = field as keyof typeof DEPRECATED;
-    if (opts[_field]) {
-      console.warn(
-        `Passing 'options.${field}' is deprecated, please use 'options.browserWindow.${field}'`
-      );
-      options.browserWindow![_field] =
-        opts.browserWindow && opts.browserWindow[_field] !== undefined
-          ? opts.browserWindow[_field]
-          : opts[_field];
-    }
-  };
 }

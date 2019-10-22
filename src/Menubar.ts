@@ -18,11 +18,13 @@ export class Menubar extends EventEmitter {
   private _browserWindow?: BrowserWindow;
   private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
   private _options: Options;
-  private _positioner: any; // TODO https://github.com/jenslind/electron-positioner/issues/15
+  // TODO https://github.com/jenslind/electron-positioner/issues/15
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _positioner: any;
   private _supportsTrayHighlightState = false;
   private _tray?: Tray;
 
-  constructor (app: Electron.App, options?: Partial<Options> | string) {
+  constructor(app: Electron.App, options?: Partial<Options> | string) {
     super();
     this._app = app;
     this._options = cleanOptions(options);
@@ -43,7 +45,7 @@ export class Menubar extends EventEmitter {
    * The Electron [App](https://electronjs.org/docs/api/app)
    * instance.
    */
-  get app () {
+  get app(): Electron.App {
     return this._app;
   }
 
@@ -51,7 +53,8 @@ export class Menubar extends EventEmitter {
    * The [electron-positioner](https://github.com/jenslind/electron-positioner)
    * instance.
    */
-  get positioner () {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  get positioner(): any {
     if (!this._positioner) {
       throw new Error(
         'Please access `this.positioner` after the `after-create-window` event has fired.'
@@ -64,7 +67,7 @@ export class Menubar extends EventEmitter {
   /**
    * The Electron [Tray](https://electronjs.org/docs/api/tray) instance.
    */
-  get tray () {
+  get tray(): Tray {
     if (!this._tray) {
       throw new Error(
         'Please access `this.tray` after the `ready` event has fired.'
@@ -78,7 +81,7 @@ export class Menubar extends EventEmitter {
    * The Electron [BrowserWindow](https://electronjs.org/docs/api/browser-window)
    * instance, if it's present.
    */
-  get window () {
+  get window(): BrowserWindow | undefined {
     return this._browserWindow;
   }
 
@@ -87,14 +90,14 @@ export class Menubar extends EventEmitter {
    *
    * @param key - The option key to retrieve, see {@link Options}.
    */
-  getOption (key: keyof Options) {
+  getOption<K extends keyof Options>(key: K): Options[K] {
     return this._options[key];
   }
 
   /**
    * Hide the menubar window.
    */
-  hideWindow () {
+  hideWindow(): void {
     if (this._supportsTrayHighlightState) {
       this.tray.setHighlightMode('never');
     }
@@ -113,7 +116,7 @@ export class Menubar extends EventEmitter {
    * @param key - The option key to modify, see {@link Options}.
    * @param value - The value to set.
    */
-  setOption (key: keyof Options, value: any) {
+  setOption<K extends keyof Options>(key: K, value: Options[K]): void {
     this._options[key] = value;
   }
 
@@ -122,7 +125,7 @@ export class Menubar extends EventEmitter {
    *
    * @param trayPos - The bounds to show the window in.
    */
-  async showWindow (trayPos?: Electron.Rectangle) {
+  async showWindow(trayPos?: Electron.Rectangle): Promise<void> {
     if (!this.tray) {
       throw new Error('Tray should have been instantiated by now');
     }
@@ -201,7 +204,7 @@ export class Menubar extends EventEmitter {
     return;
   }
 
-  private async appReady () {
+  private async appReady(): Promise<void> {
     if (this.app.dock && !this._options.showDockIcon) {
       this.app.dock.hide();
     }
@@ -221,7 +224,10 @@ export class Menubar extends EventEmitter {
     if (!this.tray) {
       throw new Error('Tray has been initialized above');
     }
-    this.tray.on(defaultClickEvent as any, this.clicked.bind(this));
+    this.tray.on(
+      defaultClickEvent as Parameters<Tray['on']>[0],
+      this.clicked.bind(this)
+    );
     this.tray.on('double-click', this.clicked.bind(this));
     this.tray.setToolTip(this._options.tooltip);
 
@@ -250,10 +256,10 @@ export class Menubar extends EventEmitter {
    * @param e
    * @param bounds
    */
-  private async clicked (
+  private async clicked(
     event?: Electron.KeyboardEvent,
     bounds?: Electron.Rectangle
-  ) {
+  ): Promise<void> {
     if (event && (event.shiftKey || event.ctrlKey || event.metaKey)) {
       return this.hideWindow();
     }
@@ -265,7 +271,7 @@ export class Menubar extends EventEmitter {
     await this.showWindow(this._cachedBounds);
   }
 
-  private async createWindow () {
+  private async createWindow(): Promise<void> {
     this.emit('create-window');
 
     // We add some default behavior for menubar's browserWindow
@@ -278,14 +284,14 @@ export class Menubar extends EventEmitter {
       this._options.browserWindow instanceof BrowserWindow
         ? this._options.browserWindow
         : new BrowserWindow({
-          ...defaults,
-          ...this._options.browserWindow,
+            ...defaults,
+            ...this._options.browserWindow,
             // For backward-compat, we keep allowing user doing e.g.:
             // `new Menubar({ nodeIntegration: true })`
             // and Menubar will pass down `nodeIntegration` to the BrowserWindow
             // constructor. But we should remove this.
-          ...this._options
-        });
+            ...this._options
+          });
 
     this._positioner = new Positioner(this._browserWindow);
 
@@ -308,7 +314,7 @@ export class Menubar extends EventEmitter {
     this.emit('after-create-window');
   }
 
-  private windowClear () {
+  private windowClear(): void {
     this._browserWindow = undefined;
     this.emit('after-close');
   }

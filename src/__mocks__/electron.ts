@@ -4,29 +4,29 @@ export const MOCK_APP_GETAPPPATH = 'mock.app.getAppPath';
 
 export const app = {
   getAppPath: jest.fn(() => MOCK_APP_GETAPPPATH),
-  isReady: () => Promise.resolve()
+  isReady: (): Promise<void> => Promise.resolve()
 };
 
 export class BrowserWindow {
-  loadURL () {
+  loadURL(): void {
     // Do nothing
   }
 
-  on () {
+  on(): void {
     // Do nothing
   }
 
-  setVisibleOnAllWorkspaces () {
+  setVisibleOnAllWorkspaces(): void {
     // Do nothing
   }
 }
 
 export class Tray {
-  on () {
+  on(): void {
     // Do nothing
   }
 
-  setToolTip () {
+  setToolTip(): void {
     // Do nothing
   }
 }
