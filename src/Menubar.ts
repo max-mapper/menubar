@@ -21,10 +21,9 @@ export class Menubar extends EventEmitter {
   // TODO https://github.com/jenslind/electron-positioner/issues/15
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _positioner: any;
-  private _supportsTrayHighlightState = false;
   private _tray?: Tray;
 
-  constructor(app: Electron.App, options?: Partial<Options> | string) {
+  constructor(app: Electron.App, options?: Partial<Options>) {
     super();
     this._app = app;
     this._options = cleanOptions(options);
@@ -98,9 +97,6 @@ export class Menubar extends EventEmitter {
    * Hide the menubar window.
    */
   hideWindow(): void {
-    if (this._supportsTrayHighlightState) {
-      this.tray.setHighlightMode('never');
-    }
     if (!this._browserWindow || !this._browserWindow.isVisible()) {
       return;
     }
@@ -130,9 +126,6 @@ export class Menubar extends EventEmitter {
       throw new Error('Tray should have been instantiated by now');
     }
 
-    if (this._supportsTrayHighlightState) {
-      this.tray.setHighlightMode('always');
-    }
     if (!this._browserWindow) {
       await this.createWindow();
     }
@@ -236,13 +229,6 @@ export class Menubar extends EventEmitter {
       this._options.windowPosition = getWindowPosition(this.tray);
     }
 
-    try {
-      this.tray.setHighlightMode('never');
-      this._supportsTrayHighlightState = true;
-    } catch (e) {
-      /* Do nothing */
-    }
-
     if (this._options.preloadWindow) {
       await this.createWindow();
     }
@@ -274,24 +260,17 @@ export class Menubar extends EventEmitter {
   private async createWindow(): Promise<void> {
     this.emit('create-window');
 
-    // We add some default behavior for menubar's browserWindow
+    // We add some default behavior for menubar's browserWindow, to make it
+    // look like a menubar
     const defaults = {
       show: false, // Don't show it at first
       frame: false // Remove window frame
     };
 
-    this._browserWindow =
-      this._options.browserWindow instanceof BrowserWindow
-        ? this._options.browserWindow
-        : new BrowserWindow({
-            ...defaults,
-            ...this._options.browserWindow,
-            // For backward-compat, we keep allowing user doing e.g.:
-            // `new Menubar({ nodeIntegration: true })`
-            // and Menubar will pass down `nodeIntegration` to the BrowserWindow
-            // constructor. But we should remove this.
-            ...this._options
-          });
+    this._browserWindow = new BrowserWindow({
+      ...defaults,
+      ...this._options.browserWindow
+    });
 
     this._positioner = new Positioner(this._browserWindow);
 

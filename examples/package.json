@@ -1,7 +1,7 @@
 {
   "name": "example-menubar",
   "version": "0.1.0",
-  "description": "Example menubar electron app",
+  "description": "Examples of menubar electron apps",
   "private": true,
   "workspaces": [
     "arrow",
@@ -9,6 +9,6 @@
     "native-menu"
   ],
   "devDependencies": {
-    "electron": "^6.0.0"
+    "electron": "^7.0.0"
   }
 }

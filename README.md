@@ -113,6 +113,14 @@ The `Menubar` class is an event emitter:
 - `after-close` - after the `.window` (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
+## Compatibility with Electron
+
+| menubar  | Electron                                                                                                                                             |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7.x.x    | 7.x.x                                                                                                                                                |
+| 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x (not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron)) |
+| <= 5.x.x | Please, _please_ don't use these old versions                                                                                                        |
+
 ## API Docs
 
 See the reference [API docs](./docs/globals.md).
