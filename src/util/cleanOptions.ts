@@ -13,65 +13,18 @@ import { Options } from '../types';
 const DEFAULT_WINDOW_HEIGHT = 400;
 const DEFAULT_WINDOW_WIDTH = 400;
 
-// Deprecated fields on Options
-const DEPRECATED = {
-  alwaysOnTop: true,
-  height: true,
-  width: true,
-  x: true,
-  y: true
-};
-
-/**
- * Helper function to deal with backwards-compatibility of the following fields:
- * x, y, height, width, alwaysOnTop
- */
-function backwardCompat(
-  opts: Partial<Options> | string | undefined,
-  options: Partial<Options>
-) {
-  return function(field: string): void {
-    if (opts === undefined || typeof opts === 'string') {
-      return;
-    }
-
-    const _field = field as keyof typeof DEPRECATED;
-    if (opts[_field]) {
-      console.warn(
-        `Passing 'options.${field}' is deprecated, please use 'options.browserWindow.${field}'`
-      );
-      // eslint-disable-next-line
-      // @ts-ignore
-      // eslint-disable-next-line
-      options.browserWindow![_field] =
-        opts.browserWindow && opts.browserWindow[_field] !== undefined
-          ? opts.browserWindow[_field]
-          : opts[_field];
-    }
-  };
-}
-
 /**
  * Take as input some options, and return a sanitized version of it.
  *
  * @param opts - The options to clean.
  * @ignore
  */
-export function cleanOptions(opts?: Partial<Options> | string): Options {
+export function cleanOptions(opts?: Partial<Options>): Options {
   let options: Partial<Options>;
-  if (typeof opts === 'undefined') {
-    options = { browserWindow: {}, dir: app.getAppPath() };
-  } else if (typeof opts === 'string') {
-    console.warn(
-      'Passing a string into Menubar is deprecated. Please pass an `Options` object instead.'
-    );
-
-    options = { browserWindow: {}, dir: opts };
+  if (!opts) {
+    options = { browserWindow: {} };
   } else {
-    // These 5 fields are deprecated, we don't want them in `options`
-    // eslint-disable-next-line
-    const { alwaysOnTop, height, width, x, y, ...rest } = opts;
-    options = { ...rest };
+    options = { ...opts };
   }
 
   if (!options.dir) {
@@ -97,9 +50,6 @@ export function cleanOptions(opts?: Partial<Options> | string): Options {
   if (!options.browserWindow) {
     options.browserWindow = {};
   }
-
-  // Backward-compat
-  Object.keys(DEPRECATED).forEach(backwardCompat(opts, options));
 
   // Set width/height on options to be usable before the window is created
   options.browserWindow.width =

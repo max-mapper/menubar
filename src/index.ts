@@ -22,6 +22,6 @@ export { Menubar };
  * @param options - Options for creating a menubar application, see
  * {@link Options}
  */
-export function menubar(options?: Partial<Options> | string): Menubar {
+export function menubar(options?: Partial<Options>): Menubar {
   return new Menubar(app, options);
 }
