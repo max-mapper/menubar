@@ -17,9 +17,9 @@ Utilities to get taskbar position and consequently menubar's position
 
 ###  getWindowPosition
 
-▸ **getWindowPosition**(`tray`: `Tray`): *undefined | "trayBottomLeft" | "trayCenter" | "trayBottomCenter" | "topRight" | "bottomRight"*
+▸ **getWindowPosition**(`tray`: `Tray`): *`WindowPosition`*
 
-*Defined in [util/getWindowPosition.ts:43](https://github.com/maxogden/menubar/blob/d31ecca/src/util/getWindowPosition.ts#L43)*
+*Defined in [util/getWindowPosition.ts:52](https://github.com/maxogden/menubar/blob/a8f1477/src/util/getWindowPosition.ts#L52)*
 
 Depending on where the taskbar is, determine where the window should be
 positioned.
@@ -30,15 +30,15 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `tray` | `Tray` | The Electron Tray instance.  |
 
-**Returns:** *undefined | "trayBottomLeft" | "trayCenter" | "trayBottomCenter" | "topRight" | "bottomRight"*
+**Returns:** *`WindowPosition`*
 
 ___
 
 ###  taskbarLocation
 
-▸ **taskbarLocation**(`tray`: `Tray`): *"top" | "bottom" | "left" | "right"*
+▸ **taskbarLocation**(`tray`: `Tray`): *`TaskbarLocation`*
 
-*Defined in [util/getWindowPosition.ts:16](https://github.com/maxogden/menubar/blob/d31ecca/src/util/getWindowPosition.ts#L16)*
+*Defined in [util/getWindowPosition.ts:18](https://github.com/maxogden/menubar/blob/a8f1477/src/util/getWindowPosition.ts#L18)*
 
 Determine taskbard location: "top", "bottom", "left" or "right".
 
@@ -50,4 +50,4 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `tray` | `Tray` | The Electron Tray instance.  |
 
-**Returns:** *"top" | "bottom" | "left" | "right"*
+**Returns:** *`TaskbarLocation`*
