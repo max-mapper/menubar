@@ -20,12 +20,7 @@ const DEFAULT_WINDOW_WIDTH = 400;
  * @ignore
  */
 export function cleanOptions(opts?: Partial<Options>): Options {
-  let options: Partial<Options>;
-  if (!opts) {
-    options = { browserWindow: {} };
-  } else {
-    options = { ...opts };
-  }
+  const options: Partial<Options> = { ...opts };
 
   if (!options.dir) {
     options.dir = app.getAppPath();
@@ -53,6 +48,8 @@ export function cleanOptions(opts?: Partial<Options>): Options {
 
   // Set width/height on options to be usable before the window is created
   options.browserWindow.width =
+    // Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
+    // that users can put a 0 width
     options.browserWindow.width !== undefined
       ? options.browserWindow.width
       : DEFAULT_WINDOW_WIDTH;
