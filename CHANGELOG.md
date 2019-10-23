@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [7.0.0](https://github.com/maxogden/menubar/compare/v6.0.8...v7.0.0) (2019-10-23)
+
+
+* feat!: Support Electron 7 (#250) ([b54dce5](https://github.com/maxogden/menubar/commit/b54dce5)), closes [#250](https://github.com/maxogden/menubar/issues/250)
+
+
+### BREAKING CHANGES
+
+* - Drop support for Electron 4, 5, and 6.
+- Remove deprecated passing string argument to `menubar`, use `dir` field instead
+```diff
+- menubar('/home/me/MY_ABSOLUTE_PATH');
++ menubar({ dir: '/home/me/MY_ABSOLUTE_PATH' });
+```
+- Remove deprecated passing `x`, `y`, `height`, `width`, `alwaysOnTop` fields to `menubar`, pass them instead into the `browserWindow` field
+```diff
+- menubar({
+-   x: 12,
+-   y: 34,
+-   height: 500,
+-   width: 320,
+-   alwaysOnTop: true
+- });
++ menubar({
++   browserWindow: {
++     x: 12,
++     y: 34,
++     height: 500,
++     width: 320,
++     alwaysOnTop: true
++  }
++ });
+```
+
+
+
 ## [6.0.8](https://github.com/maxogden/menubar/compare/v6.0.7...v6.0.8) (2019-09-16)
 
 
