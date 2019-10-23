@@ -23,7 +23,7 @@ import { menubar } from 'menubar';
 
 ▸ **menubar**(`options?`: `Partial<Options>`): *[Menubar](../classes/_menubar_.menubar.md)*
 
-*Defined in [index.ts:25](https://github.com/maxogden/menubar/blob/b54dce5/src/index.ts#L25)*
+*Defined in [index.ts:25](https://github.com/maxogden/menubar/blob/b17af72/src/index.ts#L25)*
 
 Factory function to create a menubar application
 

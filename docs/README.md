@@ -122,7 +122,7 @@ The `Menubar` class is an event emitter:
 | menubar  | Electron                | Notes                                                                                                                      |
 | -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 7.x.x    | 7.x.x                   |
-| 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x | not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
+| 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
 | <= 5.x.x | <= 3.x.x                | Please, _please_ don't use these old versions                                                                              |
 
 ## API Docs
