@@ -5,8 +5,9 @@
 [![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
 [![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/@maxogden/menubar)
 [![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
+[![devDependencies Status](https://david-dm.org/maxogden/menubar/dev-status.svg)](https://david-dm.org/maxogden/menubar?type=dev)![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
+[![Buy me a tree](https://img.shields.io/badge/Buy%20me%20a%20tree-%F0%9F%8C%B3-lightgreen)](https://offset.earth/amaurymartiny)
 
 <br /><br /><br />
 
@@ -81,7 +82,7 @@ See the reference [API docs](./docs/classes/_menubar_.menubar.md).
 
 ## `menubar()` Options
 
-You can pass an optional options object into the `menubar` function:
+You can pass an optional options object into the `menubar({ ... })` function:
 
 - `dir` (default `process.cwd()`) - the app source directory
 - `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
@@ -116,6 +117,14 @@ The `Menubar` class is an event emitter:
 - `after-close` - after the `.window` (BrowserWindow) property has been deleted
 - `focus-lost` - emitted if always-on-top option is set and the user clicks away
 
+## Compatibility with Electron
+
+| menubar  | Electron                | Notes                                                                                                                      |
+| -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| 7.x.x    | 7.x.x                   |
+| 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x | not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
+| <= 5.x.x | <= 3.x.x                | Please, _please_ don't use these old versions                                                                              |
+
 ## API Docs
 
 See the reference [API docs](./docs/globals.md).
@@ -125,4 +134,4 @@ See the reference [API docs](./docs/globals.md).
 - Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
-- To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](./examples/native/menu) for more information.
+- To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](https://github.com/maxogden/menubar/tree/master/examples/native-menu) for more information.
