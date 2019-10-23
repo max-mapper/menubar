@@ -5,8 +5,8 @@
 /** */
 
 import { app } from 'electron';
-import * as path from 'path';
-import * as url from 'url';
+import path from 'path';
+import url from 'url';
 
 import { Options } from '../types';
 

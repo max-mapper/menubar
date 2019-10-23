@@ -1,8 +1,8 @@
 import { Tray, BrowserWindow } from 'electron';
 import { EventEmitter } from 'events';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as Positioner from 'electron-positioner';
+import fs from 'fs';
+import path from 'path';
+import Positioner from 'electron-positioner';
 
 import { cleanOptions } from './util/cleanOptions';
 import { getWindowPosition } from './util/getWindowPosition';
