@@ -10,13 +10,7 @@ export interface Options {
    * @example
    * ```typescript
    * const options = { height: 640, width: 480 };
-   * const mb = new Menubar({
-   *   browserWindow: new BrowserWindow(options)
-   * });
    *
-   * // The above is equivalent to
-   *
-   * const options = { height: 640, width: 480 };
    * const mb = new Menubar({
    *   browserWindow: options
    * });
