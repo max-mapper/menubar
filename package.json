@@ -37,7 +37,7 @@
     "prebuild": "rimraf lib/",
     "build": "tsc",
     "docs": "typedoc",
-    "lint": "tslint --project .",
+    "lint": "tsc --noEmit && eslint . --ext ts",
     "test": "jest"
   },
   "types": "lib/index.d.ts",
@@ -45,18 +45,16 @@
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
+    "@amaurymartiny/config": "^1.0.4",
     "@types/jest": "^24.0.11",
     "electron": "^6.0.0",
     "jest": "^24.5.0",
     "rimraf": "^2.6.3",
-    "standard": "^5.4.1",
     "ts-jest": "^24.0.0",
-    "tslint": "^5.14.0",
-    "tslint-config-semistandard": "^7.0.0",
     "typedoc": "^0.15.0-0",
     "typedoc-plugin-markdown": "^2.0.11",
     "typedoc-plugin-no-inherit": "^1.1.9",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.6.4"
   },
   "peerDependencies": {
     "electron": "^4.1.1 || ^5.0.1 || ^6.0.0"

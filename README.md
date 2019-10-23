@@ -3,7 +3,7 @@
 [![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
-[![](https://img.shields.io/badge/Buy%20me%20a%20tree-%F0%9F%8C%B3-lightgreen)](https://offset.earth/amaurymartiny)
+[![Buy me a tree](https://img.shields.io/badge/Buy%20me%20a%20tree-%F0%9F%8C%B3-lightgreen)](https://offset.earth/amaurymartiny)
 
 <br /><br /><br />
 

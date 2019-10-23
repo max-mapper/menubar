@@ -6,6 +6,8 @@
 
 import { Tray } from 'electron';
 
+type TaskbarLocation = 'top' | 'bottom' | 'left' | 'right';
+
 /**
  * Determine taskbard location: "top", "bottom", "left" or "right".
  *
@@ -13,7 +15,7 @@ import { Tray } from 'electron';
  *
  * @param tray - The Electron Tray instance.
  */
-export function taskbarLocation (tray: Tray) {
+export function taskbarLocation(tray: Tray): TaskbarLocation {
   const trayBounds = tray.getBounds();
 
   // Determine taskbar location
@@ -34,13 +36,20 @@ export function taskbarLocation (tray: Tray) {
   return 'bottom';
 }
 
+type WindowPosition =
+  | 'trayCenter'
+  | 'topRight'
+  | 'trayBottomCenter'
+  | 'trayBottomLeft'
+  | 'bottomRight';
+
 /**
  * Depending on where the taskbar is, determine where the window should be
  * positioned.
  *
  * @param tray - The Electron Tray instance.
  */
-export function getWindowPosition (tray: Tray) {
+export function getWindowPosition(tray: Tray): WindowPosition {
   switch (process.platform) {
     // macOS
     // Supports top taskbars
@@ -69,5 +78,8 @@ export function getWindowPosition (tray: Tray) {
       if (traySide === 'right') {
         return 'bottomRight';
       }
+    default:
+      // When we really don't know, we just show the menubar on the top-right
+      return 'topRight';
   }
 }

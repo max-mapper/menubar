@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { app, BrowserWindow, Tray } from 'electron';
 
 import { Menubar } from './Menubar';

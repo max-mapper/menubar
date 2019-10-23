@@ -3,8 +3,8 @@ os:
   - linux
   - osx
 node_js:
-  - '10'
-  - '11'
+  - '12'
+  - '13'
 cache:
   yarn: true
   directories:
