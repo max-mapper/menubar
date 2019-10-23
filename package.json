@@ -47,7 +47,7 @@
   "devDependencies": {
     "@amaurymartiny/config": "^1.0.4",
     "@types/jest": "^24.0.11",
-    "electron": "^6.0.0",
+    "electron": "^7.0.0",
     "jest": "^24.5.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
@@ -57,6 +57,6 @@
     "typescript": "^3.6.4"
   },
   "peerDependencies": {
-    "electron": "^4.1.1 || ^5.0.1 || ^6.0.0"
+    "electron": "^7.0.0"
   }
 }
