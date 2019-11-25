@@ -78,10 +78,7 @@ export function getWindowPosition(tray: Tray): WindowPosition {
       if (traySide === 'right') {
         return 'bottomRight';
       }
-
-      break;
     }
-    default:
   }
 
   // When we really don't know, we just show the menubar on the top-right
