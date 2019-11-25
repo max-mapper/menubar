@@ -29,7 +29,11 @@ export interface Options {
    */
   icon?: string | Electron.NativeImage;
   /**
-   * The html to load for the pop up window.
+   * The URL to load the menubar's browserWindow with. The url can be a remote
+   * address (e.g. `http://`) or a path to a local HTML file using the
+   * `file://` protocol.
+   * @default `file:// + options.dir + index.html`
+   * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
    */
   index: string;
   /**

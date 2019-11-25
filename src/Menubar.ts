@@ -1,12 +1,12 @@
-import { Tray, BrowserWindow } from 'electron';
+import { BrowserWindow, Tray } from 'electron';
+import Positioner from 'electron-positioner';
 import { EventEmitter } from 'events';
 import fs from 'fs';
 import path from 'path';
-import Positioner from 'electron-positioner';
 
+import { Options } from './types';
 import { cleanOptions } from './util/cleanOptions';
 import { getWindowPosition } from './util/getWindowPosition';
-import { Options } from './types';
 
 /**
  * The main Menubar class.
@@ -34,9 +34,9 @@ export class Menubar extends EventEmitter {
         this.appReady().catch(err => console.error('menubar: ', err))
       );
     } else {
-      app.on('ready', () =>
-        this.appReady().catch(err => console.error('menubar: ', err))
-      );
+      app.on('ready', () => {
+        this.appReady().catch(err => console.error('menubar: ', err));
+      });
     }
   }
 
@@ -219,8 +219,10 @@ export class Menubar extends EventEmitter {
     }
     this.tray.on(
       defaultClickEvent as Parameters<Tray['on']>[0],
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.clicked.bind(this)
     );
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.tray.on('double-click', this.clicked.bind(this));
     this.tray.setToolTip(this._options.tooltip);
 

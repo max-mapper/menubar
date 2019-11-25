@@ -85,7 +85,7 @@ See the reference [API docs](./docs/classes/_menubar_.menubar.md).
 You can pass an optional options object into the `menubar({ ... })` function:
 
 - `dir` (default `process.cwd()`) - the app source directory
-- `index` (default `file:// + opts.dir + index.html`) - the html to load for the pop up window
+- `index` (default `file:// + opts.dir + index.html`) - The URL to load the menubar's browserWindow with. The url can be a remote address (e.g. `http://`) or a path to a local HTML file using the `file://` protocol.
 - `browserWindow` - BrowserWindow options to be passed to the BrowserWindow constructor, see [Electron docs](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions). Some interesting fields to passed down are:
   - `x` (default `undefined`) - the x position of the window
   - `y` (default `undefined`) - the y position of the window

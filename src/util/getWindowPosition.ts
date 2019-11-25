@@ -62,7 +62,7 @@ export function getWindowPosition(tray: Tray): WindowPosition {
       return 'topRight';
     // Windows
     // Supports top/bottom/left/right taskbar, default bottom
-    case 'win32':
+    case 'win32': {
       const traySide = taskbarLocation(tray);
 
       // Assign position for menubar
@@ -78,8 +78,12 @@ export function getWindowPosition(tray: Tray): WindowPosition {
       if (traySide === 'right') {
         return 'bottomRight';
       }
+
+      break;
+    }
     default:
-      // When we really don't know, we just show the menubar on the top-right
-      return 'topRight';
   }
+
+  // When we really don't know, we just show the menubar on the top-right
+  return 'topRight';
 }
