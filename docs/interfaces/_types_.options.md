@@ -32,7 +32,7 @@ Options for creating a menubar application
 
 • **browserWindow**: *`BrowserWindowConstructorOptions`*
 
-*Defined in [types.ts:19](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L19)*
+*Defined in [types.ts:19](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L19)*
 
 An Electron BrowserWindow instance, or an options object to be passed into
 the BrowserWindow constructor.
@@ -52,7 +52,7 @@ ___
 
 • **dir**: *string*
 
-*Defined in [types.ts:23](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L23)*
+*Defined in [types.ts:23](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L23)*
 
 The app source directory.
 
@@ -62,7 +62,7 @@ ___
 
 • **icon**? : *string | `NativeImage`*
 
-*Defined in [types.ts:30](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L30)*
+*Defined in [types.ts:30](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L30)*
 
 The png icon to use for the menubar. A good size to start with is 20x20.
 To support retina, supply a 2x sized image (e.g. 40x40) with @2x added to
@@ -73,13 +73,14 @@ ___
 
 ###  index
 
-• **index**: *string*
+• **index**: *string | false*
 
-*Defined in [types.ts:38](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L38)*
+*Defined in [types.ts:39](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L39)*
 
 The URL to load the menubar's browserWindow with. The url can be a remote
 address (e.g. `http://`) or a path to a local HTML file using the
-`file://` protocol.
+`file://` protocol. If false, then menubar won't call `loadUrl` on
+start.
 
 **`default`** `file:// + options.dir + index.html`
 
@@ -91,7 +92,7 @@ ___
 
 • **preloadWindow**? : *undefined | false | true*
 
-*Defined in [types.ts:43](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L43)*
+*Defined in [types.ts:44](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L44)*
 
 Create BrowserWindow instance before it is used -- increasing resource
 usage, but making the click on the menubar load faster.
@@ -102,7 +103,7 @@ ___
 
 • **showDockIcon**? : *undefined | false | true*
 
-*Defined in [types.ts:48](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L48)*
+*Defined in [types.ts:49](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L49)*
 
 Configure the visibility of the application dock icon, macOS only. Calls
 [`app.dock.hide`](https://electronjs.org/docs/api/app#appdockhide-macos).
@@ -113,7 +114,7 @@ ___
 
 • **showOnAllWorkspaces**? : *undefined | false | true*
 
-*Defined in [types.ts:53](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L53)*
+*Defined in [types.ts:54](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L54)*
 
 Makes the window available on all OS X workspaces. Calls
 [`setVisibleOnAllWorkspaces`](https://electronjs.org/docs/api/browser-window#winsetvisibleonallworkspacesvisible-options).
@@ -124,7 +125,7 @@ ___
 
 • **showOnRightClick**? : *undefined | false | true*
 
-*Defined in [types.ts:57](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L57)*
+*Defined in [types.ts:58](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L58)*
 
 Show the window on 'right-click' event instead of regular 'click'.
 
@@ -134,7 +135,7 @@ ___
 
 • **tooltip**: *string*
 
-*Defined in [types.ts:61](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L61)*
+*Defined in [types.ts:62](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L62)*
 
 Menubar tray icon tooltip text. Calls [`tray.setTooltip`](https://electronjs.org/docs/api/tray#traysettooltiptooltip).
 
@@ -144,7 +145,7 @@ ___
 
 • **tray**? : *`Tray`*
 
-*Defined in [types.ts:65](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L65)*
+*Defined in [types.ts:66](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L66)*
 
 An electron Tray instance. If provided, `options.icon` will be ignored.
 
@@ -154,7 +155,7 @@ ___
 
 • **windowPosition**? : *"trayLeft" | "trayBottomLeft" | "trayRight" | "trayBottomRight" | "trayCenter" | "trayBottomCenter" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "topCenter" | "bottomCenter" | "leftCenter" | "rightCenter" | "center"*
 
-*Defined in [types.ts:70](https://github.com/maxogden/menubar/blob/3e28b07/src/types.ts#L70)*
+*Defined in [types.ts:71](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L71)*
 
 Sets the window position (x and y will still override this), check
 electron-positioner docs for valid values.
