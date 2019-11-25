@@ -28,7 +28,8 @@ export function cleanOptions(opts?: Partial<Options>): Options {
   if (!path.isAbsolute(options.dir)) {
     options.dir = path.resolve(options.dir);
   }
-  if (!options.index) {
+  // Note: options.index can be `false`
+  if (options.index === undefined) {
     options.index = url.format({
       pathname: path.join(options.dir, 'index.html'),
       protocol: 'file:',

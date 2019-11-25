@@ -18,7 +18,7 @@ describe('cleanOptions', () => {
     expect(cleanOptions(undefined)).toEqual(DEFAULT_OPTIONS);
   });
 
-  it('should handle a string with relative path', () => {
+  it('should handle a dir string with relative path', () => {
     expect(cleanOptions({ dir: 'MY_RELATIVE_PATH' })).toEqual({
       ...DEFAULT_OPTIONS,
       dir: path.resolve('MY_RELATIVE_PATH'),
@@ -29,7 +29,7 @@ describe('cleanOptions', () => {
     });
   });
 
-  it('should handle a string with absolute path', () => {
+  it('should handle a dir string with absolute path', () => {
     expect(cleanOptions({ dir: '/home/me/MY_ABSOLUTE_PATH' })).toEqual({
       ...DEFAULT_OPTIONS,
       dir: '/home/me/MY_ABSOLUTE_PATH',
@@ -37,7 +37,14 @@ describe('cleanOptions', () => {
     });
   });
 
-  it('should handle an object', () => {
+  it('should handle a false index', () => {
+    expect(cleanOptions({ index: false })).toEqual({
+      ...DEFAULT_OPTIONS,
+      index: false
+    });
+  });
+
+  it('should handle an object with multiple fields', () => {
     expect(
       cleanOptions({
         browserWindow: {

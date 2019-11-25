@@ -31,11 +31,12 @@ export interface Options {
   /**
    * The URL to load the menubar's browserWindow with. The url can be a remote
    * address (e.g. `http://`) or a path to a local HTML file using the
-   * `file://` protocol.
+   * `file://` protocol. If false, then menubar won't call `loadUrl` on
+   * start.
    * @default `file:// + options.dir + index.html`
    * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
    */
-  index: string;
+  index: string | false;
   /**
    * Create BrowserWindow instance before it is used -- increasing resource
    * usage, but making the click on the menubar load faster.
