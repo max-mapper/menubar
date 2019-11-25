@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [7.1.0](https://github.com/maxogden/menubar/compare/v7.0.0...v7.1.0) (2019-11-25)
+
+
+### Features
+
+* Allow skipping loadUrl ([#257](https://github.com/maxogden/menubar/issues/257)) ([095486a](https://github.com/maxogden/menubar/commit/095486ab338df26fc4d6a1e7a658cfa9fa4a69b7))
 
 # [7.0.0](https://github.com/maxogden/menubar/compare/v6.0.8...v7.0.0) (2019-10-23)
 
