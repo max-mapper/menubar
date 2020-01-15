@@ -36,6 +36,7 @@ export function cleanOptions(opts?: Partial<Options>): Options {
       slashes: true
     });
   }
+  options.loadUrlOptions = options.loadUrlOptions || {};
 
   options.tooltip = options.tooltip || '';
 

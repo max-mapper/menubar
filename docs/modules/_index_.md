@@ -4,13 +4,6 @@
 
 # External module: "index"
 
-Entry point of menubar
-
-**`example`** 
-```typescript
-import { menubar } from 'menubar';
-```
-
 ## Index
 
 ### Functions
@@ -23,9 +16,7 @@ import { menubar } from 'menubar';
 
 ▸ **menubar**(`options?`: `Partial<Options>`): *[Menubar](../classes/_menubar_.menubar.md)*
 
-*Defined in [index.ts:25](https://github.com/maxogden/menubar/blob/790f6b7/src/index.ts#L25)*
-
-Factory function to create a menubar application
+*Defined in [index.ts:25](https://github.com/adam-lynch/menubar/blob/6b93752/src/index.ts#L25)*
 
 **Parameters:**
 

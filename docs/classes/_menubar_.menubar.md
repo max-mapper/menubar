@@ -4,8 +4,6 @@
 
 # Class: Menubar
 
-The main Menubar class.
-
 ## Hierarchy
 
 * `EventEmitter`
@@ -38,7 +36,7 @@ The main Menubar class.
 
 \+ **new Menubar**(`app`: `App`, `options?`: `Partial<Options>`): *[Menubar](_menubar_.menubar.md)*
 
-*Defined in [Menubar.ts:24](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L24)*
+*Defined in [Menubar.ts:24](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L24)*
 
 **Parameters:**
 
@@ -53,52 +51,33 @@ Name | Type |
 
 ###  app
 
-• **get app**(): *`App`*
+• **app**:
 
-*Defined in [Menubar.ts:47](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L47)*
-
-The Electron [App](https://electronjs.org/docs/api/app)
-instance.
-
-**Returns:** *`App`*
+*Defined in [Menubar.ts:47](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L47)*
 
 ___
 
 ###  positioner
 
-• **get positioner**(): *any*
+• **positioner**:
 
-*Defined in [Menubar.ts:56](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L56)*
-
-The [electron-positioner](https://github.com/jenslind/electron-positioner)
-instance.
-
-**Returns:** *any*
+*Defined in [Menubar.ts:56](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L56)*
 
 ___
 
 ###  tray
 
-• **get tray**(): *`Tray`*
+• **tray**:
 
-*Defined in [Menubar.ts:69](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L69)*
-
-The Electron [Tray](https://electronjs.org/docs/api/tray) instance.
-
-**Returns:** *`Tray`*
+*Defined in [Menubar.ts:69](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L69)*
 
 ___
 
 ###  window
 
-• **get window**(): *`BrowserWindow` | undefined*
+• **window**:
 
-*Defined in [Menubar.ts:83](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L83)*
-
-The Electron [BrowserWindow](https://electronjs.org/docs/api/browser-window)
-instance, if it's present.
-
-**Returns:** *`BrowserWindow` | undefined*
+*Defined in [Menubar.ts:83](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L83)*
 
 ## Methods
 
@@ -106,9 +85,7 @@ instance, if it's present.
 
 ▸ **getOption**<**K**>(`key`: `K`): *`Options[K]`*
 
-*Defined in [Menubar.ts:92](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L92)*
-
-Retrieve a menubar option.
+*Defined in [Menubar.ts:92](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L92)*
 
 **Type parameters:**
 
@@ -128,9 +105,7 @@ ___
 
 ▸ **hideWindow**(): *void*
 
-*Defined in [Menubar.ts:99](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L99)*
-
-Hide the menubar window.
+*Defined in [Menubar.ts:99](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L99)*
 
 **Returns:** *void*
 
@@ -140,9 +115,7 @@ ___
 
 ▸ **setOption**<**K**>(`key`: `K`, `value`: `Options[K]`): *void*
 
-*Defined in [Menubar.ts:115](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L115)*
-
-Change an option after menubar is created.
+*Defined in [Menubar.ts:115](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L115)*
 
 **Type parameters:**
 
@@ -163,9 +136,7 @@ ___
 
 ▸ **showWindow**(`trayPos?`: `Electron.Rectangle`): *`Promise<void>`*
 
-*Defined in [Menubar.ts:124](https://github.com/maxogden/menubar/blob/790f6b7/src/Menubar.ts#L124)*
-
-Show the menubar window.
+*Defined in [Menubar.ts:124](https://github.com/adam-lynch/menubar/blob/6b93752/src/Menubar.ts#L124)*
 
 **Parameters:**
 

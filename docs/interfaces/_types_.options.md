@@ -4,8 +4,6 @@
 
 # Interface: Options
 
-Options for creating a menubar application
-
 ## Hierarchy
 
 * **Options**
@@ -18,6 +16,7 @@ Options for creating a menubar application
 * [dir](_types_.options.md#dir)
 * [icon](_types_.options.md#optional-icon)
 * [index](_types_.options.md#index)
+* [loadUrlOptions](_types_.options.md#optional-loadurloptions)
 * [preloadWindow](_types_.options.md#optional-preloadwindow)
 * [showDockIcon](_types_.options.md#optional-showdockicon)
 * [showOnAllWorkspaces](_types_.options.md#optional-showonallworkspaces)
@@ -32,19 +31,7 @@ Options for creating a menubar application
 
 • **browserWindow**: *`BrowserWindowConstructorOptions`*
 
-*Defined in [types.ts:19](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L19)*
-
-An Electron BrowserWindow instance, or an options object to be passed into
-the BrowserWindow constructor.
-
-**`example`** 
-```typescript
-const options = { height: 640, width: 480 };
-
-const mb = new Menubar({
-  browserWindow: options
-});
-```
+*Defined in [types.ts:23](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L23)*
 
 ___
 
@@ -52,9 +39,7 @@ ___
 
 • **dir**: *string*
 
-*Defined in [types.ts:23](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L23)*
-
-The app source directory.
+*Defined in [types.ts:27](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L27)*
 
 ___
 
@@ -62,12 +47,7 @@ ___
 
 • **icon**? : *string | `NativeImage`*
 
-*Defined in [types.ts:30](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L30)*
-
-The png icon to use for the menubar. A good size to start with is 20x20.
-To support retina, supply a 2x sized image (e.g. 40x40) with @2x added to
-the end of the name, so icon.png and icon@2x.png and Electron will
-automatically use your @2x version on retina screens.
+*Defined in [types.ts:34](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L34)*
 
 ___
 
@@ -75,16 +55,15 @@ ___
 
 • **index**: *string | false*
 
-*Defined in [types.ts:39](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L39)*
+*Defined in [types.ts:43](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L43)*
 
-The URL to load the menubar's browserWindow with. The url can be a remote
-address (e.g. `http://`) or a path to a local HTML file using the
-`file://` protocol. If false, then menubar won't call `loadUrl` on
-start.
+___
 
-**`default`** `file:// + options.dir + index.html`
+### `Optional` loadUrlOptions
 
-**`see`** https://electronjs.org/docs/api/browser-window#winloadurlurl-options
+• **loadUrlOptions**? : *`LoadURLOptions`*
+
+*Defined in [types.ts:51](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L51)*
 
 ___
 
@@ -92,10 +71,7 @@ ___
 
 • **preloadWindow**? : *undefined | false | true*
 
-*Defined in [types.ts:44](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L44)*
-
-Create BrowserWindow instance before it is used -- increasing resource
-usage, but making the click on the menubar load faster.
+*Defined in [types.ts:56](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L56)*
 
 ___
 
@@ -103,10 +79,7 @@ ___
 
 • **showDockIcon**? : *undefined | false | true*
 
-*Defined in [types.ts:49](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L49)*
-
-Configure the visibility of the application dock icon, macOS only. Calls
-[`app.dock.hide`](https://electronjs.org/docs/api/app#appdockhide-macos).
+*Defined in [types.ts:61](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L61)*
 
 ___
 
@@ -114,10 +87,7 @@ ___
 
 • **showOnAllWorkspaces**? : *undefined | false | true*
 
-*Defined in [types.ts:54](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L54)*
-
-Makes the window available on all OS X workspaces. Calls
-[`setVisibleOnAllWorkspaces`](https://electronjs.org/docs/api/browser-window#winsetvisibleonallworkspacesvisible-options).
+*Defined in [types.ts:66](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L66)*
 
 ___
 
@@ -125,9 +95,7 @@ ___
 
 • **showOnRightClick**? : *undefined | false | true*
 
-*Defined in [types.ts:58](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L58)*
-
-Show the window on 'right-click' event instead of regular 'click'.
+*Defined in [types.ts:70](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L70)*
 
 ___
 
@@ -135,9 +103,7 @@ ___
 
 • **tooltip**: *string*
 
-*Defined in [types.ts:62](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L62)*
-
-Menubar tray icon tooltip text. Calls [`tray.setTooltip`](https://electronjs.org/docs/api/tray#traysettooltiptooltip).
+*Defined in [types.ts:74](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L74)*
 
 ___
 
@@ -145,9 +111,7 @@ ___
 
 • **tray**? : *`Tray`*
 
-*Defined in [types.ts:66](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L66)*
-
-An electron Tray instance. If provided, `options.icon` will be ignored.
+*Defined in [types.ts:78](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L78)*
 
 ___
 
@@ -155,7 +119,4 @@ ___
 
 • **windowPosition**? : *"trayLeft" | "trayBottomLeft" | "trayRight" | "trayBottomRight" | "trayCenter" | "trayBottomCenter" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "topCenter" | "bottomCenter" | "leftCenter" | "rightCenter" | "center"*
 
-*Defined in [types.ts:71](https://github.com/maxogden/menubar/blob/790f6b7/src/types.ts#L71)*
-
-Sets the window position (x and y will still override this), check
-electron-positioner docs for valid values.
+*Defined in [types.ts:83](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L83)*
