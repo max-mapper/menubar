@@ -1,4 +1,8 @@
-import { BrowserWindowConstructorOptions, Tray } from 'electron';
+import {
+  BrowserWindowConstructorOptions,
+  LoadURLOptions,
+  Tray
+} from 'electron';
 
 /**
  * Options for creating a menubar application
@@ -37,6 +41,14 @@ export interface Options {
    * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
    */
   index: string | false;
+  /**
+   * The options passed when loading the index URL in the menubar's
+   * browserWindow. Everything browserWindow.loadUrl supports is supported;
+   * this object is simply passed onto browserWindow.loadUrl
+   * @default `{}`
+   * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
+   */
+  loadUrlOptions?: LoadURLOptions;
   /**
    * Create BrowserWindow instance before it is used -- increasing resource
    * usage, but making the click on the menubar load faster.

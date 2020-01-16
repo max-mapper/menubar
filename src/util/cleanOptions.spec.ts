@@ -10,6 +10,7 @@ const DEFAULT_OPTIONS = {
   },
   dir: path.resolve(MOCK_APP_GETAPPPATH),
   index: `file://${path.join(path.resolve(MOCK_APP_GETAPPPATH), 'index.html')}`,
+  loadUrlOptions: {},
   tooltip: ''
 };
 

@@ -295,7 +295,10 @@ export class Menubar extends EventEmitter {
     // If the user explicity set options.index to false, we don't loadURL
     // https://github.com/maxogden/menubar/issues/255
     if (this._options.index !== false) {
-      await this._browserWindow.loadURL(this._options.index);
+      await this._browserWindow.loadURL(
+        this._options.index,
+        this._options.loadUrlOptions
+      );
     }
     this.emit('after-create-window');
   }
