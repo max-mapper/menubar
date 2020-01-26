@@ -22,6 +22,12 @@ export class Menubar extends EventEmitter {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _positioner: any;
   private _tray?: Tray;
+  /*
+    On Windows, we need to set the window to be always-on-top when visible so it stays on top of
+    the tray area. This contains the user set value for always-on-top which we reset to on blur.
+    This will only be set on Windows.
+  */
+  private _alwaysOnTopResetValue?: boolean;
 
   constructor(app: Electron.App, options?: Partial<Options>) {
     super();
@@ -192,6 +198,17 @@ export class Menubar extends EventEmitter {
     // `.setPosition` crashed on non-integers
     // https://github.com/maxogden/menubar/issues/233
     this._browserWindow.setPosition(Math.round(x), Math.round(y));
+
+    if(process.platform === "win32") {
+      // Set to be always-on-top so it's on top of tray area
+      const isAlwaysOnTop = this._browserWindow.isAlwaysOnTop();
+      if(!isAlwaysOnTop) {
+        this._browserWindow.setAlwaysOnTop(true);
+      }
+      // track the user set value so we can reset it on blur
+      this._alwaysOnTopResetValue = isAlwaysOnTop;
+    }
+
     this._browserWindow.show();
     this.emit('after-show');
     return;
@@ -281,10 +298,54 @@ export class Menubar extends EventEmitter {
         return;
       }
 
+      /*
+        Reset the alwaysOnTop value to the users value. On Windows, it's forced
+        to true while the window is visible
+      */
+      if(this._alwaysOnTopResetValue !== undefined) {
+        const isAlwaysOnTop = this._alwaysOnTopResetValue;
+        /*
+          This has to be unset before we set alwaysOnTop. Otherwise, we'll
+          handle the event as if the user changed it and force it back to true.
+        */
+        this._alwaysOnTopResetValue = undefined;
+        this._browserWindow.setAlwaysOnTop(isAlwaysOnTop);
+      }
+
       this._browserWindow.isAlwaysOnTop()
         ? this.emit('focus-lost')
         : this.hideWindow();
     });
+
+    /*
+      On Windows, we force alwaysOnTop to true when the window is visible. If
+      the user changes this while the window is visible, we can change it back to
+      true (and track that new user alwaysOnTop preference).
+    */
+    if(process.platform === "win32") {
+      let isNextAlwaysOnTopChangeEventFromUs = false;
+      this._browserWindow.on('always-on-top-changed', (event, isAlwaysOnTop) => {
+        /*
+          We no longer want to track the user's value for alwaysOnTop. This
+          happens during the blur flow, right after we reset alwaysOnTop. The
+          window may still be visible (if their preference was alwaysOnTop=true)
+        */
+        if(this._alwaysOnTopResetValue === undefined) {
+          return;
+        }
+        // Ignore if it was caused by us
+        if(isNextAlwaysOnTopChangeEventFromUs) {
+          isNextAlwaysOnTopChangeEventFromUs = false;
+          return;
+        }
+        if(this._browserWindow && this._browserWindow.isVisible()) {
+          // Otherwise, track the new value and force back to true
+          isNextAlwaysOnTopChangeEventFromUs = true;
+          this._browserWindow.setAlwaysOnTop(true);
+          this._alwaysOnTopResetValue = isAlwaysOnTop;
+        }
+      });
+    }
 
     if (this._options.showOnAllWorkspaces !== false) {
       this._browserWindow.setVisibleOnAllWorkspaces(true);
