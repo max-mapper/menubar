@@ -34,8 +34,8 @@
     "url": "https://github.com/maxogden/menubar.git"
   },
   "scripts": {
-    "prebuild": "rimraf lib/",
-    "build": "tsc",
+    "build": "rimraf lib/ && tsc",
+    "deploy": "yarn build && standard-version",
     "docs": "typedoc",
     "lint": "tsc --noEmit && eslint . --ext ts",
     "test": "jest"
@@ -45,18 +45,19 @@
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "@amaurymartiny/config": "^1.0.5",
-    "@types/jest": "^24.0.11",
-    "electron": "^7.0.0",
-    "jest": "^24.5.0",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.0.0",
-    "typedoc": "^0.15.0-0",
-    "typedoc-plugin-markdown": "^2.0.11",
-    "typedoc-plugin-no-inherit": "^1.1.9",
-    "typescript": "^3.6.4"
+    "@amaurymartiny/config": "^1.0.11",
+    "@types/jest": "^25.1.2",
+    "electron": "^8.0.0",
+    "jest": "^25.1.0",
+    "rimraf": "^3.0.2",
+    "standard-version": "^7.1.0",
+    "ts-jest": "^25.2.0",
+    "typedoc": "^0.16.9",
+    "typedoc-plugin-markdown": "^2.2.16",
+    "typedoc-plugin-no-inherit": "^1.1.10",
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
-    "electron": "^7.0.0"
+    "electron": "^8.0.0"
   }
 }
