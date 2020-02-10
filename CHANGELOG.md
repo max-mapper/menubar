@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/maxogden/menubar/compare/v7.2.0...v8.0.0) (2020-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Menubar's recommended peer dependency is `electron@^8.0.0`
+
+### Features
+
+* Support Electron 8 ([#268](https://github.com/maxogden/menubar/issues/268)) ([ad99c5a](https://github.com/maxogden/menubar/commit/ad99c5add02ab6d0d751cf6bda8a2c96c674620f))
+
 ## [7.2.0](https://github.com/maxogden/menubar/compare/v7.1.0...v7.2.0) (2020-01-16)
 
 
