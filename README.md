@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
-[![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/@maxogden/menubar)
+[![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/menubar)
 [![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
@@ -117,7 +117,8 @@ The `Menubar` class is an event emitter:
 
 | menubar  | Electron                | Notes                                                                                                                      |
 | -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 7.x.x    | 7.x.x                   |
+| 8.x.x    | 8.x.x                   |                                                                                                                            |
+| 7.x.x    | 7.x.x                   |                                                                                                                            |
 | 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
 | <= 5.x.x | <= 3.x.x                | Please, _please_ don't use these old versions                                                                              |
 
