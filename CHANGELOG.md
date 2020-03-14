@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.1](https://github.com/maxogden/menubar/compare/v8.0.0...v8.0.1) (2020-03-14)
+
+
+### Bug Fixes
+
+* **deps:** [Security] bump acorn from 6.1.1 to 6.4.1 ([#272](https://github.com/maxogden/menubar/issues/272)) ([1332b77](https://github.com/maxogden/menubar/commit/1332b774372de69c04e2a098833ae35775c35cad))
+
 ## [8.0.0](https://github.com/maxogden/menubar/compare/v7.2.0...v8.0.0) (2020-02-10)
 
 
