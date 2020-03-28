@@ -16,6 +16,8 @@ import { getWindowPosition } from './util/getWindowPosition';
 export class Menubar extends EventEmitter {
   private _app: Electron.App;
   private _browserWindow?: BrowserWindow;
+  private _blurTimeout: any; // track blur events with timeout
+  private _isVisible: boolean; // track visibility
   private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
   private _options: Options;
   // TODO https://github.com/jenslind/electron-positioner/issues/15
@@ -27,6 +29,7 @@ export class Menubar extends EventEmitter {
     super();
     this._app = app;
     this._options = cleanOptions(options);
+    this._isVisible = false;
 
     if (app.isReady()) {
       // See https://github.com/maxogden/menubar/pull/151
@@ -97,13 +100,17 @@ export class Menubar extends EventEmitter {
    * Hide the menubar window.
    */
   hideWindow(): void {
-    if (!this._browserWindow || !this._browserWindow.isVisible()) {
+    if (!this._browserWindow || !this._isVisible) {
       return;
     }
-
     this.emit('hide');
     this._browserWindow.hide();
     this.emit('after-hide');
+    this._isVisible = false;
+    if (this._blurTimeout) {
+      clearTimeout(this._blurTimeout);
+      this._blurTimeout = null;
+    }
   }
 
   /**
@@ -134,7 +141,6 @@ export class Menubar extends EventEmitter {
     if (!this._browserWindow) {
       throw new Error('Window has been initialized just above. qed.');
     }
-
     this.emit('show');
 
     if (trayPos && trayPos.x !== 0) {
@@ -251,11 +257,18 @@ export class Menubar extends EventEmitter {
     if (event && (event.shiftKey || event.ctrlKey || event.metaKey)) {
       return this.hideWindow();
     }
-    if (this._browserWindow && this._browserWindow.isVisible()) {
+
+    // if blur was invoked clear timeout
+    if (this._blurTimeout) {
+      clearInterval(this._blurTimeout);
+    }
+
+    if (this._browserWindow && this._isVisible) {
       return this.hideWindow();
     }
 
     this._cachedBounds = bounds || this._cachedBounds;
+    this._isVisible = true;
     await this.showWindow(this._cachedBounds);
   }
 
@@ -281,9 +294,12 @@ export class Menubar extends EventEmitter {
         return;
       }
 
+      // hack to close if icon clicked when open
       this._browserWindow.isAlwaysOnTop()
         ? this.emit('focus-lost')
-        : this.hideWindow();
+        : (this._blurTimeout = setTimeout(() => {
+            this.hideWindow();
+          }, 100));
     });
 
     if (this._options.showOnAllWorkspaces !== false) {
