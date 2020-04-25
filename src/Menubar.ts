@@ -202,6 +202,12 @@ export class Menubar extends EventEmitter {
       this.app.dock.hide();
     }
 
+    this.app.on('activate', (event, hasVisibleWindows) => {
+      if (!hasVisibleWindows) {
+        this.showWindow();
+      }
+    });
+
     let trayImage =
       this._options.icon || path.join(this._options.dir, 'IconTemplate.png');
     if (typeof trayImage === 'string' && !fs.existsSync(trayImage)) {
