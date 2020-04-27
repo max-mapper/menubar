@@ -16,7 +16,7 @@ import { getWindowPosition } from './util/getWindowPosition';
 export class Menubar extends EventEmitter {
   private _app: Electron.App;
   private _browserWindow?: BrowserWindow;
-  private _blurTimeout: any; // track blur events with timeout
+  private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
   private _isVisible: boolean; // track visibility
   private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
   private _options: Options;
