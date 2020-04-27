@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.2](https://github.com/maxogden/menubar/compare/v8.0.1...v8.0.2) (2020-04-27)
+
+
+### Bug Fixes
+
+* Show window on dock icon click ([#279](https://github.com/maxogden/menubar/issues/279)) ([a8607fa](https://github.com/maxogden/menubar/commit/a8607fa708d229d9124471127482fe461198f1f3))
+* update prevent flicker on Windows (fixes [#274](https://github.com/maxogden/menubar/issues/274)) ([#276](https://github.com/maxogden/menubar/issues/276)) ([9592f34](https://github.com/maxogden/menubar/commit/9592f3437ce3660b6464f5b436ed111291eb75d3))
+
 ### [8.0.1](https://github.com/maxogden/menubar/compare/v8.0.0...v8.0.1) (2020-03-14)
 
 
