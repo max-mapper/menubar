@@ -34,11 +34,11 @@ export class Menubar extends EventEmitter {
     if (app.isReady()) {
       // See https://github.com/maxogden/menubar/pull/151
       process.nextTick(() =>
-        this.appReady().catch(err => console.error('menubar: ', err))
+        this.appReady().catch((err) => console.error('menubar: ', err))
       );
     } else {
       app.on('ready', () => {
-        this.appReady().catch(err => console.error('menubar: ', err));
+        this.appReady().catch((err) => console.error('menubar: ', err));
       });
     }
   }
@@ -285,12 +285,12 @@ export class Menubar extends EventEmitter {
     // look like a menubar
     const defaults = {
       show: false, // Don't show it at first
-      frame: false // Remove window frame
+      frame: false, // Remove window frame
     };
 
     this._browserWindow = new BrowserWindow({
       ...defaults,
-      ...this._options.browserWindow
+      ...this._options.browserWindow,
     });
 
     this._positioner = new Positioner(this._browserWindow);

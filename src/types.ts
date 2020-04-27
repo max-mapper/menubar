@@ -1,7 +1,7 @@
 import {
   BrowserWindowConstructorOptions,
   LoadURLOptions,
-  Tray
+  Tray,
 } from 'electron';
 
 /**

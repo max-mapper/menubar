@@ -33,7 +33,7 @@ export function cleanOptions(opts?: Partial<Options>): Options {
     options.index = url.format({
       pathname: path.join(options.dir, 'index.html'),
       protocol: 'file:',
-      slashes: true
+      slashes: true,
     });
   }
   options.loadUrlOptions = options.loadUrlOptions || {};
