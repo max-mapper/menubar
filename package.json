@@ -45,19 +45,19 @@
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "@amaurymartiny/config": "^1.0.11",
-    "@types/jest": "^25.1.2",
-    "electron": "^8.0.0",
-    "jest": "^25.1.0",
+    "@amaurymartiny/config": "^1.1.0",
+    "@types/jest": "^25.2.1",
+    "electron": "^8.2.3",
+    "jest": "^25.4.0",
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0",
-    "ts-jest": "^25.2.0",
-    "typedoc": "^0.16.9",
-    "typedoc-plugin-markdown": "^2.2.16",
+    "ts-jest": "^25.4.0",
+    "typedoc": "^0.17.6",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typedoc-plugin-no-inherit": "^1.1.10",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "electron": "^8.0.0"
+    "electron": "^8.2.3"
   }
 }

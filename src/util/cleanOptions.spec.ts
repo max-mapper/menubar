@@ -6,12 +6,12 @@ import { cleanOptions } from './cleanOptions';
 const DEFAULT_OPTIONS = {
   browserWindow: {
     height: 400,
-    width: 400
+    width: 400,
   },
   dir: path.resolve(MOCK_APP_GETAPPPATH),
   index: `file://${path.join(path.resolve(MOCK_APP_GETAPPPATH), 'index.html')}`,
   loadUrlOptions: {},
-  tooltip: ''
+  tooltip: '',
 };
 
 describe('cleanOptions', () => {
@@ -26,7 +26,7 @@ describe('cleanOptions', () => {
       index: `file://${path.join(
         path.resolve('MY_RELATIVE_PATH'),
         'index.html'
-      )}`
+      )}`,
     });
   });
 
@@ -34,14 +34,14 @@ describe('cleanOptions', () => {
     expect(cleanOptions({ dir: '/home/me/MY_ABSOLUTE_PATH' })).toEqual({
       ...DEFAULT_OPTIONS,
       dir: '/home/me/MY_ABSOLUTE_PATH',
-      index: 'file:///home/me/MY_ABSOLUTE_PATH/index.html'
+      index: 'file:///home/me/MY_ABSOLUTE_PATH/index.html',
     });
   });
 
   it('should handle a false index', () => {
     expect(cleanOptions({ index: false })).toEqual({
       ...DEFAULT_OPTIONS,
-      index: false
+      index: false,
     });
   });
 
@@ -49,21 +49,21 @@ describe('cleanOptions', () => {
     expect(
       cleanOptions({
         browserWindow: {
-          height: 100
+          height: 100,
         },
         index: 'file:///home/abc/index.html',
         showDockIcon: true,
-        windowPosition: 'trayCenter'
+        windowPosition: 'trayCenter',
       })
     ).toEqual({
       ...DEFAULT_OPTIONS,
       browserWindow: {
         ...DEFAULT_OPTIONS.browserWindow,
-        height: 100
+        height: 100,
       },
       index: 'file:///home/abc/index.html',
       showDockIcon: true,
-      windowPosition: 'trayCenter'
+      windowPosition: 'trayCenter',
     });
   });
 });

@@ -7,7 +7,7 @@ export const app = {
   isReady: (): Promise<void> => Promise.resolve(),
   on: (): void => {
     /* Do nothing */
-  }
+  },
 };
 
 export class BrowserWindow {
