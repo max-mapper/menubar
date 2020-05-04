@@ -4,8 +4,6 @@
     "declaration": true,
     "module": "commonjs",
     "outDir": "./lib",
-    "target": "es5",
-    "types": ["jest"]
-  },
-  "include": ["./src"]
+    "target": "es5"
+  }
 }

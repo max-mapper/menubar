@@ -37,7 +37,7 @@
     "build": "rimraf lib/ && tsc",
     "deploy": "yarn build && standard-version",
     "docs": "typedoc",
-    "lint": "tsc --noEmit && eslint . --ext ts",
+    "lint": "tsc --noEmit && eslint . --ext js,ts",
     "test": "jest"
   },
   "types": "lib/index.d.ts",

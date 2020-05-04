@@ -1,7 +1,7 @@
 const { menubar } = require('../..');
 
 const mb = menubar({
-  browserWindow: { transparent: true }
+  browserWindow: { transparent: true },
 });
 
 mb.on('ready', () => {
