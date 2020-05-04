@@ -9,5 +9,5 @@ module.exports = {
   module: 'commonjs',
   out: 'docs',
   stripInternal: 'true',
-  theme: 'markdown'
+  theme: 'markdown',
 };

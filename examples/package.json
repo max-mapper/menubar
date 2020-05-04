@@ -6,6 +6,7 @@
   "workspaces": [
     "arrow",
     "hello-world",
+    "icon-animation",
     "native-menu"
   ],
   "devDependencies": {
