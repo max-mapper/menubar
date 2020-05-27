@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/maxogden/menubar/compare/v8.0.2...v9.0.0) (2020-05-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Please use Electron 9 with this menubar version.
+
+### Features
+
+* Support Electron 9 ([#286](https://github.com/maxogden/menubar/issues/286)) ([44cf1b1](https://github.com/maxogden/menubar/commit/44cf1b1e6cce83f9e63a39f1d32fbb664396e7bc))
+
 ### [8.0.2](https://github.com/maxogden/menubar/compare/v8.0.1...v8.0.2) (2020-04-27)
 
 
