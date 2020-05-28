@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.1](https://github.com/maxogden/menubar/compare/v9.0.0...v9.0.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* calling showWindow() prevents menubar window from closing ([#287](https://github.com/maxogden/menubar/issues/287)) ([53d8f82](https://github.com/maxogden/menubar/commit/53d8f82b604ad5555f59108a97234ebf32e43f80))
+
 ## [9.0.0](https://github.com/maxogden/menubar/compare/v8.0.2...v9.0.0) (2020-05-27)
 
 
