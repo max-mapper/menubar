@@ -199,6 +199,7 @@ export class Menubar extends EventEmitter {
     // https://github.com/maxogden/menubar/issues/233
     this._browserWindow.setPosition(Math.round(x), Math.round(y));
     this._browserWindow.show();
+    this._isVisible = true;
     this.emit('after-show');
     return;
   }
@@ -274,7 +275,6 @@ export class Menubar extends EventEmitter {
     }
 
     this._cachedBounds = bounds || this._cachedBounds;
-    this._isVisible = true;
     await this.showWindow(this._cachedBounds);
   }
 
