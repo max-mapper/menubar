@@ -1,3 +1,5 @@
-coverage
-examples
-lib
+.eslintrc.js
+**/coverage/*
+**/examples/*
+**/lib/*
+**/node_modules/*
