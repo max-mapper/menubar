@@ -23,5 +23,5 @@ export { Menubar };
  * {@link Options}
  */
 export function menubar(options?: Partial<Options>): Menubar {
-  return new Menubar(app, options);
+	return new Menubar(app, options);
 }

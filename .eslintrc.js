@@ -1,1 +1,1 @@
-module.exports = { ...require('@amaurymartiny/eslintrc'), env: { node: true } };
+module.exports = require('@amaurymartiny/eslintrc');
