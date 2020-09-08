@@ -312,7 +312,9 @@ export class Menubar extends EventEmitter {
 		});
 
 		if (this._options.showOnAllWorkspaces !== false) {
-			this._browserWindow.setVisibleOnAllWorkspaces(true);
+			this._browserWindow.setVisibleOnAllWorkspaces(true, {
+				visibleOnFullScreen: true,
+			});
 		}
 
 		this._browserWindow.on('close', this.windowClear.bind(this));
