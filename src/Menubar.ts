@@ -138,6 +138,14 @@ export class Menubar extends EventEmitter {
 		if (!this._browserWindow) {
 			throw new Error('Window has been initialized just above. qed.');
 		}
+
+		// 'Windows' taskbar: sync windows position each time before showing
+		// https://github.com/maxogden/menubar/issues/232
+		if (process.platform === 'win32') {
+			// Fill in this._options.windowPosition when taskbar position is available
+			this._options.windowPosition = getWindowPosition(this.tray);
+		}
+
 		this.emit('show');
 
 		if (trayPos && trayPos.x !== 0) {
