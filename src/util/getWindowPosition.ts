@@ -7,19 +7,17 @@
 import { Rectangle, screen as electronScreen, Tray } from 'electron';
 
 const trayToScreenRects = (tray: Tray): [Rectangle, Rectangle] => {
-	const trayBounds = tray.getBounds()
-
 	// There may be more than one screen, so we need to figure out on which screen our tray icon lives.
 	const {
 		workArea,
 		bounds: screenBounds,
-	} = electronScreen.getDisplayMatching(tray.getBounds())
+	} = electronScreen.getDisplayMatching(tray.getBounds());
 
-	workArea.x -= screenBounds.x
-	workArea.y -= screenBounds.y
+	workArea.x -= screenBounds.x;
+	workArea.y -= screenBounds.y;
 
-	return [screenBounds, workArea]
-}
+	return [screenBounds, workArea];
+};
 
 type TaskbarLocation = 'top' | 'bottom' | 'left' | 'right';
 
@@ -31,18 +29,17 @@ type TaskbarLocation = 'top' | 'bottom' | 'left' | 'right';
  * @param tray - The Electron Tray instance.
  */
 export function taskbarLocation(tray: Tray): TaskbarLocation {
-
-	const [screenBounds, workArea] = trayToScreenRects(tray)
+	const [screenBounds, workArea] = trayToScreenRects(tray);
 
 	// TASKBAR LEFT
 	if (workArea.x > 0) {
 		// The workspace starts more on the right
-		return "left"
+		return 'left';
 	}
 
 	// TASKBAR TOP
 	if (workArea.y > 0) {
-		return "top"
+		return 'top';
 	}
 
 	// TASKBAR RIGHT
@@ -52,12 +49,12 @@ export function taskbarLocation(tray: Tray): TaskbarLocation {
 	if (workArea.width < screenBounds.width) {
 		// The taskbar is either on the left or right, but since the LEFT case was handled above,
 		// we can be sure we're dealing with a right taskbar
-		return "right"
+		return 'right';
 	}
 
 	// TASKBAR BOTTOM
 	// Since all the other cases were handled, we can be sure we're dealing with a bottom taskbar
-	return "bottom"
+	return 'bottom';
 }
 
 type WindowPosition =
