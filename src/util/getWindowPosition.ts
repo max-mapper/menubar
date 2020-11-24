@@ -10,15 +10,13 @@ const trayToScreenRects = (tray: Tray): [Rectangle, Rectangle] => {
 	const trayBounds = tray.getBounds()
 
 	// There may be more than one screen, so we need to figure out on which screen our tray icon lives.
-	const trayScreen = electronScreen.getDisplayNearestPoint({
-		x: trayBounds.x,
-		y: trayBounds.y,
-	})
-
 	const {
 		workArea,
 		bounds: screenBounds,
-	} = trayScreen
+	} = electronScreen.getDisplayMatching(tray.getBounds())
+
+	workArea.x -= screenBounds.x
+	workArea.y -= screenBounds.y
 
 	return [screenBounds, workArea]
 }
