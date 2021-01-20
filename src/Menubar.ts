@@ -138,6 +138,14 @@ export class Menubar extends EventEmitter {
 		if (!this._browserWindow) {
 			throw new Error('Window has been initialized just above. qed.');
 		}
+
+		// 'Windows' taskbar: sync windows position each time before showing
+		// https://github.com/maxogden/menubar/issues/232
+		if (process.platform === 'win32') {
+			// Fill in this._options.windowPosition when taskbar position is available
+			this._options.windowPosition = getWindowPosition(this.tray);
+		}
+
 		this.emit('show');
 
 		if (trayPos && trayPos.x !== 0) {
@@ -172,25 +180,10 @@ export class Menubar extends EventEmitter {
 			this._options.browserWindow.x !== undefined
 				? this._options.browserWindow.x
 				: position.x;
-		let y =
+		const y =
 			this._options.browserWindow.y !== undefined
 				? this._options.browserWindow.y
 				: position.y;
-
-		// Multi-Taskbar: optimize vertical position
-		// https://github.com/maxogden/menubar/pull/217
-		if (process.platform === 'win32') {
-			if (
-				trayPos &&
-				this._options.windowPosition &&
-				this._options.windowPosition.startsWith('bottom')
-			) {
-				y =
-					trayPos.y +
-					trayPos.height / 2 -
-					this._browserWindow.getBounds().height / 2;
-			}
-		}
 
 		// `.setPosition` crashed on non-integers
 		// https://github.com/maxogden/menubar/issues/233
