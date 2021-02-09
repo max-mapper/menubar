@@ -87,7 +87,7 @@ export class Menubar extends EventEmitter {
 	 */
 	destroy(): void {
 		if (this.isDestroyed()) {
-			return
+			return;
 		}
 
 		if (this._browserWindow) {
@@ -97,8 +97,12 @@ export class Menubar extends EventEmitter {
 
 		if (this.tray) {
 			// Ensure all potential listeners are removed.
-			for (let event of ['click', 'right-click', 'double-click']) {
-				this.tray.removeListener(event as Parameters<Tray['on']>[0], this.clicked);
+			for (const event of ['click', 'right-click', 'double-click']) {
+				this.tray.removeListener(
+					event as Parameters<Tray['on']>[0],
+					// eslint-disable-next-line @typescript-eslint/no-misused-promises
+					this.clicked
+				);
 			}
 			this.tray.setToolTip('');
 			this._tray = undefined;
@@ -301,7 +305,7 @@ export class Menubar extends EventEmitter {
 
 		this._cachedBounds = bounds || this._cachedBounds;
 		await this.showWindow(this._cachedBounds);
-	}
+	};
 
 	private async createWindow(): Promise<void> {
 		this.emit('create-window');
@@ -350,15 +354,18 @@ export class Menubar extends EventEmitter {
 		this.emit('after-create-window');
 	}
 
-	private onAppActivate = (event: Event, hasVisibleWindows: boolean): void => {
+	private onAppActivate = (
+		_event: Event,
+		hasVisibleWindows: boolean
+	): void => {
 		if (!hasVisibleWindows) {
 			this.showWindow().catch(console.error);
 		}
-	}
+	};
 
-	private onAppReady = () => {
+	private onAppReady = (): void => {
 		this.appReady().catch((err) => console.error('menubar: ', err));
-	}
+	};
 
 	private windowClear(): void {
 		this._browserWindow = undefined;
