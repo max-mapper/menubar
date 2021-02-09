@@ -14,6 +14,7 @@ import { getWindowPosition } from './util/getWindowPosition';
  * @noInheritDoc
  */
 export class Menubar extends EventEmitter {
+	private static trayClickEvents = []
 	private _app: Electron.App;
 	private _browserWindow?: BrowserWindow;
 	private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
@@ -85,7 +86,7 @@ export class Menubar extends EventEmitter {
 	}
 
 	/**
-	 * Destroys a menubar instance.
+	 * Tear down the menubar.
 	 */
 	destroy() {
 		if (this._browserWindow) {
@@ -93,13 +94,12 @@ export class Menubar extends EventEmitter {
 			this._browserWindow = undefined;
 		}
 
-		const defaultClickEvent = this._options.showOnRightClick
-			? 'right-click'
-			: 'click';
-
-		this.tray.removeListener(defaultClickEvent as 'right-click', this.clicked);
-		this.tray.removeListener('double-click', this.clicked);
-		this.tray.setToolTip('');
+		if (this.tray) {
+			for (let event of ['click', 'right-click', 'double-click']) {
+				this.tray.removeListener(event as Parameters<Tray['on']>[0], this.clicked);
+			}
+			this.tray.setToolTip('');
+		}
 	}
 
 	/**
