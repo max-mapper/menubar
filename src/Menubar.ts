@@ -85,6 +85,24 @@ export class Menubar extends EventEmitter {
 	}
 
 	/**
+	 * Destroys a menubar instance.
+	 */
+	destroy() {
+		if (this._browserWindow) {
+			this._browserWindow.destroy();
+			this._browserWindow = undefined;
+		}
+
+		const defaultClickEvent = this._options.showOnRightClick
+			? 'right-click'
+			: 'click';
+
+		this.tray.removeListener(defaultClickEvent as 'right-click', this.clicked);
+		this.tray.removeListener('double-click', this.clicked);
+		this.tray.setToolTip('');
+	}
+
+	/**
 	 * Retrieve a menubar option.
 	 *
 	 * @param key - The option key to retrieve, see {@link Options}.
@@ -229,10 +247,10 @@ export class Menubar extends EventEmitter {
 		this.tray.on(
 			defaultClickEvent as Parameters<Tray['on']>[0],
 			// eslint-disable-next-line @typescript-eslint/no-misused-promises
-			this.clicked.bind(this)
+			this.clicked
 		);
 		// eslint-disable-next-line @typescript-eslint/no-misused-promises
-		this.tray.on('double-click', this.clicked.bind(this));
+		this.tray.on('double-click', this.clicked);
 		this.tray.setToolTip(this._options.tooltip);
 
 		if (!this._options.windowPosition) {
@@ -253,10 +271,10 @@ export class Menubar extends EventEmitter {
 	 * @param e
 	 * @param bounds
 	 */
-	private async clicked(
+	private clicked = async (
 		event?: Electron.KeyboardEvent,
 		bounds?: Electron.Rectangle
-	): Promise<void> {
+	): Promise<void> => {
 		if (event && (event.shiftKey || event.ctrlKey || event.metaKey)) {
 			return this.hideWindow();
 		}
