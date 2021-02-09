@@ -17,6 +17,7 @@ export class Menubar extends EventEmitter {
 	private _app: Electron.App;
 	private _browserWindow?: BrowserWindow;
 	private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
+	private _isDestroyed: boolean;
 	private _isVisible: boolean; // track visibility
 	private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
 	private _options: Options;
@@ -28,6 +29,7 @@ export class Menubar extends EventEmitter {
 		this._app = app;
 		this._options = cleanOptions(options);
 		this._isVisible = false;
+		this._isDestroyed = false;
 
 		if (app.isReady()) {
 			// See https://github.com/maxogden/menubar/pull/151
@@ -81,23 +83,31 @@ export class Menubar extends EventEmitter {
 	}
 
 	/**
-	 * Tear down the menubar.
+	 * Tear down the menubar instance.
 	 */
-	destroy() {
+	destroy(): void {
+		if (this.isDestroyed()) {
+			return
+		}
+
 		if (this._browserWindow) {
 			this._browserWindow.destroy();
 			this._browserWindow = undefined;
 		}
 
 		if (this.tray) {
+			// Ensure all potential listeners are removed.
 			for (let event of ['click', 'right-click', 'double-click']) {
 				this.tray.removeListener(event as Parameters<Tray['on']>[0], this.clicked);
 			}
 			this.tray.setToolTip('');
+			this._tray = undefined;
 		}
 
 		this.app.removeListener('ready', this.onAppReady);
 		this.app.removeListener('activate', this.onAppActivate);
+
+		this._isDestroyed = true;
 	}
 
 	/**
@@ -124,6 +134,13 @@ export class Menubar extends EventEmitter {
 			clearTimeout(this._blurTimeout);
 			this._blurTimeout = null;
 		}
+	}
+
+	/**
+	 * Indicates whether menubar is destroyed.
+	 */
+	isDestroyed(): boolean {
+		return this._isDestroyed;
 	}
 
 	/**
