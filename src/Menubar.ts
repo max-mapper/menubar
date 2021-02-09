@@ -14,7 +14,6 @@ import { getWindowPosition } from './util/getWindowPosition';
  * @noInheritDoc
  */
 export class Menubar extends EventEmitter {
-	private static trayClickEvents = []
 	private _app: Electron.App;
 	private _browserWindow?: BrowserWindow;
 	private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
@@ -32,13 +31,9 @@ export class Menubar extends EventEmitter {
 
 		if (app.isReady()) {
 			// See https://github.com/maxogden/menubar/pull/151
-			process.nextTick(() =>
-				this.appReady().catch((err) => console.error('menubar: ', err))
-			);
+			process.nextTick(this.onAppReady);
 		} else {
-			app.on('ready', () => {
-				this.appReady().catch((err) => console.error('menubar: ', err));
-			});
+			app.on('ready', this.onAppReady);
 		}
 	}
 
@@ -100,6 +95,9 @@ export class Menubar extends EventEmitter {
 			}
 			this.tray.setToolTip('');
 		}
+
+		this.app.removeListener('ready', this.onAppReady);
+		this.app.removeListener('activate', this.onAppActivate);
 	}
 
 	/**
@@ -217,11 +215,7 @@ export class Menubar extends EventEmitter {
 			this.app.dock.hide();
 		}
 
-		this.app.on('activate', (_event, hasVisibleWindows) => {
-			if (!hasVisibleWindows) {
-				this.showWindow().catch(console.error);
-			}
-		});
+		this.app.on('activate', this.onAppActivate);
 
 		let trayImage =
 			this._options.icon ||
@@ -337,6 +331,16 @@ export class Menubar extends EventEmitter {
 			);
 		}
 		this.emit('after-create-window');
+	}
+
+	private onAppActivate = (event: Event, hasVisibleWindows: boolean): void => {
+		if (!hasVisibleWindows) {
+			this.showWindow().catch(console.error);
+		}
+	}
+
+	private onAppReady = () => {
+		this.appReady().catch((err) => console.error('menubar: ', err));
 	}
 
 	private windowClear(): void {
