@@ -1,1 +1,1 @@
-module.exports = require('@amaurymartiny/eslintrc/prettierrc');
+module.exports = require('@amaurym/eslintrc/prettierrc');

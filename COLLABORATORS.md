@@ -9,6 +9,6 @@ menubar is only possible due to the excellent work of the following collaborator
 <tr><th align="left">pquerna</th><td><a href="https://github.com/pquerna">GitHub/pquerna</a></td></tr>
 <tr><th align="left">fabien-d</th><td><a href="https://github.com/fabien-d">GitHub/fabien-d</a></td></tr>
 <tr><th align="left">jenslind</th><td><a href="https://github.com/jenslind">GitHub/jenslind</a></td></tr>
-<tr><th align="left">amaurymartiny</th><td><a href="https://github.com/amaurymartiny">GitHub/amaurymartiny</a></td></tr>
+<tr><th align="left">amaurym</th><td><a href="https://github.com/amaurym">GitHub/amaurym</a></td></tr>
 </tbody>
 </table>
