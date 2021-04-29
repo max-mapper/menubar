@@ -128,7 +128,7 @@ See the reference [API docs](./docs/globals.md).
 
 ## Tips
 
-- Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
+- Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadURL()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
 - To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](https://github.com/maxogden/menubar/tree/master/examples/native-menu) for more information.
