@@ -35,7 +35,7 @@ export interface Options {
 	/**
 	 * The URL to load the menubar's browserWindow with. The url can be a remote
 	 * address (e.g. `http://`) or a path to a local HTML file using the
-	 * `file://` protocol. If false, then menubar won't call `loadUrl` on
+	 * `file://` protocol. If false, then menubar won't call `loadURL` on
 	 * start.
 	 * @default `file:// + options.dir + index.html`
 	 * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
@@ -43,8 +43,8 @@ export interface Options {
 	index: string | false;
 	/**
 	 * The options passed when loading the index URL in the menubar's
-	 * browserWindow. Everything browserWindow.loadUrl supports is supported;
-	 * this object is simply passed onto browserWindow.loadUrl
+	 * browserWindow. Everything browserWindow.loadURL supports is supported;
+	 * this object is simply passed onto browserWindow.loadURL
 	 * @default `{}`
 	 * @see https://electronjs.org/docs/api/browser-window#winloadurlurl-options
 	 */
