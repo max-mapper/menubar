@@ -8,7 +8,7 @@
 
 * **Options**
 
-## Index
+## Table of Contents
 
 ### Properties
 
@@ -31,7 +31,7 @@
 
 • **browserWindow**: *`BrowserWindowConstructorOptions`*
 
-*Defined in [types.ts:23](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L23)*
+*Defined in [types.ts:23](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L23)*
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 • **dir**: *string*
 
-*Defined in [types.ts:27](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L27)*
+*Defined in [types.ts:27](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L27)*
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • **icon**? : *string | `NativeImage`*
 
-*Defined in [types.ts:34](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L34)*
+*Defined in [types.ts:34](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L34)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **index**: *string | false*
 
-*Defined in [types.ts:43](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L43)*
+*Defined in [types.ts:43](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L43)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **loadUrlOptions**? : *`LoadURLOptions`*
 
-*Defined in [types.ts:51](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L51)*
+*Defined in [types.ts:51](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L51)*
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **preloadWindow**? : *undefined | false | true*
 
-*Defined in [types.ts:56](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L56)*
+*Defined in [types.ts:56](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L56)*
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 • **showDockIcon**? : *undefined | false | true*
 
-*Defined in [types.ts:61](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L61)*
+*Defined in [types.ts:61](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L61)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **showOnAllWorkspaces**? : *undefined | false | true*
 
-*Defined in [types.ts:66](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L66)*
+*Defined in [types.ts:66](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L66)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **showOnRightClick**? : *undefined | false | true*
 
-*Defined in [types.ts:70](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L70)*
+*Defined in [types.ts:70](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L70)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 • **tooltip**: *string*
 
-*Defined in [types.ts:74](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L74)*
+*Defined in [types.ts:74](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L74)*
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 • **tray**? : *`Tray`*
 
-*Defined in [types.ts:78](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L78)*
+*Defined in [types.ts:78](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L78)*
 
 ___
 
@@ -119,4 +119,4 @@ ___
 
 • **windowPosition**? : *"trayLeft" | "trayBottomLeft" | "trayRight" | "trayBottomRight" | "trayCenter" | "trayBottomCenter" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "topCenter" | "bottomCenter" | "leftCenter" | "rightCenter" | "center"*
 
-*Defined in [types.ts:83](https://github.com/adam-lynch/menubar/blob/6b93752/src/types.ts#L83)*
+*Defined in [types.ts:83](https://github.com/maxogden/menubar/blob/c7d6640/src/types.ts#L83)*
