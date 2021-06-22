@@ -141,7 +141,7 @@ export class Menubar extends EventEmitter {
 
 		// 'Windows' taskbar: sync windows position each time before showing
 		// https://github.com/maxogden/menubar/issues/232
-		if (process.platform === 'win32') {
+		if (['win32', 'linux'].includes(process.platform)) {
 			// Fill in this._options.windowPosition when taskbar position is available
 			this._options.windowPosition = getWindowPosition(this.tray);
 		}
@@ -160,7 +160,7 @@ export class Menubar extends EventEmitter {
 		}
 
 		// Default the window to the right if `trayPos` bounds are undefined or null.
-		let noBoundsPosition = null;
+		let noBoundsPosition = undefined;
 		if (
 			(trayPos === undefined || trayPos.x === 0) &&
 			this._options.windowPosition &&
@@ -171,7 +171,7 @@ export class Menubar extends EventEmitter {
 		}
 
 		const position = this.positioner.calculate(
-			noBoundsPosition || this._options.windowPosition,
+			this._options.windowPosition || noBoundsPosition,
 			trayPos
 		) as { x: number; y: number };
 
