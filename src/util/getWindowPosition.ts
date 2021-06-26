@@ -94,7 +94,7 @@ export function getWindowPosition(tray: Tray): WindowPosition {
 				return 'trayBottomCenter';
 			}
 			if (traySide === 'left') {
-				return 'trayBottomLeft';
+				return 'center';
 			}
 			if (traySide === 'right') {
 				return 'bottomRight';
