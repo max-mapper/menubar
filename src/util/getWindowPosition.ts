@@ -6,12 +6,12 @@
 
 import { Rectangle, screen as electronScreen, Tray } from 'electron';
 
+const isLinux = process.platform === 'linux';
+
 const trayToScreenRects = (tray: Tray): [Rectangle, Rectangle] => {
 	// There may be more than one screen, so we need to figure out on which screen our tray icon lives.
-	const {
-		workArea,
-		bounds: screenBounds,
-	} = electronScreen.getDisplayMatching(tray.getBounds());
+	const { workArea, bounds: screenBounds } =
+		electronScreen.getDisplayMatching(tray.getBounds());
 
 	workArea.x -= screenBounds.x;
 	workArea.y -= screenBounds.y;
@@ -33,6 +33,8 @@ export function taskbarLocation(tray: Tray): TaskbarLocation {
 
 	// TASKBAR LEFT
 	if (workArea.x > 0) {
+		// Most likely Ubuntu hence assuming the window should be on top
+		if (isLinux && workArea.y > 0) return 'top';
 		// The workspace starts more on the right
 		return 'left';
 	}
@@ -61,7 +63,7 @@ type WindowPosition =
 	| 'trayCenter'
 	| 'topRight'
 	| 'trayBottomCenter'
-	| 'trayBottomLeft'
+	| 'bottomLeft'
 	| 'bottomRight';
 
 /**
@@ -77,24 +79,21 @@ export function getWindowPosition(tray: Tray): WindowPosition {
 		case 'darwin':
 			return 'trayCenter';
 		// Linux
-		// Supports top taskbars
-		// TODO Support bottom taskbars too https://github.com/maxogden/menubar/issues/123
-		case 'linux':
-			return 'topRight';
 		// Windows
-		// Supports top/bottom/left/right taskbar, default bottom
+		// Supports top/bottom/left/right taskbar
+		case 'linux':
 		case 'win32': {
 			const traySide = taskbarLocation(tray);
 
 			// Assign position for menubar
 			if (traySide === 'top') {
-				return 'trayCenter';
+				return isLinux ? 'topRight' : 'trayCenter';
 			}
 			if (traySide === 'bottom') {
-				return 'trayBottomCenter';
+				return isLinux ? 'bottomRight' : 'trayBottomCenter';
 			}
 			if (traySide === 'left') {
-				return 'trayBottomLeft';
+				return 'bottomLeft';
 			}
 			if (traySide === 'right') {
 				return 'bottomRight';
