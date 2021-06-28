@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.5](https://github.com/maxogden/menubar/compare/v9.0.4...v9.0.5) (2021-06-28)
+
+
+### Bug Fixes
+
+* Add support for Electron 13 ([#347](https://github.com/maxogden/menubar/issues/347)) ([fbf07bd](https://github.com/maxogden/menubar/commit/fbf07bd0bd24b2aac26cdd1db61eb55924f3ee63))
+* window position on linux & windows when taskbar is on the left ([#343](https://github.com/maxogden/menubar/issues/343)) ([5d8e0c8](https://github.com/maxogden/menubar/commit/5d8e0c89996f67b58f059ec767a87db104a90292))
+
 ### [9.0.4](https://github.com/maxogden/menubar/compare/v9.0.3...v9.0.4) (2021-05-03)
 
 
