@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.6](https://github.com/maxogden/menubar/compare/v9.0.5...v9.0.6) (2021-10-15)
+
+
+### Bug Fixes
+
+* Add support for electron 14 and 15 ([#358](https://github.com/maxogden/menubar/issues/358)) ([8eaba8c](https://github.com/maxogden/menubar/commit/8eaba8cdfcd3ce9427ee3ffd65b3426c62f65048))
+
 ### [9.0.5](https://github.com/maxogden/menubar/compare/v9.0.4...v9.0.5) (2021-06-28)
 
 
