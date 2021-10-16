@@ -17,6 +17,7 @@ export class Menubar extends EventEmitter {
 	private _app: Electron.App;
 	private _browserWindow?: BrowserWindow;
 	private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
+	private _isDestroyed: boolean;
 	private _isVisible: boolean; // track visibility
 	private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
 	private _options: Options;
@@ -28,16 +29,13 @@ export class Menubar extends EventEmitter {
 		this._app = app;
 		this._options = cleanOptions(options);
 		this._isVisible = false;
+		this._isDestroyed = false;
 
 		if (app.isReady()) {
 			// See https://github.com/maxogden/menubar/pull/151
-			process.nextTick(() =>
-				this.appReady().catch((err) => console.error('menubar: ', err))
-			);
+			process.nextTick(this.onAppReady);
 		} else {
-			app.on('ready', () => {
-				this.appReady().catch((err) => console.error('menubar: ', err));
-			});
+			app.on('ready', this.onAppReady);
 		}
 	}
 
@@ -85,6 +83,38 @@ export class Menubar extends EventEmitter {
 	}
 
 	/**
+	 * Tear down the menubar instance.
+	 */
+	destroy(): void {
+		if (this.isDestroyed()) {
+			return;
+		}
+
+		if (this._browserWindow) {
+			this._browserWindow.destroy();
+			this._browserWindow = undefined;
+		}
+
+		if (this.tray) {
+			// Ensure all potential listeners are removed.
+			for (const event of ['click', 'right-click', 'double-click']) {
+				this.tray.removeListener(
+					event as Parameters<Tray['on']>[0],
+					// eslint-disable-next-line @typescript-eslint/no-misused-promises
+					this.clicked
+				);
+			}
+			this.tray.setToolTip('');
+			this._tray = undefined;
+		}
+
+		this.app.removeListener('ready', this.onAppReady);
+		this.app.removeListener('activate', this.onAppActivate);
+
+		this._isDestroyed = true;
+	}
+
+	/**
 	 * Retrieve a menubar option.
 	 *
 	 * @param key - The option key to retrieve, see {@link Options}.
@@ -108,6 +138,13 @@ export class Menubar extends EventEmitter {
 			clearTimeout(this._blurTimeout);
 			this._blurTimeout = null;
 		}
+	}
+
+	/**
+	 * Indicates whether menubar is destroyed.
+	 */
+	isDestroyed(): boolean {
+		return this._isDestroyed;
 	}
 
 	/**
@@ -199,11 +236,7 @@ export class Menubar extends EventEmitter {
 			this.app.dock.hide();
 		}
 
-		this.app.on('activate', (_event, hasVisibleWindows) => {
-			if (!hasVisibleWindows) {
-				this.showWindow().catch(console.error);
-			}
-		});
+		this.app.on('activate', this.onAppActivate);
 
 		let trayImage =
 			this._options.icon ||
@@ -229,10 +262,10 @@ export class Menubar extends EventEmitter {
 		this.tray.on(
 			defaultClickEvent as Parameters<Tray['on']>[0],
 			// eslint-disable-next-line @typescript-eslint/no-misused-promises
-			this.clicked.bind(this)
+			this.clicked
 		);
 		// eslint-disable-next-line @typescript-eslint/no-misused-promises
-		this.tray.on('double-click', this.clicked.bind(this));
+		this.tray.on('double-click', this.clicked);
 		this.tray.setToolTip(this._options.tooltip);
 
 		if (!this._options.windowPosition) {
@@ -253,10 +286,10 @@ export class Menubar extends EventEmitter {
 	 * @param e
 	 * @param bounds
 	 */
-	private async clicked(
+	private clicked = async (
 		event?: Electron.KeyboardEvent,
 		bounds?: Electron.Rectangle
-	): Promise<void> {
+	): Promise<void> => {
 		if (event && (event.shiftKey || event.ctrlKey || event.metaKey)) {
 			return this.hideWindow();
 		}
@@ -272,7 +305,7 @@ export class Menubar extends EventEmitter {
 
 		this._cachedBounds = bounds || this._cachedBounds;
 		await this.showWindow(this._cachedBounds);
-	}
+	};
 
 	private async createWindow(): Promise<void> {
 		this.emit('create-window');
@@ -320,6 +353,19 @@ export class Menubar extends EventEmitter {
 		}
 		this.emit('after-create-window');
 	}
+
+	private onAppActivate = (
+		_event: Event,
+		hasVisibleWindows: boolean
+	): void => {
+		if (!hasVisibleWindows) {
+			this.showWindow().catch(console.error);
+		}
+	};
+
+	private onAppReady = (): void => {
+		this.appReady().catch((err) => console.error('menubar: ', err));
+	};
 
 	private windowClear(): void {
 		this._browserWindow = undefined;
