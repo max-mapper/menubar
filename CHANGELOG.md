@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.1.0](https://github.com/maxogden/menubar/compare/v9.0.6...v9.1.0) (2021-10-27)
+
+
+### Features
+
+* add option activateWithApp to allow not activate with this event ([#361](https://github.com/maxogden/menubar/issues/361)) ([8384bf2](https://github.com/maxogden/menubar/commit/8384bf24abe6138aded26fcd7bd6d1d7a325f319))
+
 ### [9.0.6](https://github.com/maxogden/menubar/compare/v9.0.5...v9.0.6) (2021-10-15)
 
 
