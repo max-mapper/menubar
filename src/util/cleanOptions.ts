@@ -22,6 +22,9 @@ const DEFAULT_WINDOW_WIDTH = 400;
 export function cleanOptions(opts?: Partial<Options>): Options {
 	const options: Partial<Options> = { ...opts };
 
+	if (options.activateWithApp === undefined) {
+		options.activateWithApp = true;
+	}
 	if (!options.dir) {
 		options.dir = app.getAppPath();
 	}

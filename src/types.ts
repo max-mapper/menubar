@@ -10,6 +10,7 @@ import {
 export interface Options {
 	/**
 	 * Listen on `app.on('activate')` to open menubar when app is activated.
+	 * @default `true`
 	 */
 	activateWithApp?: boolean;
 	/**
