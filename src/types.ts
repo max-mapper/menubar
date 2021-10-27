@@ -9,6 +9,10 @@ import {
  */
 export interface Options {
 	/**
+	 * Listen on `app.on('activate')` to open menubar when app is activated.
+	 */
+	activateWithApp?: boolean;
+	/**
 	 * An Electron BrowserWindow instance, or an options object to be passed into
 	 * the BrowserWindow constructor.
 	 * @example

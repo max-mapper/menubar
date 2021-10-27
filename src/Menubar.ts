@@ -199,11 +199,13 @@ export class Menubar extends EventEmitter {
 			this.app.dock.hide();
 		}
 
-		this.app.on('activate', (_event, hasVisibleWindows) => {
-			if (!hasVisibleWindows) {
-				this.showWindow().catch(console.error);
-			}
-		});
+		if (this._options.activateWithApp) {
+			this.app.on('activate', (_event, hasVisibleWindows) => {
+				if (!hasVisibleWindows) {
+					this.showWindow().catch(console.error);
+				}
+			});
+		}
 
 		let trayImage =
 			this._options.icon ||
