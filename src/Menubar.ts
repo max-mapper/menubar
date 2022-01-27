@@ -56,7 +56,7 @@ export class Menubar extends EventEmitter {
 	get positioner(): Positioner {
 		if (!this._positioner) {
 			throw new Error(
-				'Please access `this.positioner` after the `after-create-window` event has fired.'
+				'Please access `this.positioner` after the `after-window-load` event has fired.'
 			);
 		}
 
@@ -290,6 +290,8 @@ export class Menubar extends EventEmitter {
 			...defaults,
 			...this._options.browserWindow,
 		});
+		
+		this.emit('after-create-window');
 
 		this._positioner = new Positioner(this._browserWindow);
 
@@ -320,7 +322,8 @@ export class Menubar extends EventEmitter {
 				this._options.loadUrlOptions
 			);
 		}
-		this.emit('after-create-window');
+		
+		this.emit('after-window-load');
 	}
 
 	private windowClear(): void {
