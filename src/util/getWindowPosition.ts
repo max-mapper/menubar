@@ -10,10 +10,8 @@ const isLinux = process.platform === 'linux';
 
 const trayToScreenRects = (tray: Tray): [Rectangle, Rectangle] => {
 	// There may be more than one screen, so we need to figure out on which screen our tray icon lives.
-	const {
-		workArea,
-		bounds: screenBounds,
-	} = electronScreen.getDisplayMatching(tray.getBounds());
+	const { workArea, bounds: screenBounds } =
+		electronScreen.getDisplayMatching(tray.getBounds());
 
 	workArea.x -= screenBounds.x;
 	workArea.y -= screenBounds.y;
