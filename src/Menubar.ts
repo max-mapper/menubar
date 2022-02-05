@@ -1,6 +1,5 @@
 import { BrowserWindow, Tray } from 'electron';
 
-import { BrowserWindow as AcrylicBrowserWindow } from "electron-acrylic-window"
 import { EventEmitter } from 'events';
 import { Options } from './types';
 import Positioner from 'electron-positioner';
@@ -287,12 +286,12 @@ export class Menubar extends EventEmitter {
 			frame: false, // Remove window frame
 		};
 
-		if(process.platform === 'win32') {
+		if (process.platform === 'win32') {
 			this._browserWindow = new AcrylicBrowserWindow({
 				...defaults,
 				...this._options.browserWindow,
 			});
-		}else{
+		} else {
 			this._browserWindow = new BrowserWindow({
 				...defaults,
 				...this._options.browserWindow,

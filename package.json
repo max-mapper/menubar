@@ -42,7 +42,6 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "electron-acrylic-window": "^0.5.11",
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
