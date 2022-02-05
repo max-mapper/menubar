@@ -1,9 +1,9 @@
 import { BrowserWindow, Tray } from 'electron';
+import { cleanOptions, isBrowserWindowInstance } from './util/cleanOptions';
 
 import { EventEmitter } from 'events';
 import { Options } from './types';
 import Positioner from 'electron-positioner';
-import { cleanOptions } from './util/cleanOptions';
 import fs from 'fs';
 import { getWindowPosition } from './util/getWindowPosition';
 import path from 'path';
@@ -175,19 +175,21 @@ export class Menubar extends EventEmitter {
 			trayPos
 		) as { x: number; y: number };
 
-		// Not using `||` because x and y can be zero.
-		const x =
-			this._options.browserWindow.x !== undefined
-				? this._options.browserWindow.x
-				: position.x;
-		const y =
-			this._options.browserWindow.y !== undefined
-				? this._options.browserWindow.y
-				: position.y;
+		if (!isBrowserWindowInstance(this._options.browserWindow)) {
+			// Not using `||` because x and y can be zero.
+			const x =
+				this._options.browserWindow.x !== undefined
+					? this._options.browserWindow.x
+					: position.x;
+			const y =
+				this._options.browserWindow.y !== undefined
+					? this._options.browserWindow.y
+					: position.y;
 
-		// `.setPosition` crashed on non-integers
-		// https://github.com/maxogden/menubar/issues/233
-		this._browserWindow.setPosition(Math.round(x), Math.round(y));
+			// `.setPosition` crashed on non-integers
+			// https://github.com/maxogden/menubar/issues/233
+			this._browserWindow.setPosition(Math.round(x), Math.round(y));
+		}
 		this._browserWindow.show();
 		this._isVisible = true;
 		this.emit('after-show');
@@ -286,11 +288,8 @@ export class Menubar extends EventEmitter {
 			frame: false, // Remove window frame
 		};
 
-		if (process.platform === 'win32') {
-			this._browserWindow = new AcrylicBrowserWindow({
-				...defaults,
-				...this._options.browserWindow,
-			});
+		if (isBrowserWindowInstance(this._options.browserWindow)) {
+			this._browserWindow = this._options.browserWindow;
 		} else {
 			this._browserWindow = new BrowserWindow({
 				...defaults,

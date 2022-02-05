@@ -4,11 +4,11 @@
 
 /** */
 
-import { app } from 'electron';
-import path from 'path';
-import url from 'url';
+import { BrowserViewConstructorOptions, BrowserWindow, app } from 'electron';
 
 import { Options } from '../types';
+import path from 'path';
+import url from 'url';
 
 const DEFAULT_WINDOW_HEIGHT = 400;
 const DEFAULT_WINDOW_WIDTH = 400;
@@ -19,6 +19,13 @@ const DEFAULT_WINDOW_WIDTH = 400;
  * @param opts - The options to clean.
  * @ignore
  */
+
+export function isBrowserWindowInstance(
+	browserWindow: BrowserWindow | BrowserViewConstructorOptions
+): browserWindow is BrowserWindow {
+	return browserWindow instanceof BrowserWindow;
+}
+
 export function cleanOptions(opts?: Partial<Options>): Options {
 	const options: Partial<Options> = { ...opts };
 
@@ -51,17 +58,18 @@ export function cleanOptions(opts?: Partial<Options>): Options {
 		options.browserWindow = {};
 	}
 
-	// Set width/height on options to be usable before the window is created
-	options.browserWindow.width =
-		// Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
-		// that users can put a 0 width
-		options.browserWindow.width !== undefined
-			? options.browserWindow.width
-			: DEFAULT_WINDOW_WIDTH;
-	options.browserWindow.height =
-		options.browserWindow.height !== undefined
-			? options.browserWindow.height
-			: DEFAULT_WINDOW_HEIGHT;
+	if (!isBrowserWindowInstance(options.browserWindow)) {
+		options.browserWindow.width =
+			// Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
+			// that users can put a 0 width
+			options.browserWindow.width !== undefined
+				? options.browserWindow.width
+				: DEFAULT_WINDOW_WIDTH;
+		options.browserWindow.height =
+			options.browserWindow.height !== undefined
+				? options.browserWindow.height
+				: DEFAULT_WINDOW_HEIGHT;
+	}
 
 	return options as Options;
 }

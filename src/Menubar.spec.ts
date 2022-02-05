@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { Tray, app } from 'electron';
+import { BrowserWindow, Tray, app } from 'electron';
 
-import { BrowserWindow } from 'electron-acrylic-window';
 import { Menubar } from './Menubar';
 
 describe('Menubar', () => {
