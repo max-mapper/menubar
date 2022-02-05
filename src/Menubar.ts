@@ -1,12 +1,12 @@
-import { BrowserWindow, Tray } from 'electron';
-import Positioner from 'electron-positioner';
+import { BrowserWindow } from "electron-acrylic-window"
 import { EventEmitter } from 'events';
-import fs from 'fs';
-import path from 'path';
-
 import { Options } from './types';
+import Positioner from 'electron-positioner';
+import { Tray } from 'electron';
 import { cleanOptions } from './util/cleanOptions';
+import fs from 'fs';
 import { getWindowPosition } from './util/getWindowPosition';
+import path from 'path';
 
 /**
  * The main Menubar class.
