@@ -1,6 +1,6 @@
 {
-  "name": "menubar",
-  "version": "9.1.1",
+  "name": "@superpowered/menubar",
+  "version": "1.0.0",
   "author": "Max Ogden",
   "bugs": {
     "url": "https://github.com/maxogden/menubar/issues"
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxogden/menubar.git"
+    "url": "git+https://github.com/maxogden/menubar.git"
   },
   "scripts": {
     "build": "rimraf lib/ && tsc",
@@ -60,5 +60,9 @@
   },
   "peerDependencies": {
     "electron": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
   }
 }
