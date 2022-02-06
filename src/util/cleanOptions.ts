@@ -58,10 +58,6 @@ export function cleanOptions(opts?: Partial<Options>): Options {
 		options.browserWindow = {};
 	}
 
-	console.log('hi');
-
-	console.log(isBrowserWindowInstance(options.browserWindow));
-
 	if (!isBrowserWindowInstance(options.browserWindow)) {
 		options.browserWindow.width =
 			// Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
