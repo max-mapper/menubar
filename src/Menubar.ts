@@ -175,21 +175,18 @@ export class Menubar extends EventEmitter {
 			trayPos
 		) as { x: number; y: number };
 
-		if (!isBrowserWindowInstance(this._options.browserWindow)) {
-			// Not using `||` because x and y can be zero.
-			const x =
-				this._options.browserWindow.x !== undefined
-					? this._options.browserWindow.x
-					: position.x;
-			const y =
-				this._options.browserWindow.y !== undefined
-					? this._options.browserWindow.y
-					: position.y;
+		let x = position.x;
+		let y = position.y;
 
-			// `.setPosition` crashed on non-integers
-			// https://github.com/maxogden/menubar/issues/233
-			this._browserWindow.setPosition(Math.round(x), Math.round(y));
+		if (!isBrowserWindowInstance(this._options.browserWindow)) {
+			x = this._options.browserWindow.x ?? x;
+			y = this._options.browserWindow.y ?? y;
 		}
+
+		// `.setPosition` crashed on non-integers
+		// https://github.com/maxogden/menubar/issues/233
+		this._browserWindow.setPosition(Math.round(x), Math.round(y));
+
 		this._browserWindow.show();
 		this._isVisible = true;
 		this.emit('after-show');
