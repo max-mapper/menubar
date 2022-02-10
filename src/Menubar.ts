@@ -148,6 +148,17 @@ export class Menubar extends EventEmitter {
 
 		this.emit('show');
 
+		this.setPosition(trayPos);
+
+		this._browserWindow.show();
+		this._isVisible = true;
+		this.emit('after-show');
+		return;
+	}
+
+	private setPosition(trayPos?: Electron.Rectangle): void {
+		if (!this._browserWindow) return;
+
 		if (trayPos && trayPos.x !== 0) {
 			// Cache the bounds
 			this._cachedBounds = trayPos;
@@ -186,11 +197,6 @@ export class Menubar extends EventEmitter {
 		// `.setPosition` crashed on non-integers
 		// https://github.com/maxogden/menubar/issues/233
 		this._browserWindow.setPosition(Math.round(x), Math.round(y));
-
-		this._browserWindow.show();
-		this._isVisible = true;
-		this.emit('after-show');
-		return;
 	}
 
 	private async appReady(): Promise<void> {
@@ -323,6 +329,9 @@ export class Menubar extends EventEmitter {
 				this._options.loadUrlOptions
 			);
 		}
+
+		this.setPosition();
+
 		this.emit('after-create-window');
 	}
 
