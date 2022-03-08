@@ -105,7 +105,8 @@ The `Menubar` class is an event emitter:
 
 - `ready` - when `menubar`'s tray icon has been created and initialized, i.e. when `menubar` is ready to be used. Note: this is different than Electron app's `ready` event, which happens much earlier in the process
 - `create-window` - the line before `new BrowserWindow()` is called
-- `after-create-window` - the line after all window init code is done
+- `before-load` - after create window, before loadUrl (can be used for `require("@electron/remote/main").enable(webContents)`)
+- `after-create-window` - the line after all window init code is done and url was loaded
 - `show` - the line before `window.show()` is called
 - `after-show` - the line after `window.show()` is called
 - `hide` - the line before `window.hide()` is called (on window blur)

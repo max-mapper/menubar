@@ -303,7 +303,7 @@ export class Menubar extends EventEmitter {
 				? this.emit('focus-lost')
 				: (this._blurTimeout = setTimeout(() => {
 						this.hideWindow();
-				  }, 100));
+				}, 100));
 		});
 
 		if (this._options.showOnAllWorkspaces !== false) {
@@ -311,6 +311,8 @@ export class Menubar extends EventEmitter {
 		}
 
 		this._browserWindow.on('close', this.windowClear.bind(this));
+
+		this.emit('before-load');
 
 		// If the user explicity set options.index to false, we don't loadURL
 		// https://github.com/maxogden/menubar/issues/255
