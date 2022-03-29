@@ -10,6 +10,6 @@
     "native-menu"
   ],
   "devDependencies": {
-    "electron": "^16.0.4"
+    "electron": "^17.2.0"
   }
 }
