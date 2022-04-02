@@ -139,14 +139,36 @@ export class Menubar extends EventEmitter {
 			throw new Error('Window has been initialized just above. qed.');
 		}
 
+		this.emit('show');
+
+		this.setPosition(trayPos)
+
+		this._browserWindow.show();
+		this._isVisible = true;
+		this.emit('after-show');
+		return;
+	}
+
+	private async setPosition(trayPos?: Electron.Rectangle): Promise<void> {
+		if (!this.tray) {
+			throw new Error('Tray should have been instantiated by now');
+		}
+
+		if (!this._browserWindow) {
+			await this.createWindow();
+		}
+
+		// Use guard for TypeScript, to avoid ! everywhere
+		if (!this._browserWindow) {
+			throw new Error('Window has been initialized just above. qed.');
+		}
+
 		// 'Windows' taskbar: sync windows position each time before showing
 		// https://github.com/maxogden/menubar/issues/232
 		if (['win32', 'linux'].includes(process.platform)) {
 			// Fill in this._options.windowPosition when taskbar position is available
 			this._options.windowPosition = getWindowPosition(this.tray);
 		}
-
-		this.emit('show');
 
 		if (trayPos && trayPos.x !== 0) {
 			// Cache the bounds
@@ -188,9 +210,6 @@ export class Menubar extends EventEmitter {
 		// `.setPosition` crashed on non-integers
 		// https://github.com/maxogden/menubar/issues/233
 		this._browserWindow.setPosition(Math.round(x), Math.round(y));
-		this._browserWindow.show();
-		this._isVisible = true;
-		this.emit('after-show');
 		return;
 	}
 
@@ -311,6 +330,8 @@ export class Menubar extends EventEmitter {
 		}
 
 		this._browserWindow.on('close', this.windowClear.bind(this));
+
+		this._browserWindow.on('resize', this.setPosition.bind(this, undefined));
 
 		// If the user explicity set options.index to false, we don't loadURL
 		// https://github.com/maxogden/menubar/issues/255
