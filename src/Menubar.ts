@@ -303,7 +303,7 @@ export class Menubar extends EventEmitter {
 				? this.emit('focus-lost')
 				: (this._blurTimeout = setTimeout(() => {
 						this.hideWindow();
-				}, 100));
+				  }, 100));
 		});
 
 		if (this._options.showOnAllWorkspaces !== false) {
