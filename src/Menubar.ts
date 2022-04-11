@@ -312,6 +312,8 @@ export class Menubar extends EventEmitter {
 
 		this._browserWindow.on('close', this.windowClear.bind(this));
 
+		this.emit('before-load');
+
 		// If the user explicity set options.index to false, we don't loadURL
 		// https://github.com/maxogden/menubar/issues/255
 		if (this._options.index !== false) {
