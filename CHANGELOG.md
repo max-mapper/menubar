@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.2.0](https://github.com/maxogden/menubar/compare/v9.1.2...v9.2.0) (2022-04-11)
+
+
+### Features
+
+* add `before-load` event ([#370](https://github.com/maxogden/menubar/issues/370)) ([3247986](https://github.com/maxogden/menubar/commit/3247986f164d8b2fb2912ab33beb25c9c6d8ece3))
+
 ### [9.1.2](https://github.com/maxogden/menubar/compare/v9.1.1...v9.1.2) (2022-03-29)
 
 
