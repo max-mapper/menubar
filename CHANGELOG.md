@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.2.1](https://github.com/maxogden/menubar/compare/v9.2.0...v9.2.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* Add support for electron 19 ([#376](https://github.com/maxogden/menubar/issues/376)) ([6d0feb0](https://github.com/maxogden/menubar/commit/6d0feb0e492681200966dde10a63a73cfb503138))
+
+## [9.2.0](https://github.com/maxogden/menubar/compare/v9.1.2...v9.2.0) (2022-04-11)
+
+
+### Features
+
+* add `before-load` event ([#370](https://github.com/maxogden/menubar/issues/370)) ([3247986](https://github.com/maxogden/menubar/commit/3247986f164d8b2fb2912ab33beb25c9c6d8ece3))
+
+### [9.1.2](https://github.com/maxogden/menubar/compare/v9.1.1...v9.1.2) (2022-03-29)
+
+
+### Bug Fixes
+
+* Add electron 17 support ([#373](https://github.com/maxogden/menubar/issues/373)) ([fafc29f](https://github.com/maxogden/menubar/commit/fafc29f168e91369ad5d60a61abc0363076c303a))
+
 ### [9.1.1](https://github.com/maxogden/menubar/compare/v9.1.0...v9.1.1) (2021-12-09)
 
 

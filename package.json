@@ -1,63 +1,63 @@
 {
-	"name": "menubar",
-	"version": "9.1.1",
-	"author": "Max Ogden",
-	"bugs": {
-		"url": "https://github.com/maxogden/menubar/issues"
-	},
-	"description": "high level way to create menubar desktop applications with electron",
-	"files": [
-		"/assets",
-		"/lib"
-	],
-	"homepage": "https://github.com/maxogden/menubar",
-	"keywords": [
-		"electron",
-		"shell",
-		"menubar",
-		"menu",
-		"taskbar",
-		"tray",
-		"traybar",
-		"mac",
-		"linux",
-		"windows",
-		"app"
-	],
-	"license": "BSD-2-Clause",
-	"main": "lib/index.js",
-	"publishConfig": {
-		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/maxogden/menubar.git"
-	},
-	"scripts": {
-		"build": "rimraf lib/ && tsc",
-		"deploy": "yarn build && standard-version",
-		"docs": "typedoc",
-		"lint": "tsc --noEmit && eslint . --ext js,ts",
-		"test": "jest"
-	},
-	"types": "lib/index.d.ts",
-	"dependencies": {
-		"electron-positioner": "^4.1.0"
-	},
-	"devDependencies": {
-		"@amaurym/config": "^1.3.5",
-		"@types/jest": "^25.2.3",
-		"electron": "^9.0.0",
-		"jest": "^26.0.1",
-		"rimraf": "^3.0.2",
-		"standard-version": "^8.0.0",
-		"ts-jest": "^26.0.0",
-		"typedoc": "^0.17.7",
-		"typedoc-plugin-markdown": "^2.2.17",
-		"typedoc-plugin-no-inherit": "^1.1.10",
-		"typescript": "^3.9.3"
-	},
-	"peerDependencies": {
-		"electron": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
-	}
+  "name": "menubar",
+  "version": "9.2.1",
+  "author": "Max Ogden",
+  "bugs": {
+    "url": "https://github.com/maxogden/menubar/issues"
+  },
+  "description": "high level way to create menubar desktop applications with electron",
+  "files": [
+    "/assets",
+    "/lib"
+  ],
+  "homepage": "https://github.com/maxogden/menubar",
+  "keywords": [
+    "electron",
+    "shell",
+    "menubar",
+    "menu",
+    "taskbar",
+    "tray",
+    "traybar",
+    "mac",
+    "linux",
+    "windows",
+    "app"
+  ],
+  "license": "BSD-2-Clause",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/menubar.git"
+  },
+  "scripts": {
+    "build": "rimraf lib/ && tsc",
+    "deploy": "yarn build && standard-version",
+    "docs": "typedoc",
+    "lint": "tsc --noEmit && eslint . --ext js,ts",
+    "test": "jest"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "electron-positioner": "^4.1.0"
+  },
+  "devDependencies": {
+    "@amaurym/config": "^1.3.5",
+    "@types/jest": "^25.2.3",
+    "electron": "^19.0.0",
+    "jest": "^26.0.1",
+    "rimraf": "^3.0.2",
+    "standard-version": "^8.0.0",
+    "ts-jest": "^26.0.0",
+    "typedoc": "^0.17.7",
+    "typedoc-plugin-markdown": "^2.2.17",
+    "typedoc-plugin-no-inherit": "^1.1.10",
+    "typescript": "^4.6.2"
+  },
+  "peerDependencies": {
+    "electron": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  }
 }
