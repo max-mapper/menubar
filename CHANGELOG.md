@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.2.2](https://github.com/maxogden/menubar/compare/v9.2.1...v9.2.2) (2022-09-05)
+
+
+### Features
+
+* Add Electron 20 as a peerDependency ([#379](https://github.com/maxogden/menubar/issues/379)) ([4c027b2](https://github.com/maxogden/menubar/commit/4c027b22499c7c83a4d87b9aa17d5e86f3172b68))
+
+
+### Bug Fixes
+
+* arrow example problem ([#342](https://github.com/maxogden/menubar/issues/342)) ([64b80d5](https://github.com/maxogden/menubar/commit/64b80d5f49ebb367b75e21e88af15fdc874cda86))
+
 ### [9.2.1](https://github.com/maxogden/menubar/compare/v9.2.0...v9.2.1) (2022-07-11)
 
 
