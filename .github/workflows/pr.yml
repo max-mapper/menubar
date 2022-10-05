@@ -9,15 +9,10 @@ on:
             - master
 
 jobs:
-    lint:
+    lint-and-test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - run: yarn install
             - run: yarn lint
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - run: yarn install
             - run: yarn test
