@@ -4,6 +4,7 @@ import { MOCK_APP_GETAPPPATH } from '../__mocks__/electron';
 import { cleanOptions } from './cleanOptions';
 
 const DEFAULT_OPTIONS = {
+	activateWithApp: true,
 	browserWindow: {
 		height: 400,
 		width: 400,
