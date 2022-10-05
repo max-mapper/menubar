@@ -15,27 +15,33 @@ describe('Menubar', () => {
 		expect(mb!.app).toBeDefined();
 	});
 
-	it('should have property `positioner`', (done) => {
+	it('should have property `positioner`', () => {
 		expect(() => mb!.positioner as unknown).toThrow();
-		mb!.on('after-create-window', () => {
-			expect(mb!.positioner).toBeDefined();
-			done();
+		return new Promise<void>((resolve) => {
+			mb!.on('after-create-window', () => {
+				expect(mb!.positioner).toBeDefined();
+				resolve();
+			});
 		});
 	});
 
-	it('should have property `tray`', (done) => {
+	it('should have property `tray`', () => {
 		expect(() => mb!.tray).toThrow();
-		mb!.on('ready', () => {
-			expect(mb!.tray).toBeInstanceOf(Tray);
-			done();
+		return new Promise<void>((resolve) => {
+			mb!.on('ready', () => {
+				expect(mb!.tray).toBeInstanceOf(Tray);
+				resolve();
+			});
 		});
 	});
 
-	it('should have property `window`', (done) => {
+	it('should have property `window`', () => {
 		expect(mb!.window).toBeUndefined();
-		mb!.on('ready', () => {
-			expect(mb!.window).toBeInstanceOf(BrowserWindow);
-			done();
+		return new Promise<void>((resolve) => {
+			mb!.on('ready', () => {
+				expect(mb!.window).toBeInstanceOf(BrowserWindow);
+				resolve();
+			});
 		});
 	});
 });
