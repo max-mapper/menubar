@@ -141,7 +141,7 @@ export class Menubar extends EventEmitter {
 
 		// 'Windows' taskbar: sync windows position each time before showing
 		// https://github.com/maxogden/menubar/issues/232
-		if (['win32', 'linux'].includes(process.platform)) {
+		if (['win32', 'linux'].includes(process.platform) && !this._options.windowPosition) {
 			// Fill in this._options.windowPosition when taskbar position is available
 			this._options.windowPosition = getWindowPosition(this.tray);
 		}
