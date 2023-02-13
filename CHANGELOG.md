@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.3.0](https://github.com/maxogden/menubar/compare/v9.2.3...v9.3.0) (2023-02-13)
+
+
+### Features
+
+* add electron 22 support ([#414](https://github.com/maxogden/menubar/issues/414)) ([a39382f](https://github.com/maxogden/menubar/commit/a39382fe843953395bf99267ee83102def70b06e))
+
 ### [9.2.3](https://github.com/maxogden/menubar/compare/v9.2.2...v9.2.3) (2022-10-05)
 
 
