@@ -50,7 +50,7 @@
     "electron": "^22.0.0",
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
-    "standard-version": "^8.0.0",
+    "standard-version": "^9.5.0",
     "ts-jest": "^26.0.0",
     "typedoc": "^0.17.7",
     "typedoc-plugin-markdown": "^2.2.17",
