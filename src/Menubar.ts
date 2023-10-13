@@ -307,7 +307,10 @@ export class Menubar extends EventEmitter {
 		});
 
 		if (this._options.showOnAllWorkspaces !== false) {
-			this._browserWindow.setVisibleOnAllWorkspaces(true);
+			// https://github.com/electron/electron/issues/37832#issuecomment-1497882944
+			this._browserWindow.setVisibleOnAllWorkspaces(true, {
+				skipTransformProcessType: true // Avoid damaging the original visible state of app.dock
+			});
 		}
 
 		this._browserWindow.on('close', this.windowClear.bind(this));
