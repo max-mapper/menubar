@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.4.0](https://github.com/maxogden/menubar/compare/v9.3.0...v9.4.0) (2023-11-28)
+
+
+### Features
+
+* Update electron to 27 ([#458](https://github.com/maxogden/menubar/issues/458)) ([f3dbac6](https://github.com/maxogden/menubar/commit/f3dbac66582baa322c2c8caa5027f1b8ef480e67))
+
+
+### Bug Fixes
+
+* Avoid setVisibleOnAllWorkspaces from destroying the original visible state of app.dock ([#442](https://github.com/maxogden/menubar/issues/442)) ([d8df2ab](https://github.com/maxogden/menubar/commit/d8df2ab4b65564c8ec58dc7156128bfd53fab2c9))
+
 ## [9.3.0](https://github.com/maxogden/menubar/compare/v9.2.3...v9.3.0) (2023-02-13)
 
 
