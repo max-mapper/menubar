@@ -309,7 +309,7 @@ export class Menubar extends EventEmitter {
 		if (this._options.showOnAllWorkspaces !== false) {
 			// https://github.com/electron/electron/issues/37832#issuecomment-1497882944
 			this._browserWindow.setVisibleOnAllWorkspaces(true, {
-				skipTransformProcessType: true // Avoid damaging the original visible state of app.dock
+				skipTransformProcessType: true, // Avoid damaging the original visible state of app.dock
 			});
 		}
 
