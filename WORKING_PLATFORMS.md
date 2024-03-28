@@ -13,6 +13,7 @@ This document is still a work-in-progress. If you have tested `menubar` with a p
 
 | Version    | Working Status | Known Issues |
 | ---------- | -------------- | ------------ |
+| Windows 11 | ✅ Good        |              |
 | Windows 10 | ✅ Good        |              |
 | Windows 8  | ✅ Good        |              |
 
