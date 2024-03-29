@@ -20,6 +20,9 @@ app.on('ready', () => {
 	});
 
 	mb.on('ready', () => {
+		// needed for macos to remove white screen
+		tray.removeAllListeners();
+		
 		console.log('Menubar app is ready.');
 		// your app code here
 	});
