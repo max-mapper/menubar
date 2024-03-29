@@ -21,6 +21,7 @@ app.on('ready', () => {
 
 	mb.on('ready', () => {
 		// needed for macos to remove white screen
+		// ref: https://github.com/max-mapper/menubar/issues/345
 		tray.removeAllListeners();
 		
 		console.log('Menubar app is ready.');
