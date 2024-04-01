@@ -1,4 +1,5 @@
 import {
+	BrowserWindow,
 	BrowserWindowConstructorOptions,
 	LoadURLOptions,
 	Tray,
@@ -25,7 +26,7 @@ export interface Options {
 	 * });
 	 * ```
 	 */
-	browserWindow: BrowserWindowConstructorOptions;
+	browserWindow: BrowserWindowConstructorOptions | BrowserWindow;
 	/**
 	 * The app source directory.
 	 */
