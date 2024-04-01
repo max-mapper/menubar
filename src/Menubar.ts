@@ -176,13 +176,13 @@ export class Menubar extends EventEmitter {
 		) as { x: number; y: number };
 
 		// Not using `||` because x and y can be zero.
-		const x: number =
-			'x' in this._options.browserWindow
-				? this._options.browserWindow.x!
+		const x =
+			'x' in this._options.browserWindow && this._options.browserWindow.x
+				? this._options.browserWindow.x
 				: position.x;
-		const y: number =
-			'y' in this._options.browserWindow
-				? this._options.browserWindow.y!
+		const y =
+			'y' in this._options.browserWindow && this._options.browserWindow.y
+				? this._options.browserWindow.y
 				: position.y;
 
 		// `.setPosition` crashed on non-integers
@@ -287,11 +287,13 @@ export class Menubar extends EventEmitter {
 		};
 
 		const browserWindow = this._options.browserWindow;
-		this._browserWindow = browserWindow instanceof BrowserWindow ? browserWindow
-			: new BrowserWindow({
-				...defaults,
-				...browserWindow,
-			});
+		this._browserWindow =
+			browserWindow instanceof BrowserWindow
+				? browserWindow
+				: new BrowserWindow({
+						...defaults,
+						...browserWindow,
+				  });
 
 		this._positioner = new Positioner(this._browserWindow);
 
@@ -304,8 +306,8 @@ export class Menubar extends EventEmitter {
 			this._browserWindow.isAlwaysOnTop()
 				? this.emit('focus-lost')
 				: (this._blurTimeout = setTimeout(() => {
-					this.hideWindow();
-				}, 100));
+						this.hideWindow();
+				  }, 100));
 		});
 
 		if (this._options.showOnAllWorkspaces !== false) {

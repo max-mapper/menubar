@@ -4,7 +4,7 @@
 
 /** */
 
-import { BrowserWindow, BrowserWindowConstructorOptions, app } from 'electron';
+import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 import path from 'path';
 import url from 'url';
 
@@ -13,7 +13,10 @@ import { Options } from '../types';
 const DEFAULT_WINDOW_HEIGHT = 400;
 const DEFAULT_WINDOW_WIDTH = 400;
 
-const isWindowOption = (value: BrowserWindowConstructorOptions | BrowserWindow): value is BrowserWindowConstructorOptions => !(value instanceof BrowserWindow)
+const isWindowOption = (
+	value: BrowserWindowConstructorOptions | BrowserWindow
+): value is BrowserWindowConstructorOptions =>
+	!(value instanceof BrowserWindow);
 
 /**
  * Take as input some options, and return a sanitized version of it.
