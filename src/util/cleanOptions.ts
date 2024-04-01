@@ -4,7 +4,7 @@
 
 /** */
 
-import { app } from 'electron';
+import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 import path from 'path';
 import url from 'url';
 
@@ -12,6 +12,11 @@ import { Options } from '../types';
 
 const DEFAULT_WINDOW_HEIGHT = 400;
 const DEFAULT_WINDOW_WIDTH = 400;
+
+const isWindowOption = (
+	value: BrowserWindowConstructorOptions | BrowserWindow
+): value is BrowserWindowConstructorOptions =>
+	!(value instanceof BrowserWindow);
 
 /**
  * Take as input some options, and return a sanitized version of it.
@@ -52,16 +57,17 @@ export function cleanOptions(opts?: Partial<Options>): Options {
 	}
 
 	// Set width/height on options to be usable before the window is created
-	options.browserWindow.width =
-		// Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
-		// that users can put a 0 width
-		options.browserWindow.width !== undefined
-			? options.browserWindow.width
-			: DEFAULT_WINDOW_WIDTH;
-	options.browserWindow.height =
-		options.browserWindow.height !== undefined
-			? options.browserWindow.height
-			: DEFAULT_WINDOW_HEIGHT;
-
+	if (isWindowOption(options.browserWindow)) {
+		options.browserWindow.width =
+			// Note: not using `options.browserWindow.width || DEFAULT_WINDOW_WIDTH` so
+			// that users can put a 0 width
+			options.browserWindow.width !== undefined
+				? options.browserWindow.width
+				: DEFAULT_WINDOW_WIDTH;
+		options.browserWindow.height =
+			options.browserWindow.height !== undefined
+				? options.browserWindow.height
+				: DEFAULT_WINDOW_HEIGHT;
+	}
 	return options as Options;
 }

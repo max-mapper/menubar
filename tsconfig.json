@@ -1,5 +1,5 @@
 {
-	"extends": "./node_modules/@amaurym/tsconfig/tsconfig",
+	"extends": "./node_modules/@amaurym/tsconfig/tsconfig.json",
 	"compilerOptions": {
 		"declaration": true,
 		"module": "commonjs",

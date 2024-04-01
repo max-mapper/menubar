@@ -177,11 +177,11 @@ export class Menubar extends EventEmitter {
 
 		// Not using `||` because x and y can be zero.
 		const x =
-			this._options.browserWindow.x !== undefined
+			'x' in this._options.browserWindow && this._options.browserWindow.x
 				? this._options.browserWindow.x
 				: position.x;
 		const y =
-			this._options.browserWindow.y !== undefined
+			'y' in this._options.browserWindow && this._options.browserWindow.y
 				? this._options.browserWindow.y
 				: position.y;
 
@@ -286,10 +286,14 @@ export class Menubar extends EventEmitter {
 			frame: false, // Remove window frame
 		};
 
-		this._browserWindow = new BrowserWindow({
-			...defaults,
-			...this._options.browserWindow,
-		});
+		const browserWindow = this._options.browserWindow;
+		this._browserWindow =
+			browserWindow instanceof BrowserWindow
+				? browserWindow
+				: new BrowserWindow({
+						...defaults,
+						...browserWindow,
+				  });
 
 		this._positioner = new Positioner(this._browserWindow);
 
