@@ -118,7 +118,7 @@ The `Menubar` class is an event emitter:
 
 | menubar  | Electron                   | Notes                                                                                                                      |
 | -------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 9.x.x    | 9.x.x \| 10.x.x \| 11.x.x \| 12.x.x \| 13.x.x \| 14.x.x \| 15.x.x \| 16.x.x \| 17.x.x \| 18.x.x \| 19.x. \| 20.x. \| 21.x.x \| 22.x.x  \| 23.x.x.  \| 24.x.x.  \| 25.x.x.  \| 26.x.x.  \| 27.x.x. |                                                                                                                            |
+| 9.x.x    | 9.x.x \| 10.x.x \| 11.x.x \| 12.x.x \| 13.x.x \| 14.x.x \| 15.x.x \| 16.x.x \| 17.x.x \| 18.x.x \| 19.x. \| 20.x. \| 21.x.x \| 22.x.x  \| 23.x.x.  \| 24.x.x.  \| 25.x.x.  \| 26.x.x.  \| 27.x.x.| 28.x.x.| 29.x.x. |                                                                                                                            |
 | 8.x.x    | 8.x.x                      |                                                                                                                            |
 | 7.x.x    | 7.x.x                      |                                                                                                                            |
 | 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x    | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
