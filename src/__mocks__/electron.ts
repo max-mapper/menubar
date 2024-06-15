@@ -35,16 +35,3 @@ export class Tray {
 		// Do nothing
 	}
 }
-
-export class Screen {
-	getDisplayMatching(rect: Rectangle): Display {
-		return {
-			id: 1,
-			bounds: { x: 0, y: 0, width: 1920, height: 1080 },
-			workArea: { x: 0, y: 0, width: 1920, height: 1040 },
-			scaleFactor: 1,
-			rotation: 0,
-			touchSupport: 'unknown',
-		} as Display;
-	}
-}
