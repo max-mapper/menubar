@@ -224,15 +224,12 @@ export class Menubar extends EventEmitter {
     }
     this.tray.on(
       defaultClickEvent as Parameters<Tray['on']>[0],
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.clicked.bind(this),
     );
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.tray.on('double-click', this.clicked.bind(this));
     this.tray.setToolTip(this._options.tooltip);
 
     if (!this._options.windowPosition) {
-      // Fill in this._options.windowPosition when taskbar position is available
       this._options.windowPosition = getWindowPosition(this.tray);
     }
 
