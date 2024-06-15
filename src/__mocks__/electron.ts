@@ -1,7 +1,5 @@
 // https://github.com/electron/electron/issues/3909#issuecomment-190990825
 
-import { Display, Rectangle } from "electron";
-
 export const MOCK_APP_GETAPPPATH = 'mock.app.getAppPath';
 
 export const app = {
