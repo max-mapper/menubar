@@ -11,7 +11,7 @@
 import { app } from 'electron';
 
 import { Menubar } from './Menubar';
-import { Options } from './types';
+import type { Options } from './types';
 
 export * from './util/getWindowPosition';
 export { Menubar };
@@ -23,5 +23,5 @@ export { Menubar };
  * {@link Options}
  */
 export function menubar(options?: Partial<Options>): Menubar {
-	return new Menubar(app, options);
+  return new Menubar(app, options);
 }
