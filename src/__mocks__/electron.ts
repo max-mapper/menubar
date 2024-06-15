@@ -33,3 +33,9 @@ export class Tray {
 		// Do nothing
 	}
 }
+
+export class Screen {
+	getDisplayMatching(): void {
+		// Do nothing
+	}
+}
