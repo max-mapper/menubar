@@ -1,15 +1,15 @@
 {
-  "name": "example-menubar",
-  "version": "0.1.0",
-  "description": "Examples of menubar electron apps",
-  "private": true,
-  "workspaces": [
-    "arrow",
-    "hello-world",
-    "icon-animation",
-    "native-menu"
-  ],
-  "devDependencies": {
-    "electron": "^27.1.0"
-  }
+	"name": "example-menubar",
+	"version": "0.1.0",
+	"description": "Examples of menubar electron apps",
+	"private": true,
+	"workspaces": [
+		"arrow",
+		"hello-world",
+		"icon-animation",
+		"native-menu"
+	],
+	"devDependencies": {
+		"electron": "^31.0.1"
+	}
 }
