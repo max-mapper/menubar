@@ -45,7 +45,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.2",
     "@types/jest": "^25.2.3",
-    "electron": "^29.1.6",
+    "electron": "^31.0.2",
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
     "standard-version": "^8.0.0",

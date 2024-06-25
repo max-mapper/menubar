@@ -5,6 +5,6 @@
   "private": true,
   "workspaces": ["arrow", "hello-world", "icon-animation", "native-menu"],
   "devDependencies": {
-    "electron": "^29.1.6"
+    "electron": "^31.0.2"
   }
 }
