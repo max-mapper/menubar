@@ -3572,11 +3572,6 @@ typedoc-plugin-markdown@^4.1.0:
   resolved "https://registry.yarnpkg.com/typedoc-plugin-markdown/-/typedoc-plugin-markdown-4.1.0.tgz#0969e82d9821c956145a4b8a9a70f4e00bde27e8"
   integrity sha512-sUiEJVaa6+MOFShRy14j1OP/VXC5OLyHNecJ2nKeGuBy2M3YiMatSLoIiddFAqVptSuILJTZiJzCBIY6yzAVyg==
 
-typedoc-plugin-no-inherit@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-no-inherit/-/typedoc-plugin-no-inherit-1.4.0.tgz#8eafc790588f63f0a24621b646219cd6e8d6e4d6"
-  integrity sha512-cAvqQ8X9xh1xztVoDKtF4nYRSBx9XwttN3OBbNNpA0YaJSRM8XvpVVhugq8FoO1HdWjF3aizS0JzdUOMDt0y9g==
-
 typedoc@^0.26.2:
   version "0.26.2"
   resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.26.2.tgz#f9538e6e9a081fda1f2416d0ee0d7dfab480cbec"

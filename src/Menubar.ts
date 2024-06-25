@@ -10,8 +10,6 @@ import { getWindowPosition } from './util/getWindowPosition';
 
 /**
  * The main Menubar class.
- *
- * @noInheritDoc
  */
 export class Menubar extends EventEmitter {
 	private _app: Electron.App;
