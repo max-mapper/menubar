@@ -1,8 +1,9 @@
 {
-  "extends": "./node_modules/@amaurym/tsconfig/tsconfig",
   "compilerOptions": {
-    "declaration": true,
     "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
     "outDir": "./lib",
     "skipLibCheck": true,
     "target": "es5"
