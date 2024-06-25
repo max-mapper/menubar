@@ -90,7 +90,7 @@ export function getWindowPosition(tray: Tray): WindowPosition {
 				return isLinux ? 'topRight' : 'trayCenter';
 			}
 			if (traySide === 'bottom') {
-				return isLinux ? 'bottomRight' : 'trayBottomCenter';
+				return 'bottomRight';
 			}
 			if (traySide === 'left') {
 				return 'bottomLeft';
