@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.5.0](https://github.com/maxogden/menubar/compare/v9.4.0...v9.5.0) (2024-06-25)
+
+
+### Features
+
+* widen electron support ([#473](https://github.com/maxogden/menubar/issues/473)) ([bd3beb2](https://github.com/maxogden/menubar/commit/bd3beb2c2bc9700f4738a4e0f25085aa8a0f5e86))
+
+
+### Bug Fixes
+
+* Fix for Broken Native Menubar Example ([#471](https://github.com/maxogden/menubar/issues/471)) ([b000c86](https://github.com/maxogden/menubar/commit/b000c86777cb0cf6fa883fb0256410981e154ce1))
+* win32 position ([#479](https://github.com/maxogden/menubar/issues/479)) ([9e5cb86](https://github.com/maxogden/menubar/commit/9e5cb86a276f29efd36d10a07e27fa820343f880))
+
 ## [9.4.0](https://github.com/maxogden/menubar/compare/v9.3.0...v9.4.0) (2023-11-28)
 
 
