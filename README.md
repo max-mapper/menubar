@@ -1,4 +1,4 @@
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/max-mapper/menubar/pr.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/max-mapper/menubar/test.yml)
 [![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/menubar)
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/max-mapper/menubar)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
