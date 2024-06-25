@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/max-mapper/menubar/test.yml)
 [![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/menubar)
-[![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/max-mapper/menubar)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
 
