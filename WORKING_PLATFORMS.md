@@ -6,6 +6,7 @@ This document is still a work-in-progress. If you have tested `menubar` with a p
 
 | Version           | Working Status | Known Issues                                                                                                   |
 | ----------------- | -------------- | -------------------------------------------------------------------------------------------------------------- |
+| 14.15 Sonoma      | ✅ Good        |                                                                                                                |
 | 10.14 Mojave      | ✅ Good        | [#147](https://github.com/maxogden/menubar/issues/147), [#215](https://github.com/maxogden/menubar/issues/215) |
 | 10.13 High Sierra | ✅ Good        |                                                                                                                |
 
