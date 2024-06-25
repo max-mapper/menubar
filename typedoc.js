@@ -1,3 +1,4 @@
+/** @type {import('typedoc').TypeDocOptions} */
 module.exports = {
 	exclude: ['**/*spec.ts', '**/__mocks__/**'],
 	excludeExternals: true,
