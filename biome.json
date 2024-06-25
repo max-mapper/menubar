@@ -9,7 +9,8 @@
       "recommended": true,
       "style": {
         "noParameterAssign": "warn",
-        "noNonNullAssertion": "warn"
+        "noNonNullAssertion": "warn",
+        "useNodejsImportProtocol": "warn"
       },
       "suspicious": {
         "noAssignInExpressions": "warn"

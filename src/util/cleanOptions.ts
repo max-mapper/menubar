@@ -4,8 +4,8 @@
 
 /** */
 
-import path from 'node:path';
-import url from 'node:url';
+import path from 'path';
+import url from 'url';
 import { app } from 'electron';
 
 import type { Options } from '../types';

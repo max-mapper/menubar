@@ -1,5 +1,5 @@
 const { app, Menu, Tray } = require('electron');
-const path = require('node:path');
+const path = require('path');
 
 const { menubar } = require('../../');
 

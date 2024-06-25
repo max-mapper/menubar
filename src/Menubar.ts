@@ -1,6 +1,6 @@
-import { EventEmitter } from 'node:events';
-import fs from 'node:fs';
-import path from 'node:path';
+import { EventEmitter } from 'events';
+import fs from 'fs';
+import path from 'path';
 import { BrowserWindow, Tray } from 'electron';
 import Positioner from 'electron-positioner';
 
