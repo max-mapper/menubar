@@ -1,11 +1,11 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"esModuleInterop": true,
-    	"strict": true,
-		"declaration": true,
-		"outDir": "./lib",
-		"skipLibCheck": true,
-		"target": "es5"
-	}
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "target": "es5"
+  }
 }
