@@ -24,4 +24,4 @@ The Electron Tray instance.
 
 ## Defined in
 
-[util/getWindowPosition.ts:31](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/util/getWindowPosition.ts#L31)
+[util/getWindowPosition.ts:32](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/util/getWindowPosition.ts#L32)

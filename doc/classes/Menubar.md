@@ -27,7 +27,7 @@ instance.
 
 #### Defined in
 
-[Menubar.ts:46](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L46)
+[Menubar.ts:46](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L46)
 
 ***
 
@@ -44,7 +44,7 @@ instance.
 
 #### Defined in
 
-[Menubar.ts:54](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L54)
+[Menubar.ts:54](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L54)
 
 ***
 
@@ -60,7 +60,7 @@ The Electron [Tray](https://electronjs.org/docs/api/tray) instance.
 
 #### Defined in
 
-[Menubar.ts:67](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L67)
+[Menubar.ts:67](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L67)
 
 ***
 
@@ -77,7 +77,7 @@ instance, if it's present.
 
 #### Defined in
 
-[Menubar.ts:81](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L81)
+[Menubar.ts:81](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L81)
 
 ## Methods
 
@@ -103,7 +103,7 @@ The option key to retrieve, see Options.
 
 #### Defined in
 
-[Menubar.ts:90](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L90)
+[Menubar.ts:90](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L90)
 
 ***
 
@@ -119,7 +119,7 @@ Hide the menubar window.
 
 #### Defined in
 
-[Menubar.ts:97](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L97)
+[Menubar.ts:97](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L97)
 
 ***
 
@@ -149,7 +149,7 @@ The value to set.
 
 #### Defined in
 
-[Menubar.ts:117](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L117)
+[Menubar.ts:117](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L117)
 
 ***
 
@@ -171,4 +171,4 @@ The bounds to show the window in.
 
 #### Defined in
 
-[Menubar.ts:126](https://github.com/max-mapper/menubar/blob/8eb6e35e26e8e3795d5801b6d7450ac7faf9571d/src/Menubar.ts#L126)
+[Menubar.ts:126](https://github.com/max-mapper/menubar/blob/ab7bcc28df37bf6f2811a12d6ece953e3ecdb7fb/src/Menubar.ts#L126)

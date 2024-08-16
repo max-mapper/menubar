@@ -19,11 +19,11 @@ This module provides boilerplate for setting up a menubar application using Elec
 
 ✅ Only one dependency, and one peer-dependency.
 
-✅ Works on macOS, Windows and most Linuxes. See [details]().
+✅ Works on macOS, Windows and most Linuxes. See [details](_media/WORKING_PLATFORMS.md).
 
 ✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-| <img src="" height="250px" /> | <img src="" height="250px" /> | <img src="" height="250px" /> |
+| <img src="_media/screenshot-macos-dark.png" height="250px" /> | <img src="_media/screenshot-windows.png" height="250px" /> | <img src="_media/screenshot-linux.png" height="250px" /> |
 | :-----------------------------------------------------------: | :--------------------------------------------------------: | :------------------------------------------------------: |
 |                      macOS Mojave 10.14                       |                         Windows 10                         |                       Ubuntu 18.04                       |
 
@@ -77,7 +77,7 @@ The return value of `menubar()` is a `Menubar` class instance, which has these p
 - `showWindow()`: show the menubar window,
 - `hideWindow()`: hide the menubar window
 
-See the reference [API docs]().
+See the reference [API docs](_media/_menubar_.menubar.md).
 
 ## `menubar()` Options
 
@@ -101,7 +101,7 @@ You can pass an optional options object into the `menubar({ ... })` function:
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
 - `showOnRightClick` (default false) - Show the window on 'right-click' event instead of regular 'click'
 
-See the reference [API docs]().
+See the reference [API docs](_media/_types_.options.md).
 
 ## Events
 
@@ -130,7 +130,7 @@ The `Menubar` class is an event emitter:
 
 ## API Docs
 
-See the reference [API docs]().
+See the reference [API docs](_media/globals.md).
 
 ## Tips
 
