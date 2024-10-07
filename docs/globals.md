@@ -1,14 +1,15 @@
-> **[menubar](README.md)**
+[**menubar**](README.md) • **Docs**
 
-[Globals](globals.md) /
+***
 
 # menubar
 
-## Index
+## Classes
 
-### External modules
+- [Menubar](classes/Menubar.md)
 
-* ["Menubar"](modules/_menubar_.md)
-* ["index"](modules/_index_.md)
-* ["types"](modules/_types_.md)
-* ["util/getWindowPosition"](modules/_util_getwindowposition_.md)
+## Functions
+
+- [getWindowPosition](functions/getWindowPosition.md)
+- [menubar](functions/menubar.md)
+- [taskbarLocation](functions/taskbarLocation.md)
