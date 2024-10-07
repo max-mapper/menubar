@@ -43,19 +43,19 @@
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "@types/jest": "^29.5.12",
-    "electron": "^31.4.0",
+    "@biomejs/biome": "^1.9.3",
+    "@types/jest": "^29.5.13",
+    "electron": "^32.1.2",
     "jest": "^29.7.0",
     "rimraf": "^6.0.1",
     "standard-version": "^9.5.0",
-    "ts-jest": "^29.2.4",
-    "typedoc": "^0.26.5",
-    "typedoc-plugin-markdown": "^4.2.5",
-    "typescript": "^5.5.4"
+    "ts-jest": "^29.2.5",
+    "typedoc": "^0.26.8",
+    "typedoc-plugin-markdown": "^4.2.9",
+    "typescript": "^5.6.2"
   },
   "peerDependencies": {
-    "electron": ">=9.0.0 <32.0.0"
+    "electron": ">=9.0.0 <33.0.0"
   },
   "packageManager": "yarn@1.22.22"
 }
