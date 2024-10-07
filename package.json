@@ -6,10 +6,7 @@
     "url": "https://github.com/maxogden/menubar/issues"
   },
   "description": "high level way to create menubar desktop applications with electron",
-  "files": [
-    "/assets",
-    "/lib"
-  ],
+  "files": ["/assets", "/lib"],
   "homepage": "https://github.com/maxogden/menubar",
   "keywords": [
     "electron",
@@ -46,9 +43,9 @@
     "electron-positioner": "^4.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.2",
+    "@biomejs/biome": "^1.9.3",
     "@types/jest": "^25.2.3",
-    "electron": "^31.0.2",
+    "electron": "^32.1.2",
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
     "standard-version": "^8.0.0",
@@ -59,7 +56,7 @@
     "typescript": "^4.6.2"
   },
   "peerDependencies": {
-    "electron": ">=9.0.0 <32.0.0"
+    "electron": ">=9.0.0 <33.0.0"
   },
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "packageManager": "yarn@1.22.22"
 }
