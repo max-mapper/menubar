@@ -4,7 +4,7 @@
 }
 
 .myarrow:before {
-  content: '';
+  content: "";
   height: 0;
   width: 0;
   border-width: 0 8px 12px 8px;
