@@ -1,10 +1,10 @@
-> **[menubar](README.md)**
+**menubar** • [**Docs**](globals.md)
 
-[Globals](globals.md) /
+***
 
-[![Build Status](https://travis-ci.org/maxogden/menubar.svg?branch=master)](https://travis-ci.org/maxogden/menubar)
-[![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/@maxogden/menubar)
-[![dependencies Status](https://david-dm.org/maxogden/menubar/status.svg)](https://david-dm.org/maxogden/menubar)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/max-mapper/menubar/test.yml)
+[![npm (scoped)](https://img.shields.io/npm/v/menubar.svg)](https://www.npmjs.com/package/menubar)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/max-mapper/menubar)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/menubar.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/menubar.svg)
 
@@ -19,11 +19,11 @@ This module provides boilerplate for setting up a menubar application using Elec
 
 ✅ Only one dependency, and one peer-dependency.
 
-✅ Works on macOS, Windows and most Linuxes. See [details](./WORKING_PLATFORMS.md).
+✅ Works on macOS, Windows and most Linuxes. See [details](_media/WORKING_PLATFORMS.md).
 
 ✅ 💥 [**3.6kB minified + gzipped**](https://bundlephobia.com/result?p=menubar) 💥
 
-| <img src="assets/screenshot-macos-dark.png" height="250px" /> | <img src="assets/screenshot-windows.png" height="250px" /> | <img src="assets/screenshot-linux.png" height="250px" /> |
+| <img src="_media/screenshot-macos-dark.png" height="250px" /> | <img src="_media/screenshot-windows.png" height="250px" /> | <img src="_media/screenshot-linux.png" height="250px" /> |
 | :-----------------------------------------------------------: | :--------------------------------------------------------: | :------------------------------------------------------: |
 |                      macOS Mojave 10.14                       |                         Windows 10                         |                       Ubuntu 18.04                       |
 
@@ -95,6 +95,7 @@ You can pass an optional options object into the `menubar({ ... })` function:
 - `tooltip` (default empty) - menubar tray icon tooltip text
 - `tray` (default created on-the-fly) - an electron `Tray` instance. if provided `opts.icon` will be ignored
 - `preloadWindow` (default false) - Create [BrowserWindow](https://electronjs.org/docs/api/browser-window#new-browserwindowoptions) instance before it is used -- increasing resource usage, but making the click on the menubar load faster.
+- `loadUrlOptions` - (default undefined) The options passed when loading the index URL in the menubar's browserWindow. Everything browserWindow.loadURL supports is supported; this object is simply passed onto [browserWindow.loadURL](https://electronjs.org/docs/api/browser-window#winloadurlurl-options)
 - `showOnAllWorkspaces` (default true) - Makes the window available on all OS X workspaces.
 - `windowPosition` (default trayCenter and trayBottomCenter on Windows) - Sets the window position (x and y will still override this), check [positioner docs](https://github.com/jenslind/electron-positioner#docs) for valid values.
 - `showDockIcon` (default false) - Configure the visibility of the application dock icon.
@@ -108,7 +109,8 @@ The `Menubar` class is an event emitter:
 
 - `ready` - when `menubar`'s tray icon has been created and initialized, i.e. when `menubar` is ready to be used. Note: this is different than Electron app's `ready` event, which happens much earlier in the process
 - `create-window` - the line before `new BrowserWindow()` is called
-- `after-create-window` - the line after all window init code is done
+- `before-load` - after create window, before loadUrl (can be used for `require("@electron/remote/main").enable(webContents)`)
+- `after-create-window` - the line after all window init code is done and url was loaded
 - `show` - the line before `window.show()` is called
 - `after-show` - the line after `window.show()` is called
 - `hide` - the line before `window.hide()` is called (on window blur)
@@ -118,19 +120,21 @@ The `Menubar` class is an event emitter:
 
 ## Compatibility with Electron
 
-| menubar  | Electron                | Notes                                                                                                                      |
-| -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 7.x.x    | 7.x.x                   |
-| 6.x.x    | 4.x.x \| 5.x.x \| 6.x.x | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
-| <= 5.x.x | <= 3.x.x                | Please, _please_ don't use these old versions                                                                              |
+| menubar  | Electron                   | Notes                                                                                                                      |
+| -------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| 9.x.x    | >=9.x.x <33.x.x |                                                                                                                            |
+| 8.x.x    | 8.x.xx                      |                                                                                                                            |
+| 7.x.x    | 7.x.xx                      |                                                                                                                            |
+| 6.x.x    | >=4.x.x <7.x.x   | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |
+| <= 5.x.x | <= 3.x.x                   | Please, _please_ don't use these old versions                                                                              |
 
 ## API Docs
 
-See the reference [API docs](./docs/globals.md).
+See the reference [API docs](_media/globals.md).
 
 ## Tips
 
-- Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadUrl()`
+- Use `mb.on('after-create-window', callback)` to run things after your app has loaded. For example you could run `mb.window.openDevTools()` to open the developer tools for debugging, or load a different URL with `mb.window.loadURL()`
 - Use `mb.on('focus-lost')` if you would like to perform some operation when using the option `browserWindow.alwaysOnTop: true`
 - To restore focus of previous window after menubar hide, use `mb.on('after-hide', () => { mb.app.hide() } )` or similar
 - To create a native menu, you can use `tray.setContextMenu(contextMenu)`, and pass this custom tray to menubar: `const mb = menubar({ tray });`. See [this example](https://github.com/maxogden/menubar/tree/master/examples/native-menu) for more information.
