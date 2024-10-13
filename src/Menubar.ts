@@ -222,11 +222,13 @@ export class Menubar extends EventEmitter {
     if (!this.tray) {
       throw new Error('Tray has been initialized above');
     }
-    this.tray.on(
-      defaultClickEvent as Parameters<Tray['on']>[0],
-      this.clicked.bind(this),
-    );
-    this.tray.on('double-click', this.clicked.bind(this));
+    if (this._options.disableClick != true) {
+      this.tray.on(
+        defaultClickEvent as Parameters<Tray['on']>[0],
+        this.clicked.bind(this),
+      );
+      this.tray.on('double-click', this.clicked.bind(this));
+    }
     this.tray.setToolTip(this._options.tooltip);
 
     if (!this._options.windowPosition) {
@@ -293,8 +295,8 @@ export class Menubar extends EventEmitter {
       this._browserWindow.isAlwaysOnTop()
         ? this.emit('focus-lost')
         : (this._blurTimeout = setTimeout(() => {
-            this.hideWindow();
-          }, 100));
+          this.hideWindow();
+        }, 100));
     });
 
     if (this._options.showOnAllWorkspaces !== false) {
