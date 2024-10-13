@@ -74,6 +74,10 @@ export interface Options {
    */
   showOnRightClick?: boolean;
   /**
+   * Don't show the window at all if clicked
+   */
+  disableClick?: boolean;
+  /**
    * Menubar tray icon tooltip text. Calls [`tray.setTooltip`](https://electronjs.org/docs/api/tray#traysettooltiptooltip).
    */
   tooltip: string;
