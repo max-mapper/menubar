@@ -48,7 +48,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
     "@types/jest": "^25.2.3",
-    "electron": "^34.3.0",
+    "electron": "^35.0.0",
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
     "standard-version": "^8.0.0",
@@ -59,7 +59,7 @@
     "typescript": "^4.6.2"
   },
   "peerDependencies": {
-    "electron": ">=9.0.0 <35.0.0"
+    "electron": ">=9.0.0 <36.0.0"
   },
   "packageManager": "yarn@1.22.22"
 }
