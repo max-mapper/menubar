@@ -118,7 +118,7 @@ The `Menubar` class is an event emitter:
 
 | menubar  | Electron                   | Notes                                                                                                                      |
 | -------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 9.x.x    | >= 9.x.x <= 35.x.x |                                                                                                                            |
+| 9.x.x    | >= 9.x.x           | Continuously type-checked against Electron 35.x.x - 43.x.x in CI                                                           |
 | 8.x.x    | 8.x.xx                      |                                                                                                                            |
 | 7.x.x    | 7.x.xx                      |                                                                                                                            |
 | 6.x.x    | >= 4.x.x < 7.x.x   | Not recommended for [security reasons](https://electronjs.org/docs/tutorial/security#17-use-a-current-version-of-electron) |

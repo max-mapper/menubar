@@ -18,3 +18,26 @@ jobs:
                   node-version-file: '.nvmrc'
             - run: yarn install
             - run: yarn test
+
+    electron-compat:
+        name: Type-check against Electron ${{ matrix.electron }}
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: false
+            matrix:
+                electron: [35, 37, 39, 41, 43]
+
+        # Electron's bundled type definitions are the only part of Electron the
+        # build touches, so the (large) prebuilt binary is not downloaded here.
+        env:
+            ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: '.nvmrc'
+            - run: yarn install
+            - run: yarn add --dev electron@^${{ matrix.electron }}.0.0
+            - run: yarn build
