@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/) for commit guidelines; releases are managed by [release-please](https://github.com/googleapis/release-please).
 
 ### [9.5.3](https://github.com/maxogden/menubar/compare/v9.5.2...v9.5.3) (2026-07-29)
 

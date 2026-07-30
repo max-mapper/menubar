@@ -18,7 +18,9 @@ Thanks!
 
 ## Releases
 
-- commit your changes
-- `npm version <major|minor|patch>`
-- `git push && git push --tags` (or `git push` with `git config --global push.followTags true` on latest git)
-- `npm publish`
+Releases are automated with [release-please](https://github.com/googleapis/release-please):
+
+- merge commits to `master` using [Conventional Commits](https://www.conventionalcommits.org/) messages
+- release-please opens/updates a release PR that bumps the version and updates `CHANGELOG.md`
+- merging that PR creates the git tag and GitHub release
+- `npm publish` the tagged version

@@ -35,7 +35,6 @@
   },
   "scripts": {
     "build": "rimraf lib/ && tsc",
-    "deploy": "yarn build && standard-version",
     "docs": "typedoc",
     "lint:check": "biome check",
     "lint": "biome check --fix",
@@ -51,7 +50,6 @@
     "electron": "^43.0.0",
     "jest": "^30.4.2",
     "rimraf": "^3.0.2",
-    "standard-version": "^8.0.0",
     "ts-jest": "^29.4.12",
     "typedoc": "^0.17.7",
     "typedoc-plugin-markdown": "^2.2.17",
