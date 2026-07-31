@@ -17,27 +17,51 @@ export class Menubar extends EventEmitter {
   private _app: Electron.App;
   private _browserWindow?: BrowserWindow;
   private _blurTimeout: NodeJS.Timeout | null = null; // track blur events with timeout
+  private _defaultClickEvent?: 'click' | 'right-click';
+  private _isDestroyed: boolean;
   private _isVisible: boolean; // track visibility
   private _cachedBounds?: Electron.Rectangle; // _cachedBounds are needed for double-clicked event
   private _options: Options;
   private _positioner: Positioner | undefined;
   private _tray?: Tray;
 
+  private readonly _appReadyHandler = (): void => {
+    if (this._isDestroyed) {
+      return;
+    }
+    this.appReady().catch((err) => console.error('menubar: ', err));
+  };
+
+  private readonly _appActivateHandler = (
+    _event: Electron.Event,
+    hasVisibleWindows: boolean,
+  ): void => {
+    if (!this._isDestroyed && !hasVisibleWindows) {
+      this.showWindow().catch(console.error);
+    }
+  };
+
+  private readonly _trayClickHandler = (
+    event?: Electron.KeyboardEvent,
+    bounds?: Electron.Rectangle,
+  ): void => {
+    if (!this._isDestroyed) {
+      this.clicked(event, bounds).catch(console.error);
+    }
+  };
+
   constructor(app: Electron.App, options?: Partial<Options>) {
     super();
     this._app = app;
     this._options = cleanOptions(options);
+    this._isDestroyed = false;
     this._isVisible = false;
 
     if (app.isReady()) {
       // See https://github.com/maxogden/menubar/pull/151
-      process.nextTick(() =>
-        this.appReady().catch((err) => console.error('menubar: ', err)),
-      );
+      process.nextTick(this._appReadyHandler);
     } else {
-      app.on('ready', () => {
-        this.appReady().catch((err) => console.error('menubar: ', err));
-      });
+      app.on('ready', this._appReadyHandler);
     }
   }
 
@@ -85,6 +109,58 @@ export class Menubar extends EventEmitter {
   }
 
   /**
+   * Tear down the menubar instance and release the resources it owns.
+   *
+   * Calling this method more than once has no effect. A tray supplied through
+   * {@link Options.tray} is detached but not destroyed.
+   */
+  destroy(): void {
+    if (this._isDestroyed) {
+      return;
+    }
+    this._isDestroyed = true;
+
+    if (this._blurTimeout) {
+      clearTimeout(this._blurTimeout);
+      this._blurTimeout = null;
+    }
+
+    if (this._browserWindow) {
+      if (!this._browserWindow.isDestroyed()) {
+        this._browserWindow.destroy();
+      }
+      this._browserWindow = undefined;
+    }
+
+    if (this._tray) {
+      if (this._defaultClickEvent) {
+        this._tray.removeListener(
+          this._defaultClickEvent as Parameters<Tray['on']>[0],
+          this._trayClickHandler,
+        );
+      }
+      this._tray.removeListener('double-click', this._trayClickHandler);
+      if (!this._options.tray && !this._tray.isDestroyed()) {
+        this._tray.destroy();
+      }
+      this._tray = undefined;
+    }
+
+    this._app.removeListener('ready', this._appReadyHandler);
+    this._app.removeListener('activate', this._appActivateHandler);
+    this._cachedBounds = undefined;
+    this._isVisible = false;
+    this._positioner = undefined;
+  }
+
+  /**
+   * Whether {@link destroy} has been called on this menubar instance.
+   */
+  isDestroyed(): boolean {
+    return this._isDestroyed;
+  }
+
+  /**
    * Retrieve a menubar option.
    *
    * @param key - The option key to retrieve, see {@link Options}.
@@ -126,6 +202,9 @@ export class Menubar extends EventEmitter {
    * @param trayPos - The bounds to show the window in.
    */
   async showWindow(trayPos?: Electron.Rectangle): Promise<void> {
+    if (this._isDestroyed) {
+      return;
+    }
     if (!this.tray) {
       throw new Error('Tray should have been instantiated by now');
     }
@@ -195,16 +274,15 @@ export class Menubar extends EventEmitter {
   }
 
   private async appReady(): Promise<void> {
+    if (this._isDestroyed) {
+      return;
+    }
     if (this.app.dock && !this._options.showDockIcon) {
       this.app.dock.hide();
     }
 
     if (this._options.activateWithApp) {
-      this.app.on('activate', (_event, hasVisibleWindows) => {
-        if (!hasVisibleWindows) {
-          this.showWindow().catch(console.error);
-        }
-      });
+      this.app.on('activate', this._appActivateHandler);
     }
 
     let trayImage =
@@ -213,7 +291,7 @@ export class Menubar extends EventEmitter {
       trayImage = path.join(__dirname, '..', 'assets', 'IconTemplate.png'); // Default cat icon
     }
 
-    const defaultClickEvent = this._options.showOnRightClick
+    this._defaultClickEvent = this._options.showOnRightClick
       ? 'right-click'
       : 'click';
 
@@ -223,10 +301,10 @@ export class Menubar extends EventEmitter {
       throw new Error('Tray has been initialized above');
     }
     this.tray.on(
-      defaultClickEvent as Parameters<Tray['on']>[0],
-      this.clicked.bind(this),
+      this._defaultClickEvent as Parameters<Tray['on']>[0],
+      this._trayClickHandler,
     );
-    this.tray.on('double-click', this.clicked.bind(this));
+    this.tray.on('double-click', this._trayClickHandler);
     this.tray.setToolTip(this._options.tooltip);
 
     if (!this._options.windowPosition) {
@@ -237,6 +315,9 @@ export class Menubar extends EventEmitter {
       await this.createWindow();
     }
 
+    if (this._isDestroyed) {
+      return;
+    }
     this.emit('ready');
   }
 
@@ -304,7 +385,7 @@ export class Menubar extends EventEmitter {
       });
     }
 
-    this._browserWindow.on('close', this.windowClear.bind(this));
+    this._browserWindow.on('closed', this.windowClear.bind(this));
 
     this.emit('before-load');
 

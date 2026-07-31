@@ -71,7 +71,9 @@ The return value of `menubar()` is a `Menubar` class instance, which has these p
 - `setOption(option, value)`: change an option after menubar is created,
 - `getOption(option)`: get an menubar option,
 - `showWindow()`: show the menubar window,
-- `hideWindow()`: hide the menubar window
+- `hideWindow()`: hide the menubar window,
+- `destroy()`: tear down the menubar window, tray, timers, and listeners,
+- `isDestroyed()`: check whether the menubar instance has been destroyed
 
 See the reference [API docs](./docs/classes/_menubar_.menubar.md).
 
