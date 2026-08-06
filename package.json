@@ -34,6 +34,7 @@
     "url": "https://github.com/maxogden/menubar.git"
   },
   "scripts": {
+    "prepare": "npm run build",
     "build": "rimraf lib/ && tsc",
     "deploy": "yarn build && standard-version",
     "docs": "typedoc",
